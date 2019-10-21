@@ -1,0 +1,32 @@
+.block.general {
+  $padding-v: 80px;
+
+  padding-top: $padding-v;
+  padding-bottom: $padding-v;
+  > .interior {
+    &, .list-contents {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .cell {
+      flex: 1;
+      // align-self: center;
+    }
+    @include mq-min($break-desktop) {
+      &, .list-contents {
+        flex-direction: row;
+      }
+
+      .item-content {
+        flex: 0 0 50%;
+      }
+      .list-contents[data-elts="1"] {
+        .item-content {
+          flex: 1;
+        }
+      }
+    }
+
+  }
+}

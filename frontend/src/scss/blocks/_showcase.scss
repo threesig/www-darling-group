@@ -1,0 +1,14 @@
+.block.showcase {
+  @extend .color-scheme-dark;
+  height: 100vh;
+  padding: 0;
+  position: relative;
+  .img {
+    &, > .inner {
+      @include affix();
+      position: absolute;
+      background-position: 25% center;
+    }
+    z-index: -1;
+  }
+}

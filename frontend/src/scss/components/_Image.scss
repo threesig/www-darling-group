@@ -1,0 +1,20 @@
+.img {
+  overflow: hidden;
+  > .inner {
+    transition: transform .2s;
+    background: center center no-repeat;
+    background-size: cover;
+    transform: scale(1.01);
+  }
+  img {
+    display: block;
+    visibility: hidden;
+    width: 100%;
+    height: auto;
+  }
+  &.scale-on-hover:hover {
+    > .inner {
+      transform: scale(1.1);
+    }
+  }
+}

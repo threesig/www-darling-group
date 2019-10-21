@@ -1,0 +1,10 @@
+.block.image {
+  &.type-hero {
+    padding: 0 !important;
+  }
+  &.type-portfolio {
+    $padding-block-v: 15px;
+    padding-top: $padding-block-v;
+    padding-bottom: $padding-block-v;
+  }
+}

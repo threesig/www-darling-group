@@ -1,0 +1,14 @@
+@mixin hilite($color:red) {
+  background-color: rgba($color, .25) !important;
+}
+@mixin mq-min($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+@mixin affix($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  top: $top;
+  bottom: $bottom;
+  right: $right;
+  left: $left;
+}

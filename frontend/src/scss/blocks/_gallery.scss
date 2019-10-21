@@ -1,0 +1,30 @@
+.block.gallery {
+  padding: 0 !important;
+  .Gallery {
+    $break-unit: 400px;
+    flex-direction: row;
+    .item-gallery {
+      flex: 0 0 50%;
+    }
+    @include mq-min(2*$break-unit) {
+      .item-gallery {
+        flex: 0 0 25%;
+      }
+    }
+    .img {
+      position: relative;
+      &:before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+      }
+      > .inner {
+        @include affix();
+        position: absolute;
+      }
+      img {
+        display: none;
+      }
+    }
+  }
+}

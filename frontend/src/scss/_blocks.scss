@@ -1,0 +1,16 @@
+.block {
+  display: flex;
+  align-items: center;
+  padding: 0 $padding-site-h-mobile;
+  > .interior {
+    width: 100%;
+  }
+}
+@import 'blocks/welcome';
+@import 'blocks/image';
+@import 'blocks/gallery';
+@import 'blocks/logos';
+@import 'blocks/general';
+@import 'blocks/showcase';
+@import 'blocks/blockquote';
+@import 'blocks/contact';

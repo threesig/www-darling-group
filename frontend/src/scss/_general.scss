@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+code {
+  @include hilite(green);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+$full-height: 100vh;
+#App {
+  overflow: hidden;
+}
+#nav-main,
+.block.intro,
+#default {
+  height: $full-height;
+}
+#wrap {
+  margin-top: -$full-height;
+}
+
+.block.welcome {
+  height: calc(#{$full-height} - #{$gap-welcome-shade});
+}

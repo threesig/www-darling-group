@@ -1,0 +1,25 @@
+@import url("//hello.myfonts.net/count/3998fb");
+
+@font-face {font-family: 'trade-gothic';
+  src: url('../fonts/trade-gothic/tradeGothic.eot');
+  src:  local('tradeGothic'), url('../fonts/trade-gothic/tradeGothic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/trade-gothic/tradeGothic.woff2') format('woff2'),
+  url('../fonts/trade-gothic/tradeGothic.woff') format('woff'),
+  url('../fonts/trade-gothic/tradeGothic.ttf') format('truetype');
+}
+@font-face {font-family: 'core-sans-heavy';
+  src: url('../fonts/core-sans/coreSansHeavy.eot');
+  src:  local('coreSansHeavy'), url('../fonts/core-sans/coreSansHeavy.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/core-sans/coreSansHeavy.woff2') format('woff2'),
+  url('../fonts/core-sans/coreSansHeavy.woff') format('woff'),
+  url('../fonts/core-sans/coreSansHeavy.svg') format('svg');
+}
+
+body {
+  font-family: 'trade-gothic';
+}
+
+.title,
+.page-title {
+  font-family: 'core-sans-heavy';
+}

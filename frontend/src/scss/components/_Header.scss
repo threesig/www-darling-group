@@ -1,0 +1,65 @@
+#header {
+  $height-logo: 50px;
+  $transition-time: .2s;
+
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+
+  .menu-item {
+    text-align: center;
+    a {
+      transition: opacity .2s;
+      font-weight: bold;
+      opacity: .2;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+
+  .logo, .hamburger {
+    position: absolute;
+    top: 0;
+  }
+  > * {
+    pointer-events: all;
+  }
+  .logo {
+    transition: transform $transition-time, fill $transition-time;
+    left: 0;
+    transform: translate(#{$padding-site-h-mobile}, #{$padding-site-v-mobile});
+  }
+  .hamburger {
+    transition: transform $transition-time;
+    right: 0;
+    transform: translate(#{-$padding-site-h-mobile}, #{$padding-site-v-mobile});
+    .bar {
+      transition: background-color $transition-time, transform $transition-time;
+    }
+  }
+  @include mq-min($break-desktop) {
+    .logo {
+      transform: translate(#{$padding-site-h-desktop}, #{$padding-site-v-desktop});
+    }
+    .hamburger {
+      transform: translate(#{-$padding-site-h-desktop}, #{$padding-site-v-desktop});
+    }
+  }
+
+  $color-schemes: (dark: $color-white, light: $color-black-true, test: #f00);
+  @each $color-scheme, $ui-color in $color-schemes {
+    &.#{$color-scheme} {
+      .logo {
+        fill: $ui-color;
+      }
+      .hamburger .bar {
+        background-color: $ui-color;
+      }
+    }
+  }
+}

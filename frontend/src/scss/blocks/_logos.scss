@@ -1,0 +1,32 @@
+.block.logos {
+  background-color: $color-black-true;
+  padding: 50px 30px;
+  .Gallery {
+    $break-unit: 400px;
+    flex-direction: row;
+    max-width: 700px;
+    margin: 0 auto;
+    .item-gallery {
+      flex: 0 0 33.333333333%;
+    }
+    .img {
+      position: relative;
+      &:before {
+        content: '';
+        display: block;
+        padding-top: 40%;
+      }
+      > .inner {
+        $affix-gutter-v: 35%;
+        $affix-gutter-h: 10%;
+        @include affix($affix-gutter-v, $affix-gutter-h, $affix-gutter-v, $affix-gutter-h);
+        position: absolute;
+        background-size: contain;
+
+      }
+      img {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+$color-black-true: #000;
+$color-black: #222;
+$color-white: #ffffff;
+$color-pink: #eb515f;
+$color-tennisBall: #ddfc68;
+
+.color-scheme-light {
+  color: $color-black;
+  fill: $color-black;
+}
+.color-scheme-dark {
+  color: $color-white;
+  fill: $color-white;
+}
+.color-scheme-pink {
+  @extend .color-scheme-dark;
+  background-color: $color-pink;
+}
+.color-scheme-tennisBall {
+  @extend .color-scheme-light;
+  background-color: $color-tennisBall;
+}
