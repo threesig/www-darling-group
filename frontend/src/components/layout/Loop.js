@@ -1,28 +1,25 @@
 import React from 'react';
-import Page from './Page';
+import PageF from './PageF';
 import Archive from './Archive';
+import DefaultPageF from './Pages/DefaultPageF';
 
 
-export default class Loop extends React.Component {
-  static defaultProps = {
-    query: []
-  }
-  getLoopTemplate = () => {
-    const { query } = this.props;
+const Loop = props => {
+  const {query} = props || [];
+  
+  const getLoopTemplate = () => {
     switch (query.length) {
-      case 0:
-        return <p>404!</p>;
       case 1:
-        return <Page query={query} />
+        return <DefaultPageF query={query} />
       default:
-        return <Archive query={query} />
+          return <p>404!</p>;
     }
   }
-  render() {
-    return (
-      <>
-        {this.getLoopTemplate()}
-      </>
-    );
-  }
+  return (
+    <PageF>
+      {getLoopTemplate()}
+    </PageF>
+  );
 }
+
+export default Loop;

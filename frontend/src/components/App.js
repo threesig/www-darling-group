@@ -12,14 +12,14 @@ import Footer from './layout/Footer';
 
 // import Page from './layout/Page';
 import PageF from './layout/PageF';
-import Homepage from './layout/Pages/Homepage';
-import ServicesPage from './layout/Pages/ServicesPage';
+import HomepageF from './layout/Pages/HomepageF';
+import ServicesPageF from './layout/Pages/ServicesPageF';
 import Archive from './layout/Archive';
 
 import menus from '../data/menus';
 import { groupBy } from 'lodash';
 import Loop from './layout/Loop';
-import ProjectSingle from './layout/Pages/ProjectSingle';
+import ProjectSingleF from './layout/Pages/ProjectSingleF';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -54,17 +54,16 @@ export default class App extends React.Component {
             <MainNavigation menuData={menus.main} />
             <div id="page-area">
               <Switch>
-                <Route exact path="/" render={props => <PageF {...props} pageKey={'home'} query={this.posts.page.filter(page => page.post_name === 'home')} featured={this.posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
-                <Route path="/services" render={props => <ServicesPage {...props} pageKey={'services'} query={this.posts.page.filter(page => page.post_name === 'services')} />} />
+                <Route exact path="/" render={props => <HomepageF {...props} pageKey={'home'} query={this.posts.page.filter(page => page.post_name === 'home')} featured={this.posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
                 <Route path="/work" render={props => <Archive {...props} query={this.posts.casestudy} />} />
-                <Route path="/projects/:slug" render={props => <ProjectSingle pageKey={props.match.params.slug} {...props} query={this.getSingleQuery('casestudy', props.match.params.slug)} next={this.getNextSlug('casestudy', props.match.params.slug)} />} />
-                <Route path="/:pageSlug" render={props => <Loop {...props} query={this.posts.page.filter(page => page.post_name === 'home')} />} />
+                <Route path="/projects/:slug" render={props => <ProjectSingleF pageKey={props.match.params.slug} {...props} query={this.getSingleQuery('casestudy', props.match.params.slug)} next={this.getNextSlug('casestudy', props.match.params.slug)} />} />
+                <Route path="/:slug" render={props => <Loop {...props} query={this.posts.page.filter(page => page.post_name === props.match.params.slug)} />} />
               </Switch>
               <Footer menuData={menus} />
             </div>
           </div>
         </Router>
-      </div >
+      </div>
 
     );
   }

@@ -3,7 +3,7 @@ import Block from '../Block';
 import PageF from '../PageF';
 import Contact from '../Contact';
 
-const HomepageF = props => {
+const DefaultPageF = props => {
   const buildBlockData = casestudy => {
     return {
       acf_fc_layout: 'showcase',
@@ -20,10 +20,9 @@ const HomepageF = props => {
   return (
     <PageF>
       {blocks.map(getBlock)}
-      {props.featured.map(renderShowcases)}
       <Contact />
     </PageF>
   )
 }
 
-export default HomepageF
+export default DefaultPageF
