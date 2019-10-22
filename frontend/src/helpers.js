@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import debounce from 'lodash.debounce';
 
 const slugify = str => {
@@ -32,42 +31,13 @@ async function retrieve(url) {
 }
 
 
-export { slugify, retrieve }
-
-/**
- * useScroll React custom hook
- * Usage:
- *    const { scrollX, scrollY, scrollDirection } = useScroll();
- */
-export function useScroll() {
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [bodyOffset, setBodyOffset] = useState(
-    document.body.getBoundingClientRect()
-  );
-  const [scrollY, setScrollY] = useState(bodyOffset.top);
-  const [scrollX, setScrollX] = useState(bodyOffset.left);
-  const [scrollDirection, setScrollDirection] = useState();
-
-  const listener = (e) => {
-    setBodyOffset(document.body.getBoundingClientRect());
-    setScrollY(-bodyOffset.top);
-    setScrollX(bodyOffset.left);
-    setScrollDirection(lastScrollTop > -bodyOffset.top ? 'down' : 'up');
-    setLastScrollTop(-bodyOffset.top);
-  };
-
-  const delay = 20;
-
-  useEffect(() => {
-    window.addEventListener('scroll', debounce(listener, delay));
-    return () => {
-      window.removeEventListener('scroll', listener);
-    };
-  });
-
-  return {
-    scrollY,
-    scrollX,
-    scrollDirection,
-  };
+const getColorScheme = myClassList => {
+  const colorSchemeRoot = 'color-scheme-';
+  const schemeContainer = [...myClassList].filter(thisClass=> thisClass.startsWith(colorSchemeRoot))
+  return schemeContainer.length ? schemeContainer[0] : `${colorSchemeRoot}light`;
 }
+
+
+
+export { slugify, retrieve, getColorScheme }
+
