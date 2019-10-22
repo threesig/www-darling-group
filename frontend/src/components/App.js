@@ -7,8 +7,6 @@ import {
 import './App.style.scss';
 
 
-
-// import Page from './layout/Page';
 import Homepage from './layout/Pages/Homepage';
 import Archive from './layout/Archive';
 import { groupBy } from 'lodash';
