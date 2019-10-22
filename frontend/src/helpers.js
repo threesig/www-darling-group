@@ -31,13 +31,5 @@ async function retrieve(url) {
 }
 
 
-const getColorScheme = myClassList => {
-  const colorSchemeRoot = 'color-scheme-';
-  const schemeContainer = [...myClassList].filter(thisClass=> thisClass.startsWith(colorSchemeRoot))
-  return schemeContainer.length ? schemeContainer[0] : `${colorSchemeRoot}light`;
-}
-
-
-
-export { slugify, retrieve, getColorScheme }
+export { slugify, retrieve }
 
