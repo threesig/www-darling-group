@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import Block from './Block';
+import Header from './Header';
+import Footer from './Footer';
+import MainNavigation from './MainNavigation';
+import menus from '../../data/menus'
+
 const Page = props => {
-  
-  
-  const setBlockPositions = () => {
+  const getBlockPositions = () => {
     const blocks = document.querySelectorAll('.block');
-    console.log(blocks);
     const blockPositions = {};
     for (let i = 0; i < blocks.length; i++) {
       const block = blocks[i];
@@ -17,13 +19,19 @@ const Page = props => {
     return blockPositions;
   }
   useEffect(() => {
-    console.log(setBlockPositions());
+    console.log(getBlockPositions());
   })
   
-
   return (
     <div id="page">
-      {props.children}
+      <Header menuData={menus.main} />
+      <div id="wrap">
+        <MainNavigation menuData={menus.main} />
+        <div id="main">
+          {props.children}
+        </div>
+        <Footer menuData={menus} />
+      </div>
     </div>
   );
 }
