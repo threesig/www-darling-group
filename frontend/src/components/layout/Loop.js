@@ -1,7 +1,7 @@
 import React from 'react';
-import PageF from './PageF';
+import Page from './Page';
 import Archive from './Archive';
-import DefaultPageF from './Pages/DefaultPageF';
+import DefaultPage from './Pages/DefaultPage';
 
 
 const Loop = props => {
@@ -10,15 +10,15 @@ const Loop = props => {
   const getLoopTemplate = () => {
     switch (query.length) {
       case 1:
-        return <DefaultPageF query={query} />
+        return <DefaultPage query={query} />
       default:
           return <p>404!</p>;
     }
   }
   return (
-    <PageF>
+    <Page>
       {getLoopTemplate()}
-    </PageF>
+    </Page>
   );
 }
 

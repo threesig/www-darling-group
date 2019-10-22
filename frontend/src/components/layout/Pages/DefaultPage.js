@@ -1,9 +1,9 @@
 import React from 'react';
 import Block from '../Block';
-import PageF from '../PageF';
+import Page from '../Page';
 import Contact from '../Contact';
 
-const DefaultPageF = props => {
+const DefaultPage = props => {
   const buildBlockData = casestudy => {
     return {
       acf_fc_layout: 'showcase',
@@ -18,11 +18,11 @@ const DefaultPageF = props => {
   const getKey = idx => `${props.pageKey}-block-${idx}`;
   const { blocks } = props.query[0];
   return (
-    <PageF>
+    <Page>
       {blocks.map(getBlock)}
       <Contact />
-    </PageF>
+    </Page>
   )
 }
 
-export default DefaultPageF
+export default DefaultPage

@@ -11,15 +11,14 @@ import Header from './layout/Header';
 import Footer from './layout/Footer';
 
 // import Page from './layout/Page';
-import PageF from './layout/PageF';
-import HomepageF from './layout/Pages/HomepageF';
-import ServicesPageF from './layout/Pages/ServicesPageF';
+import Page from './layout/Page';
+import Homepage from './layout/Pages/Homepage';
 import Archive from './layout/Archive';
 
 import menus from '../data/menus';
 import { groupBy } from 'lodash';
 import Loop from './layout/Loop';
-import ProjectSingleF from './layout/Pages/ProjectSingleF';
+import ProjectSingle from './layout/Pages/ProjectSingle';
 
 const App = props => {
 
@@ -51,9 +50,9 @@ const App = props => {
           <MainNavigation menuData={menus.main} />
           <div id="page-area">
             <Switch>
-              <Route exact path="/" render={props => <HomepageF {...props} pageKey={'home'} query={posts.page.filter(page => page.post_name === 'home')} featured={posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
+              <Route exact path="/" render={props => <Homepage {...props} pageKey={'home'} query={posts.page.filter(page => page.post_name === 'home')} featured={posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
               <Route path="/work" render={props => <Archive {...props} query={posts.casestudy} />} />
-              <Route path="/projects/:slug" render={props => <ProjectSingleF pageKey={props.match.params.slug} {...props} query={getSingleQuery('casestudy', props.match.params.slug)} next={getNextSlug('casestudy', props.match.params.slug)} />} />
+              <Route path="/projects/:slug" render={props => <ProjectSingle pageKey={props.match.params.slug} {...props} query={getSingleQuery('casestudy', props.match.params.slug)} next={getNextSlug('casestudy', props.match.params.slug)} />} />
               <Route path="/:slug" render={props => <Loop {...props} query={posts.page.filter(page => page.post_name === props.match.params.slug)} />} />
             </Switch>
             <Footer menuData={menus} />

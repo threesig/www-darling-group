@@ -1,11 +1,11 @@
 import React from 'react';
 import Block from '../Block';
-import PageF from '../PageF';
+import Page from '../Page';
 import Contact from '../Contact';
 import { Link } from 'react-router-dom';
 import Image from '../../ui/Image';
 
-const ProjectSingleF = props => {
+const ProjectSingle = props => {
 
   const getBlock = (blockData, idx) => <Block key={getKey(idx)} data={{ ...blockData, blockIdx: idx }} />;
   const getKey = idx => `${props.pageKey}-block-${idx}`;
@@ -18,7 +18,7 @@ const ProjectSingleF = props => {
   }  
   console.log(blocks);
   return (
-    <PageF>
+    <Page>
       <div className="block project-heading color-scheme-light">
         <div className="interior">
           <h1 className="page-title">{post_title}</h1>
@@ -28,8 +28,8 @@ const ProjectSingleF = props => {
       <Block data={imageBlockData} />
       {blocks.map(getBlock)}
       <Link to={`/projects/${props.next}`}>Next</Link>
-    </PageF>
+    </Page>
   )
 }
 
-export default ProjectSingleF
+export default ProjectSingle

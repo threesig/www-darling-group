@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Block from './Block';
-const PageF = props => {
+const Page = props => {
   
   
   const setBlockPositions = () => {
@@ -27,4 +27,4 @@ const PageF = props => {
     </div>
   );
 }
-export default PageF;
+export default Page;
