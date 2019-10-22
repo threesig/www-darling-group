@@ -50,39 +50,20 @@ const Page = props => {
   // After Render, fire once;
   useEffect(() => {
     setBlockPositions(getBlockPositions());
+    window.addEventListener('resize', resizeListener);
+    return () => {
+      window.removeEventListener('resize', resizeListener);
+    };
   }, []);
 
 
   useEffect(() => {
     window.addEventListener('scroll', scrollListener);
-    window.addEventListener('resize', resizeListener);
     return () => {
       window.removeEventListener('scroll', scrollListener);
-      window.removeEventListener('resize', resizeListener);
     };
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   return (
     <div id="page">
       <Header menuData={menus.main} colorScheme={headerColorScheme} />
