@@ -2,6 +2,7 @@ import React from 'react';
 import Page from './Page';
 import Archive from './Archive';
 import DefaultPage from './Pages/DefaultPage';
+import ErrorPage from './Pages/ErrorPage';
 
 
 const Loop = props => {
@@ -12,14 +13,10 @@ const Loop = props => {
       case 1:
         return <DefaultPage query={query} />
       default:
-          return <p>404!</p>;
+          return <ErrorPage />;
     }
   }
-  return (
-    <Page>
-      {getLoopTemplate()}
-    </Page>
-  );
+  return getLoopTemplate();
 }
 
 export default Loop;
