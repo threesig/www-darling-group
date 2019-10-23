@@ -5,7 +5,7 @@ import Menu from './Menu';
 import { Link } from "react-router-dom";
 
 const Header = props => {
-  let {colorScheme, menuData, isMenuOpen, setIsMenuOpen} = props;
+  let {colorScheme, menuData, handleMainNavToggle} = props;
   colorScheme = colorScheme || 'light';
   menuData = menuData || {}
 
@@ -17,7 +17,7 @@ const Header = props => {
     <header id="header" className={colorScheme}>
       <Link to="/"><Logo /></Link>
       <Menu items={menuData} />
-      <Hamburger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Hamburger handleMainNavToggle={handleMainNavToggle} />
     </header>
   );
 }

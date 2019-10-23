@@ -1,12 +1,8 @@
 import React from 'react';
 const Hamburger = props => {
-  const {isMenuOpen, setIsMenuOpen} = props;
-  const handleHamburgerClick = e => {
-    e.preventDefault();
-    setIsMenuOpen(!isMenuOpen);
-  }
+  const {handleMainNavToggle} = props;
   return (
-    <button className="hamburger" title="Menu Toggle" onClick={handleHamburgerClick}>
+    <button className="hamburger" title="Menu Toggle" onClick={handleMainNavToggle}>
       <div className="interior">
         <span className="bar"></span>
         <span className="bar"></span>

@@ -9,8 +9,11 @@ const Page = props => {
   const refBlocks = useRef(null);
   const refMain = useRef(null);
   
+
+  // Return an object containing all page blocks, and their color schemes. { int pos: string scheme }
   const getBlockPositions = () => {
     const blocks = refBlocks.current.childNodes;
+
     const blockPositions = {};
     const colorSchemeRoot = 'color-scheme-';
 
@@ -25,12 +28,29 @@ const Page = props => {
   }
 
   
+  const getHeaderColorScheme = () => {
+    
+    // adjust when the transition happens.
+    const transitionGutter = 64;
+    const transitionModifier = scrollDirection === 'up' ? transitionGutter : -transitionGutter;
+  
+  
+    // All blocks whose positions are less than scrollY
+    const blocksAboveScroll = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY + transitionModifier);
+    
+    // The current block is the last block in the list.  pop method returns the color scheme;
+    return blockPositions[blocksAboveScroll.pop()]
+  }
+
+
+
+
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [bodyOffset, setBodyOffset] = useState(document.body.getBoundingClientRect());
   const [scrollY, setScrollY] = useState();
   const [scrollDirection, setScrollDirection] = useState();
-  const [lastHeaderColorScheme, setLastHeaderColorScheme] = useState();
   const [headerColorScheme, setHeaderColorScheme] = useState();
+  const [lastHeaderColorScheme, setLastHeaderColorScheme] = useState();
   const [blockPositions, setBlockPositions] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -45,18 +65,25 @@ const Page = props => {
     setBlockPositions(getBlockPositions());    
   }
 
-  const getHeaderColorScheme = () => {
-    const transitionGutter = 64;
-    const transitionModifier = scrollDirection === 'up' ? transitionGutter : -transitionGutter;
-    const wheat = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY + transitionModifier);
-    return blockPositions[wheat.pop()]
-  }
 
+
+
+  const handleMainNavToggle = e => {
+    e.preventDefault();
+    setIsMenuOpen(!isMenuOpen);
+    if (!isMenuOpen) {
+      setLastHeaderColorScheme(headerColorScheme);
+      setHeaderColorScheme('dark');
+    }
+    else {
+      setHeaderColorScheme(lastHeaderColorScheme);
+    }
+  }
 
   // After Render, fire once;
   useEffect(() => {
-    setBlockPositions(getBlockPositions());
     window.addEventListener('resize', resizeListener);
+    resizeListener(); // do an init resize fire to calculate block positions
     return () => {
       window.removeEventListener('resize', resizeListener);
     };
@@ -72,7 +99,7 @@ const Page = props => {
 
   return (
     <div id="page">
-      <Header menuData={menus.main} colorScheme={headerColorScheme} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
       <div id="wrap" data-is-menu-open={isMenuOpen}>
         <MainNavigation menuData={menus.main} />
         <div id="main" ref={refMain} scrolly={scrollY}>
