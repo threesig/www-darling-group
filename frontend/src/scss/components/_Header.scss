@@ -12,9 +12,9 @@
   .menu-item {
     text-align: center;
     a {
-      transition: opacity .2s;
+      transition: opacity .4s;
       font-weight: bold;
-      opacity: .2;
+      opacity: .05;
       &:hover {
         opacity: 1;
       }
