@@ -7,6 +7,8 @@ import menus from '../../data/menus';
 
 const Page = props => {
   const refBlocks = useRef(null);
+  const refMain = useRef(null);
+  
   const getBlockPositions = () => {
     const blocks = refBlocks.current.childNodes;
     const blockPositions = {};
@@ -25,15 +27,16 @@ const Page = props => {
   
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [bodyOffset, setBodyOffset] = useState(document.body.getBoundingClientRect());
-  const [scrollY, setScrollY] = useState(bodyOffset.top);
+  const [scrollY, setScrollY] = useState();
   const [scrollDirection, setScrollDirection] = useState();
+  const [lastHeaderColorScheme, setLastHeaderColorScheme] = useState();
   const [headerColorScheme, setHeaderColorScheme] = useState();
   const [blockPositions, setBlockPositions] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollListener = (e) => {
     setBodyOffset(document.body.getBoundingClientRect());
-    setScrollY(-bodyOffset.top);
+    setScrollY(refMain.current.scrollTop);
     setScrollDirection(lastScrollTop > -bodyOffset.top ? 'down' : 'up');
     setLastScrollTop(-bodyOffset.top);
     setHeaderColorScheme(getHeaderColorScheme());
@@ -43,7 +46,9 @@ const Page = props => {
   }
 
   const getHeaderColorScheme = () => {
-    const wheat = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY);
+    const transitionGutter = 64;
+    const transitionModifier = scrollDirection === 'up' ? transitionGutter : -transitionGutter;
+    const wheat = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY + transitionModifier);
     return blockPositions[wheat.pop()]
   }
 
@@ -59,9 +64,9 @@ const Page = props => {
 
 
   useEffect(() => {
-    window.addEventListener('scroll', scrollListener);
+    refMain.current.addEventListener('scroll', scrollListener);
     return () => {
-      window.removeEventListener('scroll', scrollListener);
+      refMain.current.removeEventListener('scroll', scrollListener);
     };
   });
 
@@ -70,7 +75,7 @@ const Page = props => {
       <Header menuData={menus.main} colorScheme={headerColorScheme} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div id="wrap" data-is-menu-open={isMenuOpen}>
         <MainNavigation menuData={menus.main} />
-        <div id="main">
+        <div id="main" ref={refMain} scrolly={scrollY}>
           <div className="blocks" ref={refBlocks}>
             {props.children}
           </div>
