@@ -21,7 +21,7 @@ const Page = props => {
       const block = blocks[i];
       const colorSchemeContainer = [...block.classList].filter(myClass => myClass.startsWith(colorSchemeRoot));
       if (colorSchemeContainer.length) {
-        blockPositions[block.offsetTop] = colorSchemeContainer[0].substring(colorSchemeRoot.length);
+        blockPositions[block.offsetTop - refMain.current.offsetTop] = colorSchemeContainer[0].substring(colorSchemeRoot.length);
       }
     }
     return blockPositions;
@@ -30,13 +30,8 @@ const Page = props => {
   
   const getHeaderColorScheme = () => {
     
-    // adjust when the transition happens.
-    const transitionGutter = 64;
-    const transitionModifier = scrollDirection === 'up' ? transitionGutter : -transitionGutter;
-  
-  
     // All blocks whose positions are less than scrollY
-    const blocksAboveScroll = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY + transitionModifier);
+    const blocksAboveScroll = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY + 64);
     
     // The current block is the last block in the list.  pop method returns the color scheme;
     return blockPositions[blocksAboveScroll.pop()]
