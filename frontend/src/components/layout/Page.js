@@ -74,8 +74,8 @@ const Page = props => {
           <div className="blocks" ref={refBlocks}>
             {props.children}
           </div>
+          <Footer menuData={menus} />
         </div>
-        <Footer menuData={menus} />
       </div>
     </div>
   );

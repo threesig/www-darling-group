@@ -13,16 +13,25 @@ code {
 }
 
 $full-height: 100vh;
-#App {
-  overflow: hidden;
-}
+#page,
 #nav-main,
 .block.intro,
+#main,
 #default {
   height: $full-height;
 }
 #wrap {
+  transition: margin .5s ease;
   margin-top: -$full-height;
+  &[data-is-menu-open="true"] {
+    margin-top: 0;
+  }
+}
+#page {
+  overflow: hidden;
+}
+#main {
+  overflow-y: scroll;
 }
 
 .block.welcome {
