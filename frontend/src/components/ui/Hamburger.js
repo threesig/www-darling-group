@@ -1,14 +1,18 @@
 import React from 'react';
-export default class Hamburger extends React.Component {
-  render() {
-    return (
-      <button className="hamburger" title="Menu Toggle">
-        <div className="interior">
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
-      </button>
-    );
+const Hamburger = props => {
+  const {isMenuOpen, setIsMenuOpen} = props;
+  const handleHamburgerClick = e => {
+    e.preventDefault();
+    setIsMenuOpen(!isMenuOpen);
   }
+  return (
+    <button className="hamburger" title="Menu Toggle" onClick={handleHamburgerClick}>
+      <div className="interior">
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </div>
+    </button>
+  );
 }
+export default Hamburger;

@@ -29,6 +29,7 @@ const Page = props => {
   const [scrollDirection, setScrollDirection] = useState();
   const [headerColorScheme, setHeaderColorScheme] = useState();
   const [blockPositions, setBlockPositions] = useState();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollListener = (e) => {
     setBodyOffset(document.body.getBoundingClientRect());
@@ -66,8 +67,8 @@ const Page = props => {
 
   return (
     <div id="page">
-      <Header menuData={menus.main} colorScheme={headerColorScheme} />
-      <div id="wrap">
+      <Header menuData={menus.main} colorScheme={headerColorScheme} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <div id="wrap" data-is-menu-open={isMenuOpen}>
         <MainNavigation menuData={menus.main} />
         <div id="main">
           <div className="blocks" ref={refBlocks}>
