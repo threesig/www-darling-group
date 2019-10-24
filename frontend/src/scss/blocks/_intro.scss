@@ -1,0 +1,32 @@
+.block.intro {
+  > .interior {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    .content {
+      font-size: 17px;
+      line-height: 1.647058824;
+    }
+    .next {
+      position: absolute;
+      bottom: 0;
+      opacity: $test-opacity;
+    }
+    @include mq-min($break-large) {
+      flex-direction: row;
+      .cell {
+        flex: 0 0 50%;
+
+        &:nth-child(1) {
+          order: 2;
+        }
+        &:nth-child(2) {
+          order: 1;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+    }
+  }
+}
