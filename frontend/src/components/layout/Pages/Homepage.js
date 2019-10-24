@@ -11,7 +11,8 @@ const Homepage = props => {
       content: casestudy.showcaseContent,
       image: casestudy.showcaseImage,
       slug: casestudy.post_name,
-      colorScheme: 'dark'
+      colorScheme: 'dark',
+      classNames: casestudy.post_name
     }
   }
   const renderShowcases = (casestudy, idx) => <Block key={getKey(idx)} data={{ ...buildBlockData(casestudy), blockIdx: idx }} />
