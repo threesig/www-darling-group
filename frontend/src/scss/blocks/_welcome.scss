@@ -1,7 +1,38 @@
 .block.welcome {
   background-color: $color-white;
   position: relative;
+  font-size: 10px;
+  .contentarea {
+    display: table;
+  }
+  .title {
+    font-size: 9em;
+    margin-bottom: .15em;
+  }
+  .content {
+    font-size: 2.5em;
+    color: $color-gray;
+    max-width: 16em;
+  }
+  
   .flourish {
 
   }
+
+  .next {
+    opacity: $test-opacity;
+  }
+
+  @include mq-min(575px) {
+    .title {
+      font-size: 7em;
+    }
+    .content {
+      font-size: 3em;
+    }
+  }
+
+  @include mq-min(750px) {
+    font-size: 1.335vw;
+  }      
 }

@@ -6,6 +6,15 @@
   align-items: center;
   text-align: left;
   a {
-    color: $color-white;
+    @include fancylink();
+    padding: .15em 0;
+    display: inline-block;
+  }
+  .menu {
+    transition: transform $header-transition-time;
+    transform: translateX(#{$padding-site-h-mobile});
+    @include mq-min($break-desktop) {
+      transform: translateX(#{$padding-site-h-desktop});
+    }
   }
 }

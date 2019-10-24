@@ -1,6 +1,5 @@
 #header {
   $height-logo: 50px;
-  $transition-time: .4s;
 
   position: fixed;
   pointer-events: none;
@@ -30,16 +29,16 @@
     pointer-events: all;
   }
   .logo {
-    transition: transform $transition-time, fill $transition-time;
+    transition: transform $header-transition-time, fill $header-transition-time;
     left: 0;
     transform: translate(#{$padding-site-h-mobile}, #{$padding-site-v-mobile});
   }
   .hamburger {
-    transition: transform $transition-time;
+    transition: transform $header-transition-time;
     right: 0;
     transform: translate(#{-$padding-site-h-mobile}, #{$padding-site-v-mobile});
     .bar {
-      transition: background-color $transition-time, transform $transition-time;
+      transition: background-color $header-transition-time, transform $header-transition-time;
     }
   }
   @include mq-min($break-desktop) {
@@ -62,4 +61,12 @@
       }
     }
   }
+
+  &.dark, &.pink {
+    .logo, .hamburger .bar {
+      
+      // filter: drop-shadow( 0 0 1px rgba(0, 0, 0, .5));
+    }
+  }
+
 }
