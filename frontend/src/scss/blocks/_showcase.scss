@@ -3,6 +3,31 @@
   height: 100vh;
   padding: 0;
   position: relative;
+  font-size: 10px;
+  
+  .content-area {
+    text-shadow: 0 0 2px rgba($color-black, .4);
+  }
+
+  > .interior {
+    padding: 0 $padding-site-h-mobile;
+    align-self: flex-end;
+    padding-bottom: 10vh;
+  }
+  .title {
+    font-size: 4.2em;
+    margin-bottom: .2em;
+  }
+  .content {
+    font-size: 2.2em;
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
+  .go {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    text-decoration: underline;
+  }
   .img {
     &, > .inner {
       @include affix();
@@ -10,5 +35,14 @@
       background-position: 25% center;
     }
     z-index: -1;
+  }
+  @include mq-min(480px) {
+    font-size: 2.08335vw;
+  }
+  @include mq-min(525px) {
+    font-size: 11px;
+    .content {
+      max-width: 22em;
+    }
   }
 }
