@@ -12,3 +12,25 @@
   right: $right;
   left: $left;
 }
+@mixin fancylink() {
+  text-decoration: none;
+  position: relative;
+  &:after {
+    transition: transform .2s ease;
+    content: '';
+    margin-top: 0.38em;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: .08em;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  &:hover{
+    transform: scaleX(1);
+    &:after {
+      transform: scaleX(1);
+    }
+  }
+}
