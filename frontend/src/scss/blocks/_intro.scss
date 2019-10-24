@@ -1,7 +1,9 @@
 .block.intro {
+  justify-content: center;
   > .interior {
     position: relative;
     display: flex;
+    max-width: 850px;
     flex-direction: column;
     .content {
       font-size: 17px;
