@@ -1,16 +1,28 @@
 $color-black-true: #000;
 $color-black: #222;
+$color-gray: #a9aaaf;
 $color-white: #ffffff;
-$color-pink: #eb515f;
+$color-pink: #ff405a;
 $color-tennisBall: #ddfc68;
 
 .color-scheme-light {
-  color: $color-black;
-  fill: $color-black;
+  &, a {
+    color: $color-black;
+  }
+    fill: $color-black;
+  a::after {
+    background-color: $color-black;
+  }
 }
 .color-scheme-dark {
-  color: $color-white;
-  fill: $color-white;
+  &, a {
+    color: $color-white;
+  }
+    fill: $color-white;
+  a::after {
+    background-color: $color-white;
+  }
+
 }
 .color-scheme-pink {
   @extend .color-scheme-dark;
