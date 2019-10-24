@@ -12,8 +12,10 @@ export default {
 
     return (
       <>
-        {getTitle(title)}
-        {getContent(content)}
+        <div className="contentarea">
+          {getTitle(title)}
+          {getContent(content)}
+        </div>
         <a className="next">Next</a>
       </>
     )
