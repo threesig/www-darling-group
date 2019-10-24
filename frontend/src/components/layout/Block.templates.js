@@ -12,7 +12,7 @@ export default {
 
     return (
       <>
-        <div className="contentarea">
+        <div className="content-area">
           {getTitle(title)}
           {getContent(content)}
         </div>
@@ -74,7 +74,7 @@ export default {
         <div className="content-area">
           <h2 className="title">{title}</h2>
           <Content markup={content} />
-          <Link to={`/projects/${slug}`}>View Case Study</Link>
+          <Link className="go" to={`/projects/${slug}`}>View Case Study</Link>
         </div>
       </>
     )
@@ -92,8 +92,10 @@ export default {
     const contactEmail = 'hello@darlingbedifferent.com';
     return (
       <>
-        <h3 className="title">Get In Touch</h3>
-        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        <div className="content-area">
+          <h3 className="title">Get In Touch</h3>
+          <a className="go" href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        </div>
       </>
     )
   },
