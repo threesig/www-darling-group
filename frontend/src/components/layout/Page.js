@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import Block from './Block';
 import Header from './Header';
 import Footer from './Footer';
@@ -76,7 +76,7 @@ const Page = props => {
   }
 
   // After Render, fire once;
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener('resize', resizeListener);
     resizeListener(); // do an init resize fire to calculate block positions
     return () => {
@@ -84,8 +84,8 @@ const Page = props => {
     };
   }, []);
 
-
-  useEffect(() => {
+  // Try useLayoutEffect?
+  useLayoutEffect(() => {
     refMain.current.addEventListener('scroll', scrollListener);
     return () => {
       refMain.current.removeEventListener('scroll', scrollListener);
