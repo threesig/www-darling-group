@@ -10,6 +10,11 @@ export default class Block extends React.Component {
     const colorScheme = data.colorScheme ? data.colorScheme : this.props.colorScheme;
     const classes = ['block', data.acf_fc_layout, `color-scheme-${colorScheme}`];
 
+    const {classNames} = data;
+    if(classNames) {
+      classes.push(classNames);
+    }
+
     if (data.type) {
       classes.push(`type-${data.type}`);
     }
