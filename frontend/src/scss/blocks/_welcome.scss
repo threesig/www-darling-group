@@ -2,7 +2,7 @@
   background-color: $color-white;
   position: relative;
   font-size: 10px;
-  .contentarea {
+  .content-area {
     display: table;
   }
   .title {
@@ -23,7 +23,7 @@
     opacity: $test-opacity;
   }
 
-  @include mq-min(575px) {
+  @include mq-min(590px) {
     .title {
       font-size: 7em;
     }
