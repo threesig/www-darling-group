@@ -14,7 +14,7 @@ export default class ArchiveItem extends React.Component {
     const { id, post_title, subtitle, showcaseImage, secondaryImage, post_name } = this.props.post;
     return (
       <article id={`post-${id}`} className={this.getClassNames()}>
-        <Image data={secondaryImage || showcaseImage} />
+        <Image data={secondaryImage || showcaseImage} scaleOnHover={true} />
         <h2 className="title"><Link to={`/projects/${post_name}`}>{post_title}</Link></h2>
         <p className="services">{subtitle}</p>
       </article>
