@@ -34,3 +34,15 @@
     }
   }
 }
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  transform-origin: center center;
+  animation: rotating .25s linear infinite;
+}
