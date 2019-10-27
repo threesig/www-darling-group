@@ -42,6 +42,14 @@
     transform: rotate(360deg);
   }
 }
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
 .rotating {
   transform-origin: center center;
   animation: rotating .25s linear infinite;
