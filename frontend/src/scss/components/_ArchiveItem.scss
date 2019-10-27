@@ -1,3 +1,25 @@
 .ArchiveItem {
+  &.type-casestudy {
+    .content-area {
+      transition: padding $header-transition-time;
+      padding: $padding-site-h-mobile-static*.66666667 $padding-site-h-mobile-static $padding-site-h-mobile-static*1.33333333;
+      @include mq-min($break-desktop) {
+        padding: $padding-site-h-desktop*.66666667 $padding-site-h-desktop $padding-site-h-desktop*1.33333333;
+      }
+      @include mq-min($break-work-archive) {
+        padding: 10px 0 20px;
+      }
+    }
+    a {
+      text-decoration: none;
+    }
+    .title {
+      font-size: 3.2em;
+      margin-bottom: .25em;
+    }
+    .content {
+      font-size: 1.8em;
+    }
+  }
 
 }
