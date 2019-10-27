@@ -9,7 +9,7 @@
   .title {
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
   }
   .content {
     font-size: 1.8em;
@@ -23,7 +23,6 @@
     }
     .cell {
       flex: 1;
-      // align-self: center;
     }
 
     .content ul {
