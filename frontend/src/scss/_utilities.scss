@@ -18,12 +18,12 @@
   &:after {
     transition: transform .2s ease;
     content: '';
-    margin-top: 0.38em;
+    margin-top: 0.529411765em;
     position: absolute;
     top: 50%;
     left: 0;
     right: 0;
-    height: .08em;
+    height: 0.117647059em;
     transform: scaleX(0);
     transform-origin: left center;
   }
