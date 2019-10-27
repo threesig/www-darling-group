@@ -1,8 +1,21 @@
+.block {
+  display: none;
+}
 .block.general {
+  display: flex;
+  
   $padding-v: 80px;
 
   padding-top: $padding-v;
   padding-bottom: $padding-v;
+
+  $padding-item: 15px;
+
+  .title {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+  }
   > .interior {
     &, .list-contents {
       display: flex;
@@ -18,17 +31,28 @@
       list-style-type: none;
       padding: 0;
     }
+
+    .item-content {
+      padding: $padding-item;
+      flex: 0 0 100%;
+    }
+    .list-contents {
+      margin: -$padding-item;
+    }
     @include mq-min($break-desktop) {
       &, .list-contents {
         flex-direction: row;
       }
-
-      .item-content {
-        flex: 0 0 50%;
-      }
       .list-contents[data-elts="1"] {
         .item-content {
           flex: 1;
+        }
+      }
+    }
+    @include mq-min($break-desktop + 450px) {
+      .list-contents:not([data-elts="1"]) {
+        .item-content {
+          flex: 0 0 50%;
         }
       }
     }
