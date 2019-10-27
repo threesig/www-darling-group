@@ -19,14 +19,14 @@
   }
 
 
-  .logo, .hamburger {
+  .Logo, .hamburger {
     position: absolute;
     top: 0;
   }
   > * {
     pointer-events: all;
   }
-  .logo {
+  .Logo {
     transition: transform $header-transition-time, fill $header-transition-time;
     left: 0;
     transform: translate(#{$padding-site-h-mobile-static}, #{$padding-site-v-mobile});
@@ -40,7 +40,7 @@
     }
   }
   @include mq-min($break-desktop) {
-    .logo {
+    .Logo {
       transform: translate(#{$padding-site-h-desktop}, #{$padding-site-v-desktop});
     }
     .hamburger {
@@ -51,7 +51,7 @@
   $color-schemes: (dark: $color-white, pink: $color-white, light: $color-black-true, test: #f00);
   @each $color-scheme, $ui-color in $color-schemes {
     &.#{$color-scheme} {
-      .logo {
+      .Logo {
         fill: $ui-color;
       }
       .hamburger .bar {
@@ -61,7 +61,7 @@
   }
 
   &.dark, &.pink {
-    .logo, .hamburger .bar {
+    .Logo, .hamburger .bar {
       
       // filter: drop-shadow( 0 0 1px rgba(0, 0, 0, .5));
     }
