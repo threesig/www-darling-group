@@ -24,6 +24,7 @@
   url('../fonts/core-sans/coreSansHeavy.svg') format('svg');
 }
 
+.block.general .title,
 body {
   font-family: 'trade-gothic';
 }
@@ -43,4 +44,20 @@ body {
 #nav-main,
 #selector {
   font-size: 70px;
+}
+
+.block.general .content h1,
+.block.general .content h2,
+.block.general .content h3,
+.block.general .content h4,
+.block.general .content h5,
+.block.general .content h6,
+#selector {
+  font-size: 42px;
+}
+
+
+.block.general .title,
+#selector {
+  font-size: 15px;
 }
