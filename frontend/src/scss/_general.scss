@@ -23,10 +23,12 @@ $full-height: 100vh;
 #wrap {
   transition: margin .5s ease;
   margin-top: -$full-height;
-  &[data-is-menu-open="true"] {
+  [data-is-menu-open="true"] & {
     margin-top: 0;
   }
 }
+
+
 #page {
   overflow: hidden;
 }
