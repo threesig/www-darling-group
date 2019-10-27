@@ -21,8 +21,8 @@ const ProjectSingle = props => {
     <Page>
       <div className="block project-heading color-scheme-light">
         <div className="interior">
-          <h1 className="page-title">{post_title}</h1>
-          <h2 className="page-subtitle">{profileSubtitle}</h2>
+          <h1 className="title">{post_title}</h1>
+          <div className="content"><p>{profileSubtitle}</p></div>
         </div>
       </div>
       <Block data={imageBlockData} />
