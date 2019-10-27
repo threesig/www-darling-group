@@ -13,6 +13,11 @@
       flex: 1;
       // align-self: center;
     }
+
+    .content ul {
+      list-style-type: none;
+      padding: 0;
+    }
     @include mq-min($break-desktop) {
       &, .list-contents {
         flex-direction: row;
