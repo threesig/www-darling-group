@@ -7,9 +7,9 @@ const Archive = props => {
   const renderArchiveItem = (post, idx) => <li key={buildRepeaterKey(idx)} className="item-work" ><ArchiveItem post={post} /></li>
   return (
     <Page>
-      <div className="block archive-heading color-scheme-light">
+      <div className="block page-heading color-scheme-light">
         <div className="interior">
-          <h1 className="page-title">Our Work</h1>
+          <h1 className="title">Our Work</h1>
         </div>
       </div>
       <div className="block archive color-scheme-light">
