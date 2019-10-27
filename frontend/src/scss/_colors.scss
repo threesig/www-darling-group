@@ -1,6 +1,7 @@
 $color-black-true: #000;
 $color-black: #222;
 $color-gray: #a9aaaf;
+$color-gray-dark: #666;
 $color-white: #ffffff;
 $color-pink: #ff405a;
 $color-tennisBall: #ddfc68;
@@ -39,4 +40,9 @@ $color-tennisBall: #ddfc68;
 .block.welcome .content,
 #selector {
   color: $color-gray;
+}
+
+.block.blockquote,
+#selector {
+ color: $color-gray-dark;
 }

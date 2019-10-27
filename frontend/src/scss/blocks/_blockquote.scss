@@ -2,4 +2,31 @@
   $padding-block-v: 30px;
   $padding-block-h: 11%;
   padding: $padding-block-v $padding-block-h;
+  > .interior {
+    max-width: 535px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  blockquote {
+    font-size: 1.8em;
+    line-height: 2.0;
+    text-indent: -.4em;
+    font-style: italic;
+    margin-bottom: 2em;
+    &:before {
+      content: "\201c";
+    }
+    &:after {
+      content: "\201d";
+    }
+  }
+  cite {
+    font-size: 1.5em;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 1.2;
+    &:before {
+      content: "\2014";
+    }
+  }
 }
