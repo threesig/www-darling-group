@@ -11,6 +11,10 @@
     text-transform: uppercase;
     margin-bottom: 1em;
   }
+  .content {
+    font-size: 1.8em;
+    line-height: 1.5;
+  }
   > .interior {
     &, .list-contents {
       display: flex;
