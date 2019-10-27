@@ -32,3 +32,11 @@ $color-tennisBall: #ddfc68;
   @extend .color-scheme-light;
   background-color: $color-tennisBall;
 }
+
+
+
+.block.general .title,
+.block.welcome .content,
+#selector {
+  color: $color-gray;
+}
