@@ -6,12 +6,16 @@ const Footer = props => {
   return (
     <footer key="site-footer" id="footer">
       <div className="interior">
-        <div className="cell">
-          <Logo />
-          <h3 className="tagline">Darling, be different.</h3>
+        <div className="cell a">
+          <div className="logo-housing">
+            <div className="cell logo"><Logo /></div>
+            <div className="cell text"><h3 className="tagline">Darling, be different.</h3></div>
+          </div>
         </div>
-        <div className="cell">
+        <div className="cell b">
           <Menu items={menuData.main} />
+        </div>
+        <div className="cell c">
           <p className="copyright">&copy; 2019 Darling Group LLC</p>
         </div>
       </div>

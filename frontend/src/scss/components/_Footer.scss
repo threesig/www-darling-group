@@ -1,4 +1,97 @@
 #footer {
   @extend .color-scheme-dark;
   background-color: $color-black-true;
+  padding: $padding-site-v-mobile $padding-site-h-mobile-static;
+  font-size: 18px;
+
+
+  &, .tagline {
+    font-weight: 700;
+  }
+  > .interior {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  > .interior > .cell {
+    flex: 0 0 100%;
+    position: relative;
+    &.b, &.c {
+      text-align: center;
+    }
+    + .cell {
+      margin-top: 10px;
+    }
+  }
+
+  @include mq-min(500px) {
+    > .interior > .cell {
+      display: flex;
+      + .cell {
+        margin: 0;
+      }
+      &.a {
+        flex: 0 0 60%;
+        justify-content: flex-start;
+      } 
+      &.b {
+        flex: 0 0 40%;
+      }
+      &.b, &.c {
+        justify-content: flex-end;
+      }
+      .logo-housing, .menu {
+        margin: 0;
+      }
+
+    }
+
+  }
+  @include mq-min($break-desktop) {
+    font-size: 22px;
+  }
+  .tagline {
+    font-size: 1em;
+  }
+  .menu {
+    position: relative;
+    font-size: 0.777777778em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .copyright {
+    font-size: 0.5em;
+  }
+
+  .menu {
+    @include clearfix();
+    display: table;
+    margin: 0 auto;
+    .menu-item {
+      float: left;
+      + .menu-item {
+        margin-left: 10px;
+      }
+    }
+    a {
+      @include fancylink();
+    }
+  }
+  .logo-housing {
+    $housing-gutter: 20px;
+    display: table;
+    align-items: center;
+    margin: 0 auto;
+    > .cell {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .logo {
+      padding-right: $housing-gutter;
+    }
+    .text {
+      padding-left: $housing-gutter;
+      border-left: 1px solid $color-white;
+    }
+  }
 }
