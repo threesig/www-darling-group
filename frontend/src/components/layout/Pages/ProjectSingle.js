@@ -25,7 +25,7 @@ const ProjectSingle = props => {
           <div className="content"><p>{profileSubtitle}</p></div>
         </div>
       </div>
-      <Block data={imageBlockData} />
+      <Block key={`project-${post_name}`} data={imageBlockData} />
       {blocks.map(getBlock)}
       <Link to={`/projects/${props.next}`}>Next</Link>
     </Page>
