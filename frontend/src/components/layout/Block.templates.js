@@ -30,7 +30,7 @@ export default {
           {image ? <Image data={image} /> : null}
         </div>
         <div className="cell">
-          {title ? <h1 className="title">{title}</h1> : null}
+          {title ? <h1 className="title"><Content markup={title} /></h1> : null}
           {content ? <Content markup={content} /> : null}
           {/* Link goes here */}
         </div>
