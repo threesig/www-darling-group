@@ -1,7 +1,7 @@
 .block.blockquote {
-  $padding-block-v: 30px;
-  $padding-block-h: 11%;
-  padding: $padding-block-v $padding-block-h;
+  $padding-block-v: 50px;
+  padding-top: $padding-block-v;
+  padding-bottom: $padding-block-v;
   > .interior {
     max-width: 535px;
     margin: 0 auto;
