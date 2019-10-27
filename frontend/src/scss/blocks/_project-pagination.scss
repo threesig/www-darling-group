@@ -1,0 +1,8 @@
+.block.project-pagination {
+  padding: 80px 0;
+  text-align: center;
+  .go {
+    @include fancylink();
+    font-size: 7.23em;
+  }
+}

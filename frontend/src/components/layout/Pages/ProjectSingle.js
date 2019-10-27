@@ -27,7 +27,11 @@ const ProjectSingle = props => {
       </div>
       <Block key={`project-${post_name}`} data={imageBlockData} />
       {blocks.map(getBlock)}
-      <Link to={`/projects/${props.next}`}>Next</Link>
+      <div className="block project-pagination color-scheme-light">
+        <div className="interior">
+          <Link className="go" to={`/projects/${props.next}`}>Next</Link>
+        </div>
+      </div>
     </Page>
   )
 }
