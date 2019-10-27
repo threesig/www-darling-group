@@ -1,5 +1,27 @@
 .block.project-heading {
+  padding: $padding-header 0 0 0;
+  max-height: 450px;
   > .interior {
+    transition: padding $header-transition-time;
     flex-direction: column;
+    padding: 0 $padding-site-h-mobile-static $padding-site-h-mobile-static;
+    @include mq-min($break-desktop) {
+      padding: 0 $padding-site-h-desktop $padding-site-h-desktop;
+    }
   }
+  .title {
+    font-size: 5.6em;
+  }
+  .content {
+    font-size: 2em;
+  }
+  @include mq-min(681px) {
+    font-size: 1.4684288vw;
+  }
+  @include mq-min(1653px) {
+    font-size: 24.2731px;
+  }
+
+
+
 }
