@@ -1,11 +1,20 @@
 @import url("//hello.myfonts.net/count/3998fb");
 
 @font-face {font-family: 'trade-gothic';
-  src: url('../fonts/trade-gothic/tradeGothic.eot');
-  src:  local('tradeGothic'), url('../fonts/trade-gothic/tradeGothic.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/trade-gothic/tradeGothic.woff2') format('woff2'),
-  url('../fonts/trade-gothic/tradeGothic.woff') format('woff'),
-  url('../fonts/trade-gothic/tradeGothic.ttf') format('truetype');
+  src: url('../fonts/trade-gothic/bold/tradeGothic-bold.eot');
+  src:  local('tradeGothic-bold'), url('../fonts/trade-gothic/bold/tradeGothic-bold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/trade-gothic/bold/tradeGothic-bold.woff2') format('woff2'),
+  url('../fonts/trade-gothic/bold/tradeGothic-bold.woff') format('woff'),
+  url('../fonts/trade-gothic/bold/tradeGothic-bold.svg') format('svg');
+  font-weight: 700;
+}
+@font-face {font-family: 'trade-gothic';
+  src: url('../fonts/trade-gothic/normal/tradeGothic-normal.eot');
+  src:  local('tradeGothic-normal'), url('../fonts/trade-gothic/normal/tradeGothic-normal.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/trade-gothic/normal/tradeGothic-normal.woff2') format('woff2'),
+  url('../fonts/trade-gothic/normal/tradeGothic-normal.woff') format('woff'),
+  url('../fonts/trade-gothic/normal/tradeGothic-normal.svg') format('svg');
+  font-weight: 400;
 }
 @font-face {font-family: 'core-sans-heavy';
   src: url('../fonts/core-sans/coreSansHeavy.eot');
