@@ -1,16 +1,28 @@
 .block.welcome {
+  $content-drift: 100px;
+  $content-transition-time: 400ms;
+  
   background-color: $color-white;
   position: relative;
   font-size: 10px;
   .content-area {
     display: table;
   }
+
+
+  // .title, .content {
+  //   transform: translateY(#{$content-drift});
+  //   opacity: 0;
+  // }
   .title {
+    // animation: $content-transition-time ease 0s 1 easeIn;
     font-size: 9em;
     margin-bottom: .15em;
   }
   .content {
+    // animation: $content-transition-time ease $content-transition-time/2 1 easeIn;
     font-size: 2.5em;
+    font-weight: 700;
     color: $color-gray;
     max-width: 16em;
   }
@@ -34,5 +46,17 @@
 
   @include mq-min(750px) {
     font-size: 1.335vw;
-  }      
+  }   
+  
+  
+  @keyframes easeIn {
+    0% {
+      transform: translateY(#{$content-drift});
+      opacity: 0;
+      }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
