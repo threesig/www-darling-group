@@ -31,12 +31,12 @@
   .logo {
     transition: transform $header-transition-time, fill $header-transition-time;
     left: 0;
-    transform: translate(#{$padding-site-h-mobile}, #{$padding-site-v-mobile});
+    transform: translate(#{$padding-site-h-mobile-static}, #{$padding-site-v-mobile});
   }
   .hamburger {
     transition: transform $header-transition-time;
     right: 0;
-    transform: translate(#{-$padding-site-h-mobile}, #{$padding-site-v-mobile});
+    transform: translate(#{-$padding-site-h-mobile-static}, #{$padding-site-v-mobile});
     .bar {
       transition: background-color $header-transition-time, transform $header-transition-time;
     }
