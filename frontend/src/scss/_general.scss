@@ -4,14 +4,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-code {
-  @include hilite(green);
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 $full-height: 100vh;
 #page,
 #nav-main,
