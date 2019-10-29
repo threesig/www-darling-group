@@ -1,9 +1,10 @@
-import React, { useState, useLayoutEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useRef, useContext } from 'react';
 import Block from './Block';
 import Header from './Header';
 import Footer from './Footer';
 import MainNavigation from './MainNavigation';
 import menus from '../../data/menus';
+import {FullBlocksContext} from '../contexts/FullBlocksContext';
 
 const Page = props => {
   const refBlocks = useRef(null);
@@ -38,7 +39,7 @@ const Page = props => {
   }
 
 
-
+  const {fullBlockCount, fullBlockIndex, hasScroll} = useContext(FullBlocksContext);
 
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [bodyOffset, setBodyOffset] = useState(document.body.getBoundingClientRect());
@@ -75,6 +76,9 @@ const Page = props => {
     }
   }
 
+
+  
+
   // After Render, fire once;
   useLayoutEffect(() => {
     window.addEventListener('resize', resizeListener);
@@ -93,13 +97,13 @@ const Page = props => {
   });
 
   return (
-    <div id="page" data-is-menu-open={isMenuOpen}>
+    <div id="page" data-is-menu-open={isMenuOpen} data-fullblock-count={fullBlockCount} data-fullblock-index={fullBlockIndex} data-has-scroll={fullBlockCount===0||fullBlockCount===fullBlockIndex}>
       <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
       <div id="wrap">
         <MainNavigation menuData={menus.main} />
         <div id="main" ref={refMain}>
           <div className="blocks" ref={refBlocks}>
-            {props.children}
+              {props.children}
           </div>
           <Footer menuData={menus} />
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +12,8 @@ import Archive from './layout/Archive';
 import { groupBy } from 'lodash';
 import Loop from './layout/Loop';
 import ProjectSingle from './layout/Pages/ProjectSingle';
+
+import {FullBlocksContext} from './contexts/FullBlocksContext';
 
 const App = props => {
 
@@ -33,20 +35,26 @@ const App = props => {
     // Grab slug of the post at the new array index
     const nextSlug = postGroup[nextIdx].post_name;
 
+
+
     return nextSlug;
   }
-  return (
-    <div id="App">
-      <Router>
-        <Switch>
-          <Route exact path="/" render={props => <Homepage {...props} pageKey={'home'} query={posts.page.filter(page => page.post_name === 'home')} featured={posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
-          <Route path="/work" render={props => <Archive {...props} query={posts.casestudy} />} />
-          <Route path="/projects/:slug" render={props => <ProjectSingle pageKey={props.match.params.slug} {...props} query={getSingleQuery('casestudy', props.match.params.slug)} next={getNextSlug('casestudy', props.match.params.slug)} />} />
-          <Route path="/:slug" render={props => <Loop {...props} query={posts.page.filter(page => page.post_name === props.match.params.slug)} />} />
-        </Switch>
-      </Router>
-    </div>
 
+  const [fullBlockCount, setFullBlockCount] = useState(0);
+  const [fullBlockIndex, setFullBlockIndex] = useState(0);
+  return (
+    <FullBlocksContext.Provider value={{fullBlockCount, setFullBlockCount, fullBlockIndex, setFullBlockIndex}}>
+      <div id="App">
+        <Router>
+          <Switch>
+            <Route exact path="/" render={props => <Homepage {...props} pageKey={'home'} query={posts.page.filter(page => page.post_name === 'home')} featured={posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
+            <Route path="/work" render={props => <Archive {...props} query={posts.casestudy} />} />
+            <Route path="/projects/:slug" render={props => <ProjectSingle pageKey={props.match.params.slug} {...props} query={getSingleQuery('casestudy', props.match.params.slug)} next={getNextSlug('casestudy', props.match.params.slug)} />} />
+            <Route path="/:slug" render={props => <Loop {...props} query={posts.page.filter(page => page.post_name === props.match.params.slug)} />} />
+          </Switch>
+        </Router>
+      </div>
+    </FullBlocksContext.Provider>
   );
 }
 

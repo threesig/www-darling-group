@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Block from '../Block';
 import Page from '../Page';
 import Contact from '../Contact';
+import {FullBlocksContext} from '../../contexts/FullBlocksContext';
 
 const Homepage = props => {
+  const {fullBlockCount, setFullBlockCount, fullBlockIndex, setFullBlockIndex, setHasScroll} = useContext(FullBlocksContext);
   const buildBlockData = casestudy => {
     return {
       acf_fc_layout: 'showcase',
@@ -19,6 +21,9 @@ const Homepage = props => {
   const getBlock = (blockData, idx) => <Block key={getKey(idx)} data={{ ...blockData, blockIdx: idx }} />;
   const getKey = idx => `${props.pageKey}-block-${idx}`;
   const { blocks } = props.query[0];
+  
+  setFullBlockCount(blocks.length + props.featured.length + 1);
+  setFullBlockIndex(8);
   return (
     <Page>
       {blocks.map(getBlock)}
