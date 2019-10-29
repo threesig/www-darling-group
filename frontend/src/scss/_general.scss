@@ -4,17 +4,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-$full-height: 100vh;
+
 #page,
 #nav-main,
 .block.intro,
 #main,
 #default {
-  height: $full-height;
+  height: $height-full;
 }
 #wrap {
   transition: margin .5s ease;
-  margin-top: -$full-height;
+  margin-top: -$height-full;
   [data-is-menu-open="true"] & {
     margin-top: 0;
   }
@@ -26,8 +26,11 @@ $full-height: 100vh;
 }
 #main {
   overflow-y: scroll;
+  // [data-has-scroll="false"] & {
+  //   overflow: hidden;
+  // }
 }
 
 .block.welcome {
-  height: calc(#{$full-height} - #{$gap-welcome-shade});
+  height: calc(#{$height-full} - #{$gap-welcome-shade});
 }
