@@ -8,7 +8,7 @@
 
 
 
-  @include mq-min(1000px) {
+  @include mq-min($break-work-archive) {
     $item-padding: 15px;
     
     padding-left: $item-padding*2;
