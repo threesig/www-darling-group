@@ -13,7 +13,7 @@ const Page = props => {
 
   // Return an object containing all page blocks, and their color schemes. { int pos: string scheme }
   const getBlockPositions = () => {
-    const blocks = refBlocks.current.childNodes;
+    const blocks = refBlocks.current.querySelectorAll('.block');
 
     const blockPositions = {};
     const colorSchemeRoot = 'color-scheme-';
