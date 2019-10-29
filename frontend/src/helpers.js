@@ -1,4 +1,5 @@
 import debounce from 'lodash.debounce';
+import { cpus } from 'os';
 
 const slugify = str => {
   str = str.replace(/^\s+|\s+$/g, '');
@@ -30,6 +31,29 @@ async function retrieve(url) {
   return data;
 }
 
+const compileBlocks = function() {
+  let allBlocks = [];
+  
+  // Compile the blocks
+  for (const arg of arguments) {
+    allBlocks = [...allBlocks, ...(arg.constructor===Array?arg:[arg])];
+  }
 
-export { slugify, retrieve }
+  // Prep the blocks
+  const activeClass = 'active';
+  let {classNames} = allBlocks[0];
+
+  const initBlockCustomClasses = classNames?classNames.split(' '):[];
+  if(!initBlockCustomClasses.includes(activeClass)) {
+    initBlockCustomClasses.push(activeClass);
+  }
+  allBlocks[0].classNames = initBlockCustomClasses.join(' ');
+
+
+  return allBlocks;
+
+
+}
+
+export { slugify, retrieve, compileBlocks }
 
