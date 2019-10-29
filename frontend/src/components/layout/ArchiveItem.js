@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 const ArchiveItem = props => {
   const { ID, post_title, subtitle, showcaseImage, secondaryImage, post_name, post_type } = props.post;
-  
-  console.log(props.post);
   const getClassNames = () => {
     return [
       'ArchiveItem',
@@ -13,7 +11,6 @@ const ArchiveItem = props => {
       `type-${post_type}`
     ].join(' ');
   }
-
 
   return (
     <article id={`post-${ID}`} className={getClassNames()}>
