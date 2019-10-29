@@ -16,7 +16,6 @@ const ProjectSingle = props => {
     image: showcaseImage,
     type: 'hero'
   }  
-  console.log(blocks);
   return (
     <Page>
       <div className="block page-heading color-scheme-light">
