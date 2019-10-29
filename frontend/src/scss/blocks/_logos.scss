@@ -14,12 +14,10 @@
       &:before {
         content: '';
         display: block;
-        padding-top: 40%;
+        padding-top: 33.33333333%;
       }
       > .inner {
-        $affix-gutter-v: 35%;
-        $affix-gutter-h: 10%;
-        @include affix($affix-gutter-v, $affix-gutter-h, $affix-gutter-v, $affix-gutter-h);
+        @include affix();
         position: absolute;
         background-size: contain;
 
