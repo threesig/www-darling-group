@@ -76,7 +76,10 @@ const Page = props => {
     }
   }
 
-
+  const pageHasScroll = () => {
+    // Page will scroll if there are no FullBlocks, or if the FullBlock Index equals the FullBlock Count
+    return fullBlockCount===0||fullBlockCount===fullBlockIndex;
+  }
   
 
   // After Render, fire once;
@@ -97,7 +100,7 @@ const Page = props => {
   });
 
   return (
-    <div id="page" data-is-menu-open={isMenuOpen} data-fullblock-count={fullBlockCount} data-fullblock-index={fullBlockIndex} data-has-scroll={fullBlockCount===0||fullBlockCount===fullBlockIndex}>
+    <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll()}>
       <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
       <div id="wrap">
         <MainNavigation menuData={menus.main} />
