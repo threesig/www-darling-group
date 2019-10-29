@@ -4,6 +4,7 @@ import Page from '../Page';
 import Contact from '../Contact';
 import { Link } from 'react-router-dom';
 import Image from '../../ui/Image';
+import FullBlocks from '../FullBlocks';
 
 const ProjectSingle = props => {
 
@@ -18,6 +19,7 @@ const ProjectSingle = props => {
   }  
   return (
     <Page>
+      <FullBlocks/>
       <div className="block page-heading color-scheme-light">
         <div className="interior">
           <h1 className="title">{post_title}</h1>

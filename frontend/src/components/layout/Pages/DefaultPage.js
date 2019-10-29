@@ -2,6 +2,7 @@ import React from 'react';
 import Block from '../Block';
 import Page from '../Page';
 import Contact from '../Contact';
+import FullBlocks from '../FullBlocks';
 
 const DefaultPage = props => {
   const buildBlockData = casestudy => {
@@ -19,6 +20,9 @@ const DefaultPage = props => {
   const { blocks } = props.query[0];
   return (
     <Page>
+      <FullBlocks>
+
+      </FullBlocks>
       {blocks.map(getBlock)}
       <Contact />
     </Page>
