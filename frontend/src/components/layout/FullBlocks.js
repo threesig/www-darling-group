@@ -66,22 +66,36 @@ const FullBlocks = props => {
     }
   }
 
+  const handleNextClick = e => {
+    e.preventDefault();
+    advanceBlock(1);
+  }
+
+  const addRemoveEventListenerList = (addOrRemove, list, event, fn) => {
+    for (var i = 0, len = list.length; i < len; i++) {
+      switch (addOrRemove) {
+        case 'add':
+          list[i].addEventListener(event, fn);
+          break;
+        case 'remove':
+          list[i].addEventListener(event, fn);
+          break;
+        default:
+        // Do nothing
+      }
+    }
+  }
 
   useEffect(() => {
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
-    advanceBlock(1);
+    // Advance on all Next links
+    const nextLinks = refFullBlocks.current.querySelectorAll('.next');
+    addRemoveEventListenerList('add', nextLinks, 'click', handleNextClick);
+
+
+
+    return () => {
+      addRemoveEventListenerList('remove', nextLinks, 'click', handleNextClick);
+    }
   }, []);
 
   return (
