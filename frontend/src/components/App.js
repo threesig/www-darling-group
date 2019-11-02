@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +13,7 @@ import { groupBy } from 'lodash';
 import Loop from './layout/Loop';
 import ProjectSingle from './layout/Pages/ProjectSingle';
 
-import {FullBlocksContext} from './contexts/FullBlocksContext';
+import { FullBlocksContext } from './contexts/FullBlocksContext';
 
 const App = props => {
 
@@ -40,10 +40,9 @@ const App = props => {
     return nextSlug;
   }
 
-  const [fullBlockCount, setFullBlockCount] = useState(0);
-  const [fullBlockIndex, setFullBlockIndex] = useState(0);
+  const [pageHasScroll, setPageHasScroll] = useState(true);
   return (
-    <FullBlocksContext.Provider value={{fullBlockCount, setFullBlockCount, fullBlockIndex, setFullBlockIndex}}>
+    <FullBlocksContext.Provider value={{ pageHasScroll, setPageHasScroll }}>
       <div id="App">
         <Router>
           <Switch>

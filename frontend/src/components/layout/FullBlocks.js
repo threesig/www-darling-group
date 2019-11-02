@@ -3,17 +3,14 @@ import { blockParams } from 'handlebars';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
 const FullBlocks = props => {
   const refFullBlocks = useRef(null);
-  const { fullBlockCount, setFullBlockCount, fullBlockIndex, setFullBlockIndex } = useContext(FullBlocksContext);
+  const { setPageHasScroll } = useContext(FullBlocksContext);
 
   const normalizeBlocks = () => props.children.map(childBlock => childBlock.constructor === Array ? childBlock : [childBlock]);
   const getBlockCount = () => props.children ? normalizeBlocks().reduce((blockCount, blockContainer) => blockCount + blockContainer.length, 0) : 0;
 
   const blockCount = getBlockCount();
   let blockIndex = blockCount > 0 ? 1 : 0;
-  setFullBlockCount(blockCount);
-  setFullBlockIndex(blockIndex);
-
-
+  setPageHasScroll(blockIndex === blockCount);
 
   const activeClass = 'active';
   const advanceBlock = (direction) => {
@@ -29,7 +26,6 @@ const FullBlocks = props => {
           : blockClassList.includes(activeClass); // Find classes that ARE active.  Return the LAST one to make it inactive.
       });
 
-      let localBlockCount = fullBlockCount;
       switch (direction > 0) {
         case true: // Moving Forward
           /** activeOrInactiveBlocks === Inactive **/
@@ -41,7 +37,7 @@ const FullBlocks = props => {
           nextBlock.classList.add(activeClass);
 
           // Recalculate Block Index
-          localBlockCount++;
+          blockIndex++;
 
           break;
         default:  // Moving Backward
@@ -57,10 +53,10 @@ const FullBlocks = props => {
             prevBlock.classList.remove(activeClass);
 
             // Recalculate Block Inded
-            localBlockCount--;
+            blockIndex--;
           }
       }
-      setFullBlockCount(localBlockCount);
+      setPageHasScroll(blockIndex === blockCount);
     }
   }
 
@@ -74,7 +70,7 @@ const FullBlocks = props => {
   }, []);
 
   return (
-    <div id="FullBlocks" ref={refFullBlocks} data-block-count={fullBlockCount} data-block-index={fullBlockIndex}>
+    <div id="FullBlocks" ref={refFullBlocks} data-block-count={blockCount} data-block-index={blockIndex}>
       {props.children}
     </div>
   );

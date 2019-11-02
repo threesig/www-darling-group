@@ -4,12 +4,12 @@ import Header from './Header';
 import Footer from './Footer';
 import MainNavigation from './MainNavigation';
 import menus from '../../data/menus';
-import {FullBlocksContext} from '../contexts/FullBlocksContext';
+import { FullBlocksContext } from '../contexts/FullBlocksContext';
 
 const Page = props => {
   const refBlocks = useRef(null);
   const refMain = useRef(null);
-  
+
 
   // Return an object containing all page blocks, and their color schemes. { int pos: string scheme }
   const getBlockPositions = () => {
@@ -28,18 +28,18 @@ const Page = props => {
     return blockPositions;
   }
 
-  
+
   const getHeaderColorScheme = () => {
-    
+
     // All blocks whose positions are less than scrollY
     const blocksAboveScroll = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY + 64);
-    
+
     // The current block is the last block in the list.  pop method returns the color scheme;
     return blockPositions[blocksAboveScroll.pop()]
   }
 
 
-  const {fullBlockCount, fullBlockIndex, hasScroll} = useContext(FullBlocksContext);
+  const { pageHasScroll } = useContext(FullBlocksContext);
 
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [bodyOffset, setBodyOffset] = useState(document.body.getBoundingClientRect());
@@ -58,7 +58,7 @@ const Page = props => {
     setHeaderColorScheme(getHeaderColorScheme());
   };
   const resizeListener = (e) => {
-    setBlockPositions(getBlockPositions());    
+    setBlockPositions(getBlockPositions());
   }
 
 
@@ -75,12 +75,6 @@ const Page = props => {
       setHeaderColorScheme(lastHeaderColorScheme);
     }
   }
-
-  const pageHasScroll = () => {
-    // Page will scroll if there are no FullBlocks, or if the FullBlock Index equals the FullBlock Count
-    return fullBlockCount===0||fullBlockCount===fullBlockIndex;
-  }
-  
 
   // After Render, fire once;
   useLayoutEffect(() => {
@@ -100,13 +94,13 @@ const Page = props => {
   });
 
   return (
-    <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll()}>
+    <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
       <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
       <div id="wrap">
         <MainNavigation menuData={menus.main} />
         <div id="main" ref={refMain}>
           <div className="blocks" ref={refBlocks}>
-              {props.children}
+            {props.children}
           </div>
           <Footer menuData={menus} />
         </div>
