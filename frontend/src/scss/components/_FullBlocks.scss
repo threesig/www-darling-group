@@ -1,13 +1,15 @@
 #FullBlocks {
-  // position: relative;
-  // .block {
-  //   transition: transform .4s;
-  //   &:not(.active) {
-  //     position: absolute;
-  //     bottom: 0;
-  //     transform: translateY($height-full);
-  //   }
-  
-  // }
-  
+  position: relative;
+  height: $height-full;
+  .block {
+    transition: transform .4s;
+    position: absolute;
+    transform: translate(0);
+    &:not(.active) {
+      bottom: 0;
+      transform: translateY($height-full);
+    }
+
+  }
+
 }
