@@ -95,6 +95,27 @@ const FullBlocks = props => {
       lastScrollTimestamp = e.timeStamp;
     }
   }
+  const handleKeyDown = e => {
+    let ret = true;
+    if (refFullBlocks.current.scrollTop === 0) {
+      const validKeys = ['ArrowDown', 'ArrowUp'];
+      if (validKeys.includes(e.code)) {
+        ret = false; // Hijack this key
+        switch (e.code) {
+          case 'ArrowDown':
+            advanceBlock(1);
+            break;
+          case 'ArrowUp':
+            advanceBlock(-1);
+            break;
+          default:
+          // Do Nothing
+        }
+      }
+    }
+    return ret;
+  }
+
   const addRemoveEventListenerList = (addOrRemove, list, event, fn) => {
     for (var i = 0, len = list.length; i < len; i++) {
       switch (addOrRemove) {
@@ -120,11 +141,14 @@ const FullBlocks = props => {
 
 
     addRemoveEventListenerList('add', nextLinks, 'click', handleNextClick);
-    fullBlocks.addEventListener('mousewheel', handleMouseWheel)
+    fullBlocks.addEventListener('mousewheel', handleMouseWheel);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       addRemoveEventListenerList('remove', nextLinks, 'click', handleNextClick);
       fullBlocks.removeEventListener('mousewheel', handleMouseWheel);
+      window.removeEventListener('keydown', handleKeyDown);
+
     }
   }, []);
 
