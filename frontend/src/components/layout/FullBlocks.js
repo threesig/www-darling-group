@@ -100,6 +100,7 @@ const FullBlocks = props => {
     if (refFullBlocks.current.scrollTop === 0) {
       const validKeys = ['ArrowDown', 'ArrowUp'];
       if (validKeys.includes(e.code)) {
+        e.preventDefault();
         ret = false; // Hijack this key
         switch (e.code) {
           case 'ArrowDown':
