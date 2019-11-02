@@ -30,21 +30,26 @@ const FullBlocks = props => {
         case true: // Moving Forward
           /** activeOrInactiveBlocks === Inactive **/
 
-          // Next Block is the first Inactive Block
-          const nextBlock = activeOrInactiveBlocks[0]
+          // Can't activate more blocks than we have
+          if (activeOrInactiveBlocks.length >= 1) {
+            // Next Block is the first Inactive Block
+            const nextBlock = activeOrInactiveBlocks[0]
 
-          // Activate Next Block
-          nextBlock.classList.add(activeClass);
+            // Activate Next Block
+            nextBlock.classList.add(activeClass);
 
-          // Recalculate Block Index
-          blockIndex++;
+            // Recalculate Block Index
+            blockIndex++;
+
+          }
 
           break;
         default:  // Moving Backward
+          /** activeOrInactiveBlocks === Active **/
+
           // First block always stays Active.
           if (activeOrInactiveBlocks.length > 1) {
 
-            /** activeOrInactiveBlocks === Active **/
 
             // Previous Block is the last Active Block
             const prevBlock = activeOrInactiveBlocks.pop();
@@ -56,17 +61,27 @@ const FullBlocks = props => {
             blockIndex--;
           }
       }
+      console.log(`ListLength: ${activeOrInactiveBlocks.length} Blocks: ${blockCount}, Index: ${blockIndex}, hasScroll: ${blockIndex === blockCount}`);
       setPageHasScroll(blockIndex === blockCount);
     }
   }
 
 
   useEffect(() => {
-    // advanceBlock(1);
-    // advanceBlock(1);
-    // advanceBlock(1);
-    // advanceBlock(-1);
-    // advanceBlock(-1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
+    advanceBlock(1);
   }, []);
 
   return (
