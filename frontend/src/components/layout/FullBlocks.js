@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useEffect } from 'react';
-import { blockParams } from 'handlebars';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
+
 const FullBlocks = props => {
   const refFullBlocks = useRef(null);
   const { setPageHasScroll } = useContext(FullBlocksContext);
@@ -10,7 +10,8 @@ const FullBlocks = props => {
 
   const blockCount = getBlockCount();
   let blockIndex = blockCount > 0 ? 1 : 0;
-  setPageHasScroll(blockIndex === blockCount);
+
+  let lastScrollTimestamp = 0;
 
   const activeClass = 'active';
   const advanceBlock = (direction) => {
@@ -70,7 +71,29 @@ const FullBlocks = props => {
     e.preventDefault();
     advanceBlock(1);
   }
+  const handleMouseWheel = e => {
+    if (refFullBlocks.current.scrollTop === 0) {
+      e.preventDefault();
 
+      // Debouncer
+      const scrollTimeout = 50; // there has to be at least 1 second between event fires to determine a single scroll event
+      if (e.timeStamp - lastScrollTimestamp >= scrollTimeout) {
+        // Determine Scroll Direction
+        const direction = e.deltaY > 0 ? 'forward' : 'backward';
+        switch (direction) {
+          case 'forward':
+            advanceBlock(1);
+            break;
+          case 'backward':
+            advanceBlock(-1);
+            break;
+          default:
+          // Do nothing
+        }
+      }
+      lastScrollTimestamp = e.timeStamp;
+    }
+  }
   const addRemoveEventListenerList = (addOrRemove, list, event, fn) => {
     for (var i = 0, len = list.length; i < len; i++) {
       switch (addOrRemove) {
@@ -88,13 +111,19 @@ const FullBlocks = props => {
 
   useEffect(() => {
     // Advance on all Next links
-    const nextLinks = refFullBlocks.current.querySelectorAll('.next');
+    const fullBlocks = refFullBlocks.current;
+    const nextLinks = fullBlocks.querySelectorAll('.next');
+
+    // Initialize scrollability;
+    setPageHasScroll(blockIndex === blockCount);
+
+
     addRemoveEventListenerList('add', nextLinks, 'click', handleNextClick);
-
-
+    fullBlocks.addEventListener('mousewheel', handleMouseWheel)
 
     return () => {
       addRemoveEventListenerList('remove', nextLinks, 'click', handleNextClick);
+      fullBlocks.removeEventListener('mousewheel', handleMouseWheel);
     }
   }, []);
 
