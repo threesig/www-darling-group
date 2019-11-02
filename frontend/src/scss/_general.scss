@@ -26,9 +26,9 @@ body {
 }
 #main {
   overflow-y: scroll;
-  // [data-has-scroll="false"] & {
-  //   overflow: hidden;
-  // }
+  [data-has-scroll="false"] & {
+    overflow: hidden;
+  }
 }
 
 .block.welcome {
