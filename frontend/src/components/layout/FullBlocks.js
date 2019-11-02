@@ -72,6 +72,7 @@ const FullBlocks = props => {
     advanceBlock(1);
   }
   const handleMouseWheel = e => {
+    // Event only fires if FullBlocks has not scrolled.  Must be locked in place.
     if (refFullBlocks.current.scrollTop === 0) {
       e.preventDefault();
 
