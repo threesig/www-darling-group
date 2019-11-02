@@ -5,8 +5,9 @@
     transition: transform .4s;
     position: absolute;
     transform: translate(0);
+    bottom: 0;
+
     &:not(.active) {
-      bottom: 0;
       transform: translateY($height-full);
     }
 
