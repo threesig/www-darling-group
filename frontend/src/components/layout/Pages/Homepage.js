@@ -3,7 +3,7 @@ import Block from '../Block';
 import Page from '../Page';
 // import Contact from '../Contact';
 import FullBlocks from '../FullBlocks';
-import {compileBlocks} from '../../../helpers';
+import {prepFullBlocks} from '../../../helpers';
 
 const Homepage = props => {
   const buildBlockData = casestudy => {
@@ -22,7 +22,7 @@ const Homepage = props => {
   const getKey = idx => `${props.pageKey}-block-${idx}`;
   const { blocks } = props.query[0];
   
-  const allBlocks = compileBlocks(blocks, props.featured.map(buildBlockData), { acf_fc_layout: 'contact' });
+  const allBlocks = prepFullBlocks(blocks, props.featured.map(buildBlockData), { acf_fc_layout: 'contact' });
   
   return (
     <Page>

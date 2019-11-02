@@ -31,7 +31,20 @@ async function retrieve(url) {
   return data;
 }
 
-const compileBlocks = function() {
+const categorizeBlocks = blocks => {
+  const fullBlockTypes = ['welcome', 'intro', 'showcase'];
+  
+  const initAcc = {full:[],standard:[]};
+  const catBlocks =  blocks.reduce((acc, block) => {
+    const cat = fullBlockTypes.includes(block.acf_fc_layout) ? 'full' : 'standard';
+    return acc;
+  }, initAcc)
+
+  return catBlocks;
+}
+
+
+const prepFullBlocks = function() {
   let allBlocks = [];
   
   // Compile the blocks
@@ -55,5 +68,5 @@ const compileBlocks = function() {
 
 }
 
-export { slugify, retrieve, compileBlocks }
+export { slugify, retrieve, categorizeBlocks, prepFullBlocks }
 
