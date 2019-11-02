@@ -9,6 +9,17 @@ const FullBlocks = props => {
   const getBlockCount = () => props.children?normalizeBlocks().reduce((blockCount, blockContainer) => blockCount + blockContainer.length, 0):0;
   const blockCount = getBlockCount();
   
+  const activeClass = 'active';
+  const advanceBlock = () => {
+    const nextBlock = props.children.filter(block => !block.classList.includes(activeClass))[0];
+    console.log(nextBlock);
+  }
+
+
+  useEffect(()=>{
+    setTimeout(advanceBlock(), 1000);
+  },[]);
+
   setFullBlockCount(blockCount);
   setFullBlockIndex(blockCount>0? 1: 0);
   return (
