@@ -1,10 +1,9 @@
 .block.showcase {
   @extend .color-scheme-dark;
+  font-size: 10px;
   height: 100vh;
   padding: 0;
-  position: relative;
-  font-size: 10px;
-  
+
   .content-area {
     text-shadow: 0 0 2px rgba($color-black, .4);
   }

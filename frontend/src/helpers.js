@@ -1,4 +1,5 @@
 import debounce from 'lodash.debounce';
+import { cpus } from 'os';
 
 const slugify = str => {
   str = str.replace(/^\s+|\s+$/g, '');
@@ -30,6 +31,46 @@ async function retrieve(url) {
   return data;
 }
 
+const categorizeBlocks = blocks => {
+  const fullBlockTypes = ['welcome', 'intro', 'showcase'];
 
-export { slugify, retrieve }
+  const initAcc = { full: [], standard: [] };
+  const catBlocks = blocks.reduce((acc, block) => {
+    const cat = fullBlockTypes.includes(block.acf_fc_layout) ? 'full' : 'standard';
+    return acc;
+  }, initAcc)
+
+  return catBlocks;
+}
+
+
+const prepFullBlocks = function () {
+  let allBlocks = [];
+
+  // Compile the blocks
+  for (const arg of arguments) {
+    allBlocks = [...allBlocks, ...(arg.constructor === Array ? arg : [arg])];
+  }
+
+  // Prep the blocks
+  const activeClass = 'active';
+  let { classNames } = allBlocks[0];
+
+  const initBlockCustomClasses = classNames ? classNames.split(' ') : [];
+  if (!initBlockCustomClasses.includes(activeClass)) {
+    initBlockCustomClasses.push(activeClass);
+  }
+  allBlocks[0].classNames = initBlockCustomClasses.join(' ');
+
+
+  return allBlocks;
+
+
+}
+
+const getMainScrollY = () => {
+  return document.getElementById('main').scrollTop;
+}
+
+export { slugify, retrieve, categorizeBlocks, prepFullBlocks, getMainScrollY }
 
