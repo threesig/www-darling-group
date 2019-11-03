@@ -32,26 +32,29 @@ const FullBlocks = props => {
         case true: // Moving Forward
           /** activeOrInactiveBlocks === Inactive **/
 
-          // Next Block is the first Inactive Block
-          const nextBlock = activeOrInactiveBlocks[0]
+          if (!isListEnd()) {
+            // Next Block is the first Inactive Block
+            const nextBlock = activeOrInactiveBlocks[0]
 
-          // Activate Next Block
-          nextBlock.classList.add(activeClass);
+            // Activate Next Block
+            nextBlock.classList.add(activeClass);
 
-          // Recalculate Block Index
-          blockIndex++;
+            // Recalculate Block Index
+            blockIndex++;
+          }
           break;
         default:  // Moving Backward
           /** activeOrInactiveBlocks === Active **/
+          if (!isListBeginning()) {
+            // Previous Block is the last Active Block
+            const prevBlock = activeOrInactiveBlocks.pop();
 
-          // Previous Block is the last Active Block
-          const prevBlock = activeOrInactiveBlocks.pop();
+            // Deactivate Previous Block
+            prevBlock.classList.remove(activeClass);
 
-          // Deactivate Previous Block
-          prevBlock.classList.remove(activeClass);
-
-          // Recalculate Block Inded
-          blockIndex--;
+            // Recalculate Block Inded
+            blockIndex--;
+          }
       }
       setPageHasScroll(blockIndex === blockCount);
     }
