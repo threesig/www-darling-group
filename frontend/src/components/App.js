@@ -3,7 +3,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  withRouter
 } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import './App.style.scss';
 
 
@@ -15,10 +17,26 @@ import ProjectSingle from './layout/Pages/ProjectSingle';
 
 import { FullBlocksContext } from './contexts/FullBlocksContext';
 
+
 const App = props => {
 
   const sorted_posts = props.posts.sort((a, b) => (a.menu_order > b.menu_order) ? 1 : -1);
   const posts = groupBy(sorted_posts, post => post.post_type);
+
+
+
+  const RouterGuts = withRouter(({ location }) => (
+    <TransitionGroup>
+      <CSSTransition key={location.key} classNames="wipe" timeout={1000}>
+        <Switch location={location}>
+          <Route exact path="/" render={props => <Homepage {...props} pageKey={'home'} query={posts.page.filter(page => page.post_name === 'home')} featured={posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
+          <Route path="/work" render={props => <Archive {...props} query={posts.casestudy} />} />
+          <Route path="/projects/:slug" render={props => <ProjectSingle pageKey={props.match.params.slug} {...props} query={getSingleQuery('casestudy', props.match.params.slug)} next={getNextSlug('casestudy', props.match.params.slug)} />} />
+          <Route path="/:slug" render={props => <Loop {...props} query={posts.page.filter(page => page.post_name === props.match.params.slug)} />} />
+        </Switch>
+      </CSSTransition>
+    </TransitionGroup>
+  ));
 
   const getSingleQuery = (postType, slug) => posts[postType].filter(postType => postType.post_name === slug)
   const getNextSlug = (postType, slug) => {
@@ -45,12 +63,7 @@ const App = props => {
     <FullBlocksContext.Provider value={{ pageHasScroll, setPageHasScroll }}>
       <div id="App">
         <Router>
-          <Switch>
-            <Route exact path="/" render={props => <Homepage {...props} pageKey={'home'} query={posts.page.filter(page => page.post_name === 'home')} featured={posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
-            <Route path="/work" render={props => <Archive {...props} query={posts.casestudy} />} />
-            <Route path="/projects/:slug" render={props => <ProjectSingle pageKey={props.match.params.slug} {...props} query={getSingleQuery('casestudy', props.match.params.slug)} next={getNextSlug('casestudy', props.match.params.slug)} />} />
-            <Route path="/:slug" render={props => <Loop {...props} query={posts.page.filter(page => page.post_name === props.match.params.slug)} />} />
-          </Switch>
+          <RouterGuts />
         </Router>
       </div>
     </FullBlocksContext.Provider>
