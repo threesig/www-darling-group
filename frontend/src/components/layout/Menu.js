@@ -1,12 +1,12 @@
 import React from 'react';
 import { slugify } from '../../helpers';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const Menu = props => {
-  
-  const {items} = props || {};
+
+  const { items } = props || {};
 
   const getLinkTemplate = (itemText, itemDestination) => {
-    return itemDestination.includes(':')? <a href={itemDestination}>{itemText}</a>: <Link to={itemDestination}>{itemText}</Link>;
+    return itemDestination.includes(':') ? <a href={itemDestination}>{itemText}</a> : <NavLink to={itemDestination}>{itemText}</NavLink>;
   }
   const getMenuItem = (itemText, itemDestination) => {
     const itemSlug = slugify(itemText);

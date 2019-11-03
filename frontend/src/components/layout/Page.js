@@ -94,7 +94,7 @@ const Page = props => {
   });
 
   return (
-    <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
+    <div className="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
       <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
       <div id="wrap">
         <MainNavigation menuData={menus.main} />
@@ -105,6 +105,7 @@ const Page = props => {
           <Footer menuData={menus} />
         </div>
       </div>
+      <span class="transition"></span>
     </div>
   );
 }
