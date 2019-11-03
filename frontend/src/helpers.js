@@ -33,9 +33,9 @@ async function retrieve(url) {
 
 const categorizeBlocks = blocks => {
   const fullBlockTypes = ['welcome', 'intro', 'showcase'];
-  
-  const initAcc = {full:[],standard:[]};
-  const catBlocks =  blocks.reduce((acc, block) => {
+
+  const initAcc = { full: [], standard: [] };
+  const catBlocks = blocks.reduce((acc, block) => {
     const cat = fullBlockTypes.includes(block.acf_fc_layout) ? 'full' : 'standard';
     return acc;
   }, initAcc)
@@ -44,20 +44,20 @@ const categorizeBlocks = blocks => {
 }
 
 
-const prepFullBlocks = function() {
+const prepFullBlocks = function () {
   let allBlocks = [];
-  
+
   // Compile the blocks
   for (const arg of arguments) {
-    allBlocks = [...allBlocks, ...(arg.constructor===Array?arg:[arg])];
+    allBlocks = [...allBlocks, ...(arg.constructor === Array ? arg : [arg])];
   }
 
   // Prep the blocks
   const activeClass = 'active';
-  let {classNames} = allBlocks[0];
+  let { classNames } = allBlocks[0];
 
-  const initBlockCustomClasses = classNames?classNames.split(' '):[];
-  if(!initBlockCustomClasses.includes(activeClass)) {
+  const initBlockCustomClasses = classNames ? classNames.split(' ') : [];
+  if (!initBlockCustomClasses.includes(activeClass)) {
     initBlockCustomClasses.push(activeClass);
   }
   allBlocks[0].classNames = initBlockCustomClasses.join(' ');
@@ -68,5 +68,9 @@ const prepFullBlocks = function() {
 
 }
 
-export { slugify, retrieve, categorizeBlocks, prepFullBlocks }
+const getMainScrollY = () => {
+  return document.getElementById('main').scrollTop;
+}
+
+export { slugify, retrieve, categorizeBlocks, prepFullBlocks, getMainScrollY }
 
