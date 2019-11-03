@@ -8,6 +8,9 @@
   > .interior {
     width: 100%;
   }
+  .content {
+    font-weight: 300;
+  }
 }
 @import 'blocks/welcome';
 @import 'blocks/intro';
