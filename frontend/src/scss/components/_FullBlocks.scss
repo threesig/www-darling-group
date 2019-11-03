@@ -11,4 +11,7 @@
       transform: translateY($height-full);
     }
   }
+  &[data-block-count="0"] {
+    display: none;
+  }
 }
