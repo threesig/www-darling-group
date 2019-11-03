@@ -2,7 +2,7 @@
   position: relative;
   height: $height-full;
   .block {
-    transition: transform .4s;
+    transition: transform .4s cubic-bezier(0.0, 0.5, 0.5, 1.0);
     position: absolute;
     transform: translate(0);
     bottom: 0;
@@ -10,7 +10,5 @@
     &:not(.active) {
       transform: translateY($height-full);
     }
-
   }
-
 }
