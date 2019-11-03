@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
+import { getMainScrollY } from '../../helpers';
 
 const FullBlocks = props => {
   const refFullBlocks = useRef(null);
@@ -31,38 +32,27 @@ const FullBlocks = props => {
         case true: // Moving Forward
           /** activeOrInactiveBlocks === Inactive **/
 
-          // Can't activate more blocks than we have
-          if (activeOrInactiveBlocks.length >= 1) {
-            // Next Block is the first Inactive Block
-            const nextBlock = activeOrInactiveBlocks[0]
+          // Next Block is the first Inactive Block
+          const nextBlock = activeOrInactiveBlocks[0]
 
-            // Activate Next Block
-            nextBlock.classList.add(activeClass);
+          // Activate Next Block
+          nextBlock.classList.add(activeClass);
 
-            // Recalculate Block Index
-            blockIndex++;
-
-          }
-
+          // Recalculate Block Index
+          blockIndex++;
           break;
         default:  // Moving Backward
           /** activeOrInactiveBlocks === Active **/
 
-          // First block always stays Active.
-          if (activeOrInactiveBlocks.length > 1) {
+          // Previous Block is the last Active Block
+          const prevBlock = activeOrInactiveBlocks.pop();
 
+          // Deactivate Previous Block
+          prevBlock.classList.remove(activeClass);
 
-            // Previous Block is the last Active Block
-            const prevBlock = activeOrInactiveBlocks.pop();
-
-            // Deactivate Previous Block
-            prevBlock.classList.remove(activeClass);
-
-            // Recalculate Block Inded
-            blockIndex--;
-          }
+          // Recalculate Block Inded
+          blockIndex--;
       }
-      console.log(`ListLength: ${activeOrInactiveBlocks.length} Blocks: ${blockCount}, Index: ${blockIndex}, hasScroll: ${blockIndex === blockCount}`);
       setPageHasScroll(blockIndex === blockCount);
     }
   }
@@ -71,29 +61,38 @@ const FullBlocks = props => {
     e.preventDefault();
     advanceBlock(1);
   }
-  const handleMouseWheel = e => {
-    // Event only fires if FullBlocks has not scrolled.  Must be locked in place.
-    if (refFullBlocks.current.scrollTop === 0) {
-      e.preventDefault();
 
-      // Debouncer
-      const scrollTimeout = 50; // there has to be at least 1 second between event fires to determine a single scroll event
-      if (e.timeStamp - lastScrollTimestamp >= scrollTimeout) {
-        // Determine Scroll Direction
-        const direction = e.deltaY > 0 ? 'forward' : 'backward';
-        switch (direction) {
-          case 'forward':
+  const isListBeginning = () => {
+    return blockIndex === 1;
+  }
+  const isListEnd = () => {
+    return blockIndex === blockCount;
+  }
+  const handleMouseWheel = e => {
+    // Debouncer
+    const scrollY = getMainScrollY();
+    const scrollTimeout = 50; // there has to be at least 1 second between event fires to determine a single scroll event
+    if (e.timeStamp - lastScrollTimestamp >= scrollTimeout) {
+      // Determine Scroll Direction
+      const direction = e.deltaY > 0 ? 'forward' : 'backward';
+      switch (direction) {
+        case 'forward':
+          if (!isListEnd()) {
+            e.preventDefault();
             advanceBlock(1);
-            break;
-          case 'backward':
+          }
+          break;
+        case 'backward':
+          if (!isListBeginning() && scrollY === 0) {
+            e.preventDefault();
             advanceBlock(-1);
-            break;
-          default:
-          // Do nothing
-        }
+          }
+          break;
+        default:
+        // Do nothing
       }
-      lastScrollTimestamp = e.timeStamp;
     }
+    lastScrollTimestamp = e.timeStamp;
   }
   const handleKeyDown = e => {
     let ret = true;
