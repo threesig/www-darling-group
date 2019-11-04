@@ -1,5 +1,4 @@
 import React, { useState, useLayoutEffect, useRef, useContext } from 'react';
-import Block from './Block';
 import Header from './Header';
 import Footer from './Footer';
 import MainNavigation from './MainNavigation';
