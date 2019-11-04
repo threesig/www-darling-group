@@ -21,15 +21,26 @@ import { FullBlocksContext } from './contexts/FullBlocksContext';
 const App = props => {
 
   const [pageHasScroll, setPageHasScroll] = useState(true);
-  const [wipeState, setWipeState] = useState('none');
+  const [wipeState, setWipeState] = useState(['none']);
 
 
   const sorted_posts = props.posts.sort((a, b) => (a.menu_order > b.menu_order) ? 1 : -1);
   const posts = groupBy(sorted_posts, post => post.post_type);
 
+  const transitionTimeout = 1000;
+  const handleTransitionStarted = e => {
+    setWipeState(['exists', 'started']);
+    setTimeout(() => {
+      setWipeState(['exists', 'complete']);
+      setTimeout(() => {
+        setWipeState(['none'])
+      }, transitionTimeout * .75)
+    }, transitionTimeout)
+  }
+
   const RouterGuts = withRouter(({ location }) => (
     <TransitionGroup>
-      <CSSTransition in={true} key={location.key} classNames="wipe" timeout={1000}>
+      <CSSTransition in={true} key={location.key} classNames="wipe" onEnter={handleTransitionStarted} timeout={transitionTimeout}>
         <Switch location={location}>
           <Route exact path="/" render={props => <Homepage {...props} pageKey={'home'} query={posts.page.filter(page => page.post_name === 'home')} featured={posts.casestudy.filter(casestudy => casestudy.isFeatured)} />} />
           <Route path="/work" render={props => <Archive {...props} query={posts.casestudy} />} />
@@ -62,7 +73,7 @@ const App = props => {
 
   return (
     <FullBlocksContext.Provider value={{ pageHasScroll, setPageHasScroll }}>
-      <div id="App" className={`wipe-${wipeState}`}>
+      <div id="App" className={wipeState.map(myState => `wipe-${myState}`).join(' ')}>
         <Router>
           <RouterGuts />
         </Router>
