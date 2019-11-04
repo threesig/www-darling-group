@@ -8,8 +8,8 @@ const Archive = props => {
   const buildRepeaterKey = idx => `${pageKey}-${idx}`;
   const renderArchiveItem = (post, idx) => <li key={buildRepeaterKey(idx)} className="item-work" ><ArchiveItem post={post} /></li>
   return (
-    <Page>
-      <FullBlocks/>
+    <Page location={props.location}>
+      <FullBlocks />
       <div className="block page-heading color-scheme-light">
         <div className="interior">
           <h1 className="title">Our Work</h1>
