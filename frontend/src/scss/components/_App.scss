@@ -1,5 +1,7 @@
 #App {
+  $router-transition-time: 1000ms;
   .transition {
+    transition: transform $router-transition-time*2;
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -8,11 +10,7 @@
     left: 0;
     z-index: 10000000;
     pointer-events: none;
-    display: none;
-  }
-  &.wipe-exists {
-    .transition {
-      display: block;
-    }
+    display: block;
+    transform: translateX(-100%);
   }
 }

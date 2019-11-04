@@ -1,64 +1,64 @@
-$effect-duration: 1000ms;
+// $effect-duration: 1000ms;
 
-.page {
-  $opacity-full: 1;
-  @keyframes wipe-in {
-    0%   {
-      opacity: $opacity-full;
-      transform: translateX(-100%);
-    }
-    100% {
-      opacity: $opacity-full;
-      transform: translate(0);
-    }
-  }
-  @keyframes wipe-out {
-    0%   {
-      opacity: $opacity-full;
-      transform: translate(0);
-    }
-    99% {
-      opacity: $opacity-full;
-      transform: translateX(100%);
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+// .page {
+//   $opacity-full: 1;
+//   @keyframes wipe-in {
+//     0%   {
+//       opacity: $opacity-full;
+//       transform: translateX(-100%);
+//     }
+//     100% {
+//       opacity: $opacity-full;
+//       transform: translate(0);
+//     }
+//   }
+//   @keyframes wipe-out {
+//     0%   {
+//       opacity: $opacity-full;
+//       transform: translate(0);
+//     }
+//     99% {
+//       opacity: $opacity-full;
+//       transform: translateX(100%);
+//     }
+//     100% {
+//       opacity: 0;
+//     }
+//   }
 
-  // &.wipe-enter, &.wipe-exit, &.wipe-enter-done {
-  //   .transition {
-  //     opacity: $opacity-full;
-  //   }
-  // }
-  &.wipe-exit {
-    .transition {
-      background-color: red;
-      transform: translateX(-100%);
-    }
-  }
-  &.wipe-enter {
-    .transition {
-      background-color: blue;
-    }
-  }
-  &.wipe-enter-active {
-    .transition {
-      animation-name: wipe-in;
-      animation-duration: $effect-duration;
-      animation-timing-function: ease;
-    }
-  }
+//   // &.wipe-enter, &.wipe-exit, &.wipe-enter-done {
+//   //   .transition {
+//   //     opacity: $opacity-full;
+//   //   }
+//   // }
+//   &.wipe-exit {
+//     .transition {
+//       background-color: red;
+//       transform: translateX(-100%);
+//     }
+//   }
+//   &.wipe-enter {
+//     .transition {
+//       background-color: blue;
+//     }
+//   }
+//   &.wipe-enter-active {
+//     .transition {
+//       animation-name: wipe-in;
+//       animation-duration: $effect-duration;
+//       animation-timing-function: ease;
+//     }
+//   }
 
-  &.wipe-enter-done {
-     .transition {
-      background-color: green;
-      animation-name: wipe-out;
-      animation-duration: $effect-duration/2;
-      animation-timing-function: ease;
-    }
- }
+//   &.wipe-enter-done {
+//      .transition {
+//       background-color: green;
+//       animation-name: wipe-out;
+//       animation-duration: $effect-duration/2;
+//       animation-timing-function: ease;
+//     }
+//  }
 
 
 
-}
+// }
