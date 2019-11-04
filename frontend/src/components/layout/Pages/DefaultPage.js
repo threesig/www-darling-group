@@ -22,7 +22,7 @@ const DefaultPage = props => {
   const catBlocks = categorizeBlocks(blocks);
   console.log(catBlocks);
   return (
-    <Page>
+    <Page location={props.location}>
       <FullBlocks>
 
       </FullBlocks>

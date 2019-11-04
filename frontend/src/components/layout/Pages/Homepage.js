@@ -25,7 +25,7 @@ const Homepage = props => {
   const allBlocks = prepFullBlocks(blocks, props.featured.map(buildBlockData), { acf_fc_layout: 'contact' });
   
   return (
-    <Page>
+    <Page location={props.location}>
       <FullBlocks>
         {allBlocks.map(getBlock)}
       </FullBlocks>

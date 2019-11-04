@@ -18,8 +18,8 @@ const ProjectSingle = props => {
     type: 'hero'
   }  
   return (
-    <Page>
-      <FullBlocks/>
+    <Page location={props.location}>
+      <FullBlocks />
       <div className="block page-heading color-scheme-light">
         <div className="interior">
           <h1 className="title">{post_title}</h1>

@@ -1,6 +1,18 @@
+import React from 'react';
 import debounce from 'lodash.debounce';
 import { cpus } from 'os';
+import { Helmet } from 'react-helmet';
+import allMeta from './data/meta';
 
+
+const getRootUrl = () => {
+  var defaultPorts = { "http:": 80, "https:": 443 };
+
+  return window.location.protocol + "//" + window.location.hostname
+    + (((window.location.port)
+      && (window.location.port != defaultPorts[window.location.protocol]))
+      ? (":" + window.location.port) : "");
+}
 const slugify = str => {
   str = str.replace(/^\s+|\s+$/g, '');
 
@@ -72,5 +84,24 @@ const getMainScrollY = () => {
   return document.getElementById('main').scrollTop;
 }
 
-export { slugify, retrieve, categorizeBlocks, prepFullBlocks, getMainScrollY }
+const getMetaTags = urlPath => {
+
+  const { title, description, ogTitle, ogDescription, ogImage } = allMeta[urlPath];
+  const thisUrl = `${getRootUrl()}${urlPath}`;
+
+  return (
+    <Helmet>
+      {title ? <title>{title}</title> : null}
+      {description ? <meta name="description" content={description} /> : null}
+      {ogTitle ? <meta name="og:title" content={ogTitle} /> : null}
+      {ogDescription ? <meta name="og:description" content={ogDescription} /> : null}
+      {ogImage ? <meta name="og:image" content={ogTitle} /> : null}
+      <meta name="og:url" content={thisUrl} />
+      <link rel="canonical" href={thisUrl} />
+    </Helmet>
+  )
+}
+
+
+export { slugify, retrieve, categorizeBlocks, prepFullBlocks, getMainScrollY, getMetaTags }
 
