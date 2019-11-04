@@ -1,12 +1,12 @@
 import React from 'react';
 import { slugify } from '../../helpers';
-import DelayLink from '../ui/DelayLink';
+import WipeLink from '../ui/WipeLink';
 const Menu = props => {
 
   const { items } = props || {};
 
   const getLinkTemplate = (itemText, itemDestination) => {
-    return itemDestination.includes(':') ? <a href={itemDestination}>{itemText}</a> : <DelayLink to={itemDestination}>{itemText}</DelayLink>;
+    return itemDestination.includes(':') ? <a href={itemDestination}>{itemText}</a> : <WipeLink to={itemDestination}>{itemText}</WipeLink>;
   }
   const getMenuItem = (itemText, itemDestination) => {
     const itemSlug = slugify(itemText);
