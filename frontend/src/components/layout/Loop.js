@@ -11,7 +11,7 @@ const Loop = props => {
   const getLoopTemplate = () => {
     switch (query.length) {
       case 1:
-        return <DefaultPage query={query} />
+        return <DefaultPage query={query} location={props.location} />
       default:
           return <ErrorPage />;
     }
