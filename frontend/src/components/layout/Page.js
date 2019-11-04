@@ -4,7 +4,7 @@ import Footer from './Footer';
 import MainNavigation from './MainNavigation';
 import menus from '../../data/menus';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
-
+import { getMetaTags } from '../../helpers';
 const Page = props => {
   const refBlocks = useRef(null);
   const refMain = useRef(null);
@@ -94,6 +94,7 @@ const Page = props => {
 
   return (
     <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
+      {getMetaTags(props.location.pathname)}
       <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
       <div id="wrap">
         <MainNavigation menuData={menus.main} />
