@@ -77,6 +77,7 @@ const App = props => {
         <Router>
           <RouterGuts />
         </Router>
+        <span class="transition"></span>
       </div>
     </FullBlocksContext.Provider>
   );

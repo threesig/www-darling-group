@@ -1,17 +1,6 @@
 $effect-duration: 1000ms;
 
 .page {
-  .transition {
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    background-color: $color-black !important;
-    top: 0;
-    left: 0;
-    z-index: 10000000;
-    pointer-events: none;
-    opacity: 0;
-  }
   $opacity-full: 1;
   @keyframes wipe-in {
     0%   {

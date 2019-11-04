@@ -105,7 +105,6 @@ const Page = props => {
           <Footer menuData={menus} />
         </div>
       </div>
-      <span class="transition"></span>
     </div>
   );
 }
