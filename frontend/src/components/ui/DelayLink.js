@@ -1,21 +1,24 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
+// import PropTypes from 'prop-types';
+// import { withRouter } from 'react-router';
+// import { TransitionContext } from '../contexts/TransitionContext';
 import { Link, useHistory } from 'react-router-dom';
+import config from '../../config/config';
 
 /**
  * Wraps the React Router Link component and creates a delay after the link is clicked.
  */
 const DelayLink = props => {
+  const transition = document.getElementById('transition');
+  const wipeAttr = 'data-wipe-side';
   let history = useHistory();
-
-  const delay = 1000;
+  // const { wipeSide, setWipeSide } = useContext(TransitionContext);
+  const delay = config.pageTransitionTime;
   const onDelayStart = () => {
-    console.log('delay start!');
+    const wipeStatus = transition.getAttribute(wipeAttr);
+    transition.setAttribute(wipeAttr, -wipeStatus);
   };
-  const onDelayEnd = () => {
-    console.log('delay end!');
-  };
+  const onDelayEnd = () => { };
   let timeout = null;
 
 

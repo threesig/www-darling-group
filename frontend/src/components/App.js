@@ -16,6 +16,7 @@ import Loop from './layout/Loop';
 import ProjectSingle from './layout/Pages/ProjectSingle';
 
 import { FullBlocksContext } from './contexts/FullBlocksContext';
+import { TransitionContext } from './contexts/TransitionContext';
 
 
 const App = props => {
@@ -26,10 +27,6 @@ const App = props => {
 
   const sorted_posts = props.posts.sort((a, b) => (a.menu_order > b.menu_order) ? 1 : -1);
   const posts = groupBy(sorted_posts, post => post.post_type);
-
-  const handleTransitionStarted = e => {
-    setWipeSide(-wipeSide);
-  }
 
   const RouterGuts = withRouter(({ location }) => (
     <Switch location={location}>
@@ -61,14 +58,16 @@ const App = props => {
   }
 
   return (
-    <FullBlocksContext.Provider value={{ pageHasScroll, setPageHasScroll }}>
-      <div id="App">
-        <Router>
-          <RouterGuts />
-        </Router>
-        <span class="transition" style={{ transform: `translateX(${wipeSide * 100}%)` }}></span>
-      </div>
-    </FullBlocksContext.Provider>
+    <TransitionContext.Provider value={{ wipeSide, setWipeSide }}>
+      <FullBlocksContext.Provider value={{ pageHasScroll, setPageHasScroll }}>
+        <div id="App">
+          <Router>
+            <RouterGuts />
+          </Router>
+          <span id="transition" data-wipe-side="-1"></span>
+        </div>
+      </FullBlocksContext.Provider>
+    </TransitionContext.Provider>
   );
 }
 
