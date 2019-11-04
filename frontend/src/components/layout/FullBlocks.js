@@ -73,6 +73,8 @@ const FullBlocks = props => {
   }
   const handleMouseWheel = e => {
     // Debouncer
+
+    // ~~~ TODO - Fix Swipe Gestures - https://codepen.io/hack_nug/pen/dRxvbN
     const scrollY = getMainScrollY();
     const scrollTimeout = 50; // there has to be at least 1 second between event fires to determine a single scroll event
     if (e.timeStamp - lastScrollTimestamp >= scrollTimeout) {
