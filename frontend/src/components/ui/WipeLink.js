@@ -15,6 +15,7 @@ const WipeLink = props => {
     transition.setAttribute(wipeAttr, -wipeStatus);
   };
   const onDelayEnd = () => {
+    // window.scrollTo(0, 0);
     console.log('delay end!');
   };
 
@@ -52,8 +53,8 @@ const WipeLink = props => {
     }, delay);
   };
 
-  const { linkType } = props;
-  const MyLink = linkType === 'nav' ? NavLink : Link;
+  const { linktype } = props;
+  const MyLink = linktype === 'nav' ? NavLink : Link;
   return <MyLink {...props} onClick={handleClick} />;
 }
 export default WipeLink;
