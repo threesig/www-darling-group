@@ -6,7 +6,7 @@ const Menu = props => {
   const { items } = props || {};
 
   const getLinkTemplate = (itemText, itemDestination) => {
-    return itemDestination.includes(':') ? <a href={itemDestination}>{itemText}</a> : <WipeLink to={itemDestination}>{itemText}</WipeLink>;
+    return itemDestination.includes(':') ? <a href={itemDestination}>{itemText}</a> : <WipeLink linkType="nav" to={itemDestination}>{itemText}</WipeLink>;
   }
   const getMenuItem = (itemText, itemDestination) => {
     const itemSlug = slugify(itemText);
