@@ -13,7 +13,7 @@ const Menu = props => {
     return <li key={itemSlug} className="menu-item">{getLinkTemplate(itemText, itemDestination)}</li>;
   }
   return (
-    <ul className="menu">
+    <ul className="Menu">
       {Object.keys(items).map(itemKey => getMenuItem(itemKey, items[itemKey]))}
     </ul>
   );

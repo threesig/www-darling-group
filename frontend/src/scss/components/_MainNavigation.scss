@@ -10,7 +10,7 @@
     padding: .15em 0;
     display: inline-block;
   }
-  .menu {
+  .Menu {
     transition: transform $header-transition-time;
     transform: translateX(#{$padding-site-h-mobile});
     @include mq-min($break-desktop) {
