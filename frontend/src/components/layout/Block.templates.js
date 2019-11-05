@@ -2,7 +2,7 @@ import React from 'react';
 import Image from '../ui/Image';
 import Content from '../ui/Content';
 import Gallery from '../ui/Gallery';
-import { Link } from 'react-router-dom';
+import WipeLink from '../ui/WipeLink';
 
 export default {
   welcome(data) {
@@ -21,7 +21,7 @@ export default {
     )
   },
   intro(data) {
-    // TODO ~~~ Add link
+    // TODO ~~~ Add WipeLink
     // TODO ~~~ Get background color to match image
     const { title, content, image } = data;
     return (
@@ -32,7 +32,7 @@ export default {
         <div className="cell">
           {title ? <h1 className="title"><Content markup={title} /></h1> : null}
           {content ? <Content markup={content} /> : null}
-          {/* Link goes here */}
+          {/* WipeLink goes here */}
         </div>
         <a className="next">Next</a>
       </>
@@ -74,7 +74,7 @@ export default {
         <div className="content-area">
           <h2 className="title">{title}</h2>
           <Content markup={content} />
-          <Link className="go" to={`/projects/${slug}`}>View Case Study</Link>
+          <WipeLink className="go" to={`/projects/${slug}`}>View Case Study</WipeLink>
         </div>
       </>
     )

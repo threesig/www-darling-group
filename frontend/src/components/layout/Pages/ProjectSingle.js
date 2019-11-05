@@ -1,9 +1,7 @@
 import React from 'react';
 import Block from '../Block';
 import Page from '../Page';
-import Contact from '../Contact';
-import { Link } from 'react-router-dom';
-import Image from '../../ui/Image';
+import WipeLink from '../../ui/WipeLink';
 import FullBlocks from '../FullBlocks';
 
 const ProjectSingle = props => {
@@ -16,7 +14,7 @@ const ProjectSingle = props => {
     acf_fc_layout: 'image',
     image: showcaseImage,
     type: 'hero'
-  }  
+  }
   return (
     <Page location={props.location}>
       <FullBlocks />
@@ -30,7 +28,7 @@ const ProjectSingle = props => {
       {blocks.map(getBlock)}
       <div className="block project-pagination color-scheme-light">
         <div className="interior">
-          <Link className="go" to={`/projects/${props.next}`}>Next</Link>
+          <WipeLink className="go" to={`/projects/${props.next}`}>Next</WipeLink>
         </div>
       </div>
     </Page>

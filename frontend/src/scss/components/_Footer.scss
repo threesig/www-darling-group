@@ -33,14 +33,14 @@
       &.a {
         flex: 0 0 60%;
         justify-content: flex-start;
-      } 
+      }
       &.b {
         flex: 0 0 40%;
       }
       &.b, &.c {
         justify-content: flex-end;
       }
-      .logo-housing, .menu {
+      .logo-housing, .Menu {
         margin: 0;
       }
 
@@ -53,7 +53,7 @@
   .tagline {
     font-size: 1em;
   }
-  .menu {
+  .Menu {
     position: relative;
     font-size: 0.777777778em;
     top: 50%;
@@ -63,7 +63,7 @@
     font-size: 0.5em;
   }
 
-  .menu {
+  .Menu {
     @include clearfix();
     display: table;
     margin: 0 auto;

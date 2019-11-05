@@ -1,0 +1,16 @@
+// #transition {
+//   transition: transform 1000ms linear;
+//   height: 100vh;
+//   width: 150vw;
+//   position: absolute;
+//   background-color: $color-pink;
+//   top: 0;
+//   left: 0;
+//   z-index: 10000000;
+//   pointer-events: none;
+//   display: block;
+//   transform: translateX(-100%);
+//   &[data-wipe-side="1"]{
+//     transform: translateX(66.666666666667%);
+//   }
+// }
