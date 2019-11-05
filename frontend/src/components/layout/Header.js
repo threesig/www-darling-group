@@ -11,7 +11,7 @@ const Header = props => {
 
   return (
     <header id="header" className={colorScheme}>
-      <WipeLink to="/"><Logo /></WipeLink>
+      <WipeLink className="home" linktype="nav" to="/"><Logo /></WipeLink>
       <Hamburger handleMainNavToggle={handleMainNavToggle} />
     </header>
   );

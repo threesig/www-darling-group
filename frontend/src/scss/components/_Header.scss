@@ -26,6 +26,9 @@
   > * {
     pointer-events: all;
   }
+  .home.active {
+    pointer-events: none;
+  }
   .Logo {
     transition: transform $header-transition-time, fill $header-transition-time;
     left: 0;
