@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import config from '../../config/config';
 
 const WipeLink = props => {
@@ -52,6 +52,8 @@ const WipeLink = props => {
     }, delay);
   };
 
-  return <Link {...props} onClick={handleClick} />;
+  const { linkType } = props;
+  const MyLink = linkType === 'nav' ? NavLink : Link;
+  return <MyLink {...props} onClick={handleClick} />;
 }
 export default WipeLink;
