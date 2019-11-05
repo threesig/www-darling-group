@@ -3,19 +3,22 @@ import { Link, useHistory } from 'react-router-dom';
 import config from '../../config/config';
 
 const WipeLink = props => {
-  const transition = document.getElementById('transition');
-  const wipeAttr = 'data-wipe-side';
-
   let history = useHistory();
   const delay = config.pageTransitionTime;
 
   const onDelayStart = () => {
+    console.log('delay start!');
+    const transition = document.getElementById('transition');
+    const wipeAttr = 'data-wipe-side';
     const wipeStatus = transition.getAttribute(wipeAttr);
+
     transition.setAttribute(wipeAttr, -wipeStatus);
   };
-  const onDelayEnd = () => { };
-  let timeout = null;
+  const onDelayEnd = () => {
+    console.log('delay end!');
+  };
 
+  let timeout = null;
 
   useEffect(() => {
     return () => {

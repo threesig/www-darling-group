@@ -64,7 +64,6 @@ const App = props => {
           <Router>
             <RouterGuts />
           </Router>
-          <span id="transition" data-wipe-side="-1"></span>
         </div>
       </FullBlocksContext.Provider>
     </TransitionContext.Provider>
