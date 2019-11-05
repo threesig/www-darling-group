@@ -4,7 +4,7 @@ import Footer from './Footer';
 import MainNavigation from './MainNavigation';
 import menus from '../../data/menus';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
-import { getMetaTags } from '../../helpers';
+import { slugify, getMetaTags } from '../../helpers';
 const Page = props => {
   const refBlocks = useRef(null);
   const refMain = useRef(null);
@@ -86,19 +86,20 @@ const Page = props => {
 
   // Try useLayoutEffect?
   useLayoutEffect(() => {
-    refMain.current.addEventListener('scroll', scrollListener);
+    const mainContainer = refMain.current;
+    mainContainer.addEventListener('scroll', scrollListener);
     return () => {
-      refMain.current.removeEventListener('scroll', scrollListener);
+      mainContainer.removeEventListener('scroll', scrollListener);
     };
   });
-
+  const { pathname } = props.location;
   return (
     <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
-      {getMetaTags(props.location.pathname)}
+      {getMetaTags(pathname)}
       <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
       <div id="wrap">
         <MainNavigation menuData={menus.main} />
-        <div id="main" ref={refMain}>
+        <div id="main" key={slugify(pathname)} ref={refMain}>
           <div className="blocks" ref={refBlocks}>
             {props.children}
           </div>
