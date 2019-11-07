@@ -1,0 +1,11 @@
+.-services {
+  .block.intro {
+    align-items: flex-end;
+    > .interior {
+      margin-bottom: 103px;
+    }
+    .cell > .content {
+      margin: 0;
+    }
+  }
+}
