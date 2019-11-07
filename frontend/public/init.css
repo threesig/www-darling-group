@@ -9,8 +9,8 @@
   z-index: 10000000;
   pointer-events: none;
   display: block;
-  transform: translateX(-100%);
+  transform: translateX(-101%); // a little bit further than -100%. correct for rounding errors.
 }
 #transition[data-wipe-side="1"] {
-  transform: translateX(66.666666666667%);
+  transform: translateX(67%); // a little but further than 66.6666666667%. correct for rounding errors.
 }
