@@ -72,14 +72,16 @@ export default {
   showcase(data) {
     const { title, content, image, slug } = data;
     return (
-      <>
-        <Image data={image} />
-        <div className="content-area">
-          <h2 className="title">{title}</h2>
-          <Content markup={content} />
-          <WipeLink className="go" to={`/projects/${slug}`}>View Case Study</WipeLink>
+      <WipeLink className="outer" to={`/projects/${slug}`}>
+        <div className="inner">
+          <Image data={image} />
+          <div className="content-area">
+            <h2 className="title">{title}</h2>
+            <Content markup={content} />
+            <span className="go" to={`/projects/${slug}`}>View Case Study</span>
+          </div>
         </div>
-      </>
+      </WipeLink>
     )
   },
   blockquote(data) {

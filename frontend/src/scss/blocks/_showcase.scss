@@ -4,7 +4,16 @@
   height: 100vh;
   padding: 0;
 
-  > .interior {
+  // Outer container is a link
+  .outer {
+    display: block;
+    position: absolute;
+    @include affix();
+    display: flex;
+    text-decoration: none;
+  }
+
+  .inner {
     padding: 0 $padding-site-h-mobile;
     align-self: flex-end;
     padding-bottom: 10vh;
