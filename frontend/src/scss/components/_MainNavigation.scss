@@ -11,10 +11,27 @@
     display: inline-block;
   }
   .Menu {
-    transition: transform $header-transition-time;
+    $duration-menu-slide-in: $header-transition-time;
+    $duration-fade-in: 1s;
+    $duration-fade-in-delay-unit: 100ms;
+
+    transition: transform $duration-menu-slide-in;
     transform: translateX(#{$padding-site-h-mobile});
     @include mq-min($break-desktop) {
       transform: translateX(#{$padding-site-h-desktop});
+    }
+    .menu-item {
+      transition: opacity $duration-fade-in;
+      opacity: 0;
+      @for $idx from 1 through 5 {
+        &:nth-child(#{$idx}) {
+          transition-delay: $duration-menu-slide-in + $idx*$duration-fade-in-delay-unit - $duration-fade-in*0.25;
+        }
+      }
+      [data-is-menu-open="true"] & {
+        opacity: 1;
+      }
+
     }
   }
 }
