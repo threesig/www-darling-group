@@ -4,6 +4,7 @@
   justify-content: flex-start;
   align-items: center;
   text-align: left;
+  font-size: 10px;
   a {
     @include fancylink();
     padding: .15em 0;

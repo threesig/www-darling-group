@@ -52,8 +52,7 @@ body {
 .content h6,
 #nav-main,
 #footer,
-.block
-.block.project-pagination .go,
+.block.project-pagination,
 .title {
   font-family: 'trade-gothic-proheavy';
 }
@@ -64,10 +63,10 @@ body {
 }
 
 
-#nav-main,
+#nav-main .Menu,
 .block.project-pagination .go,
 #selector {
-  font-size: 70px;
+  font-size: 7.0em;
 }
 
 .block.general .content h1,

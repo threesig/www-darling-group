@@ -33,6 +33,7 @@
 
   .next {
     opacity: $test-opacity;
+    // \2193
   }
 
   @include mq-min(590px) {

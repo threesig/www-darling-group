@@ -46,7 +46,10 @@ export default {
     return (
       <>
         <div className="cell">
-          {titles ? titles.map(renderTitle) : null}
+          <div className="titles">
+            {titles ? titles.map(renderTitle) : null}
+          </div>
+
         </div>
         <div className="cell">
           <ul className="list-contents" data-elts={contents.length}>
