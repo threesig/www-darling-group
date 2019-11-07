@@ -11,13 +11,13 @@
     @include affix();
     display: flex;
     text-decoration: none;
+    > .inner {
+      padding: 0 $padding-site-h-mobile;
+      align-self: flex-end;
+      padding-bottom: 10vh;
+    }
   }
 
-  .inner {
-    padding: 0 $padding-site-h-mobile;
-    align-self: flex-end;
-    padding-bottom: 10vh;
-  }
   .title {
     font-size: 4.2em;
     margin-bottom: .2em;

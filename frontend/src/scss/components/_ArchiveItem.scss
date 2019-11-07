@@ -1,5 +1,14 @@
 .ArchiveItem {
   &.type-casestudy {
+    .outer {
+      display: block;
+      @include hilite();
+      &:hover {
+        .img > .inner {
+          transform: scale(1.1);
+        }
+      }
+    }
     .content-area {
       transition: padding $header-transition-time;
       padding: $padding-site-h-mobile-static*.66666667 $padding-site-h-mobile-static $padding-site-h-mobile-static*1.33333333;

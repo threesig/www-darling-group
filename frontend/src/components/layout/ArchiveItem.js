@@ -14,11 +14,13 @@ const ArchiveItem = props => {
 
   return (
     <article id={`post-${ID}`} className={getClassNames()}>
-      <Image data={secondaryImage || showcaseImage} scaleOnHover={true} />
-      <div className="content-area">
-        <h2 className="title"><WipeLink to={`/projects/${post_name}`}>{post_title}</WipeLink></h2>
-        <p className="content">{subtitle}</p>
-      </div>
+      <WipeLink className="outer" to={`/projects/${post_name}`}>
+        <Image data={secondaryImage || showcaseImage} scaleOnHover={false} />
+        <div className="content-area">
+          <h2 className="title">{post_title}</h2>
+          <p className="content">{subtitle}</p>
+        </div>
+      </WipeLink>
     </article>
   );
 }
