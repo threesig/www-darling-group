@@ -1,4 +1,4 @@
 export default {
   contentDataUri: '/data/production-data.json',
-  pageTransitionTime: 500
+  pageTransitionTime: 750
 }
