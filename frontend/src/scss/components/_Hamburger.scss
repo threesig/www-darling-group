@@ -7,10 +7,10 @@
   $translate-bar-top-x: 0;
   $translate-bar-top-y: -2.5*$bar-height;
 
-  
+
   $translate-bar-middle-x: 2*$bar-indent-unit;
   $translate-bar-middle-y: -50%;
-  
+
   $translate-bar-bottom-x: $bar-indent-unit;
   $translate-bar-bottom-y: 1.5*$bar-height;
 
@@ -39,7 +39,7 @@
 
       transition: transform $transition-time, opacity $transition-time, top $transition-time;
       content: '';
-      background-color: $color-black-true;
+      background-color: $color-black;
       display: block;
       height: $bar-height;
       left: 0;
@@ -49,7 +49,7 @@
       width: 100%;
 
 
- 
+
       &:nth-child(1) {
         transform: translate(#{$translate-bar-top-x}, #{$translate-bar-top-y});
       }
@@ -78,7 +78,7 @@
   .bar:nth-child(2) {
     opacity: 0;
   }
-  
+
   .bar:nth-child(1) {
     transform: translate(0, -50%) rotate(45deg);
   }

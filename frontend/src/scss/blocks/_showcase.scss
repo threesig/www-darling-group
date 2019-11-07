@@ -4,10 +4,6 @@
   height: 100vh;
   padding: 0;
 
-  .content-area {
-    text-shadow: 0 0 2px rgba($color-black, .4);
-  }
-
   > .interior {
     padding: 0 $padding-site-h-mobile;
     align-self: flex-end;
@@ -18,7 +14,6 @@
     margin-bottom: .2em;
   }
   .content {
-    font-size: 2.2em;
     line-height: 1.5;
     margin-bottom: 1em;
     max-width: 20em;

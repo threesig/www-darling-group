@@ -76,7 +76,7 @@ const FullBlocks = props => {
 
     // ~~~ TODO - Fix Swipe Gestures - https://codepen.io/hack_nug/pen/dRxvbN
     const scrollY = getMainScrollY();
-    const scrollTimeout = 50; // there has to be at least 1 second between event fires to determine a single scroll event
+    const scrollTimeout = 150; // there has to be at least 1 second between event fires to determine a single scroll event
     if (e.timeStamp - lastScrollTimestamp >= scrollTimeout) {
       // Determine Scroll Direction
       const direction = e.deltaY > 0 ? 'forward' : 'backward';
@@ -136,6 +136,13 @@ const FullBlocks = props => {
     }
   }
 
+  const handleTouchStart = e => {
+    console.log('touch start!');
+  }
+  const handleTouchEnd = e => {
+    console.log('touch end!');
+  }
+
   useEffect(() => {
     // Advance on all Next links
     const fullBlocks = refFullBlocks.current;
@@ -144,6 +151,8 @@ const FullBlocks = props => {
     // Initialize scrollability;
     setPageHasScroll(blockIndex === blockCount);
 
+    fullBlocks.addEventListener('touchStart', handleTouchStart);
+    fullBlocks.addEventListener('touchEnd', handleTouchEnd);
 
     addRemoveEventListenerList('add', nextLinks, 'click', handleNextClick);
     fullBlocks.addEventListener('mousewheel', handleMouseWheel);

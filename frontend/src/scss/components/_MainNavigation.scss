@@ -1,10 +1,9 @@
 #nav-main {
-  background: $color-black-true;
+  background: $color-black;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   text-align: left;
-  font-weight: 700;
   a {
     @include fancylink();
     padding: .15em 0;

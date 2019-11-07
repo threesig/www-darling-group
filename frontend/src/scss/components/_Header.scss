@@ -51,7 +51,7 @@
     }
   }
 
-  $color-schemes: (dark: $color-white, pink: $color-white, light: $color-black-true, test: #f00);
+  $color-schemes: (dark: $color-white, pink: $color-white, light: $color-black, test: #f00);
   @each $color-scheme, $ui-color in $color-schemes {
     &.#{$color-scheme} {
       .Logo {

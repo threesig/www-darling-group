@@ -4,9 +4,16 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    .title {
+      margin-bottom: 1.5em;
+      .content {
+        line-height: 1.247058824;
+      }
+    }
     .content {
-      font-size: 17px;
       line-height: 1.647058824;
+      max-width: 23em;
+      margin: 0 auto;
     }
     .next {
       position: absolute;

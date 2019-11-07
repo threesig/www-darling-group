@@ -1,13 +1,8 @@
 #footer {
   @extend .color-scheme-dark;
-  background-color: $color-black-true;
+  background-color: $color-black;
   padding: $padding-site-v-mobile $padding-site-h-mobile-static;
   font-size: 18px;
-
-
-  &, .tagline {
-    font-weight: 700;
-  }
   > .interior {
     display: flex;
     flex-direction: row;

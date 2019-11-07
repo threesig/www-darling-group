@@ -24,12 +24,19 @@
   url('../fonts/trade-gothic/300/3A6D2C_0_0.ttf') format('ttf');
   font-weight: 300;
 }
+@font-face {font-family: 'trade-gothic-proheavy';
+  src: url('../fonts/trade-gothic-proheavy/3A854C_0_0.eot');
+  src:  local('tradeGothic-lighter'), url('../fonts/trade-gothic-proheavy/3A854C_0_0.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/trade-gothic-proheavy/3A854C_0_0.woff2') format('woff2'),
+  url('../fonts/trade-gothic-proheavy/3A854C_0_0.woff') format('woff'),
+  url('../fonts/trade-gothic-proheavy/3A854C_0_0.ttf') format('ttf');
+}
 @font-face {font-family: 'core-sans-heavy';
-  src: url('../fonts/core-sans/coreSansHeavy.eot');
-  src:  local('coreSansHeavy'), url('../fonts/core-sans/coreSansHeavy.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/core-sans/coreSansHeavy.woff2') format('woff2'),
-  url('../fonts/core-sans/coreSansHeavy.woff') format('woff'),
-  url('../fonts/core-sans/coreSansHeavy.svg') format('svg');
+  src: url('../fonts/core-sans/3A8543_0_0.eot');
+  src:  local('coresansHeavy'), url('../fonts/core-sans/3A8543_0_0.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/core-sans/3A8543_0_0.woff2') format('woff2'),
+  url('../fonts/core-sans/3A8543_0_0.woff') format('woff'),
+  url('../fonts/core-sans/3A8543_0_0.ttf') format('ttf');
 }
 
 .block.general .title,
@@ -37,20 +44,28 @@ body {
   font-family: 'trade-gothic';
 }
 
-.title,
-.block.project-pagination .go,
 .content h1,
 .content h2,
 .content h3,
 .content h4,
 .content h5,
 .content h6,
+#nav-main,
+#footer,
+.block
+.block.project-pagination .go,
+.title {
+  font-family: 'trade-gothic-proheavy';
+}
+
+.block.welcome .title,
 .page-title {
   font-family: 'core-sans-heavy';
 }
 
 
 #nav-main,
+.block.project-pagination .go,
 #selector {
   font-size: 70px;
 }
