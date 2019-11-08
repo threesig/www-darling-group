@@ -17,7 +17,7 @@
       padding: 0 $padding-site-h-mobile;
       align-self: flex-end;
       padding-bottom: 10vh;
-      max-width: 430px;
+      max-width: 400px;
       width: 100%;
     }
   }
@@ -29,7 +29,6 @@
   .content {
     line-height: 1.5;
     margin-bottom: 1em;
-    @include hilite();
   }
   .go {
     text-transform: uppercase;

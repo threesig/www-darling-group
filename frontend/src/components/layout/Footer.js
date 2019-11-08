@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../ui/Logo';
 import Menu from './Menu';
 const Footer = props => {
-  const {menuData} = props;
+  const { menuData } = props;
   return (
     <footer key="site-footer" id="footer">
       <div className="interior">
@@ -16,7 +16,7 @@ const Footer = props => {
           <Menu items={menuData.main} />
         </div>
         <div className="cell c">
-          <p className="copyright">&copy; 2019 Darling Group LLC</p>
+          <p className="copyright">&copy; 2019 Darling Group, LLC</p>
         </div>
       </div>
     </footer>

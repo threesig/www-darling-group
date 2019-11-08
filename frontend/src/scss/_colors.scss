@@ -24,6 +24,11 @@ $color-tennisBall: #d4ff45;
   }
 
 }
+#footer .copyright,
+.white {
+  color: $color-white;
+}
+
 .color-scheme-pink {
   @extend .color-scheme-dark;
   background-color: $color-pink;
@@ -33,6 +38,12 @@ $color-tennisBall: #d4ff45;
   background-color: $color-tennisBall;
 }
 
+
+#nav-main .Menu .active,
+#footer .Menu .active,
+.tennisBall {
+  color: $color-tennisBall;
+}
 
 
 .block.general .title,

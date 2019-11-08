@@ -1,12 +1,13 @@
 #footer {
   @extend .color-scheme-dark;
   background-color: $color-black;
-  padding: $padding-site-v-mobile $padding-site-h-mobile-static;
+  padding: 73px $padding-site-h-mobile-static;
   font-size: 18px;
   > .interior {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    position: relative;
   }
   > .interior > .cell {
     flex: 0 0 100%;
@@ -16,6 +17,12 @@
     }
     + .cell {
       margin-top: 10px;
+    }
+    &.c {
+      position: absolute;
+      right: 0;
+      top: calc(50% + 20px);
+      opacity: 0.3;
     }
   }
 
