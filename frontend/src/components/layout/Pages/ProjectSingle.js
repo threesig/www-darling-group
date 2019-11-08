@@ -9,10 +9,12 @@ const ProjectSingle = props => {
   const getBlock = (blockData, idx) => <Block key={getKey(idx)} data={{ ...blockData, blockIdx: idx }} />;
   const getKey = idx => `${props.pageKey}-block-${idx}`;
   const { blocks } = props.query[0];
-  const { post_title, profileSubtitle, showcaseImage, post_name } = props.query[0];
+  const { post_title, casestudySubtitle, casestudyImage, post_name } = props.query[0];
+  console.log(props.query[0]);
+
   const imageBlockData = {
     acf_fc_layout: 'image',
-    image: showcaseImage,
+    image: casestudyImage,
     type: 'hero'
   }
   return (
@@ -21,7 +23,7 @@ const ProjectSingle = props => {
       <div className="block page-heading color-scheme-light">
         <div className="interior">
           <h1 className="title">{post_title}</h1>
-          <div className="content"><p>{profileSubtitle}</p></div>
+          <div className="content"><p>{casestudySubtitle}</p></div>
         </div>
       </div>
       <Block key={`project-${post_name}`} data={imageBlockData} />
