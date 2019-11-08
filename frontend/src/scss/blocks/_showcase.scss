@@ -38,7 +38,7 @@
     &, > .inner {
       @include affix();
       position: absolute;
-      background-position: 25% center;
+      background-position: center;
     }
     z-index: -1;
   }
