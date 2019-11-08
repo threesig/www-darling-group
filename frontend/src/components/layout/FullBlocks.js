@@ -1,11 +1,12 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
 import { getMainScrollY } from '../../helpers';
+import Lethargy from '../../lib/lethargy';
 
 const FullBlocks = props => {
   const refFullBlocks = useRef(null);
   const { setPageHasScroll } = useContext(FullBlocksContext);
-
+  const lethargy = new Lethargy();
   const normalizeBlocks = () => props.children.map(childBlock => childBlock.constructor === Array ? childBlock : [childBlock]);
   const getBlockCount = () => props.children ? normalizeBlocks().reduce((blockCount, blockContainer) => blockCount + blockContainer.length, 0) : 0;
 
@@ -136,12 +137,44 @@ const FullBlocks = props => {
     }
   }
 
-  const handleTouchStart = e => {
-    console.log('touch start!');
-  }
-  const handleTouchEnd = e => {
-    console.log('touch end!');
-  }
+
+
+
+
+
+
+
+  const checkScroll = e => {
+    e.preventDefault()
+    e.stopPropagation();
+
+    // Lethargy.check() must only be called once per mouse event
+    // If you need to use the result in more than one place
+    // you MUST store it as a variable and use that variable instead
+    // See https://github.com/d4nyll/lethargy/issues/5
+    var result = lethargy.check(e);
+
+    // false means it's not a scroll intent, 1 or -1 means it is
+    if (result !== false) {
+      const direction = result < 0 ? 'forward' : 'backward';
+      console.log(`direction: ${direction}!`);
+    } else {
+      console.log('Inertal Scroll');
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     // Advance on all Next links
@@ -151,16 +184,25 @@ const FullBlocks = props => {
     // Initialize scrollability;
     setPageHasScroll(blockIndex === blockCount);
 
-    fullBlocks.addEventListener('touchStart', handleTouchStart);
-    fullBlocks.addEventListener('touchEnd', handleTouchEnd);
 
     addRemoveEventListenerList('add', nextLinks, 'click', handleNextClick);
-    fullBlocks.addEventListener('mousewheel', handleMouseWheel);
+
+
+    fullBlocks.addEventListener('mousewheel', checkScroll);
+    fullBlocks.addEventListener('DOMMouseScroll', checkScroll);
+    fullBlocks.addEventListener('wheel', checkScroll);
+    fullBlocks.addEventListener('MozMousePixelScroll', checkScroll);
+
+
+
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       addRemoveEventListenerList('remove', nextLinks, 'click', handleNextClick);
-      fullBlocks.removeEventListener('mousewheel', handleMouseWheel);
+      fullBlocks.removeEventListener('mousewheel', checkScroll);
+      fullBlocks.removeEventListener('DOMMouseScroll', checkScroll);
+      fullBlocks.removeEventListener('wheel', checkScroll);
+      fullBlocks.removeEventListener('MozMousePixelScroll', checkScroll);
       window.removeEventListener('keydown', handleKeyDown);
 
     }
