@@ -122,8 +122,8 @@
     "post_name": "services",
     "to_ping": "",
     "pinged": "",
-    "post_modified": "2019-10-29 02:09:20",
-    "post_modified_gmt": "2019-10-29 02:09:20",
+    "post_modified": "2019-11-09 20:36:40",
+    "post_modified_gmt": "2019-11-09 20:36:40",
     "post_content_filtered": "",
     "post_parent": 0,
     "guid": "http:\/\/dev-darling-be-different.pantheonsite.io\/?page_id=9",
@@ -164,7 +164,7 @@
             "content": "<h4>Design<\/h4>\n<ul>\n<li>Identity &amp; Style Guides<\/li>\n<li>Interface and Visual Design<\/li>\n<li>Motion and Interaction<\/li>\n<li>Pattern Libraries<\/li>\n<li>Digital Campaigns<\/li>\n<\/ul>\n"
           },
           {
-            "content": "<div class=\"container darling-services\">\n<div class=\"article-body-text row services\">\n<div class=\"col-sm-9\">\n<h4>Dev<\/h4>\n<ul>\n<li>Prototypes<\/li>\n<li>SEO<\/li>\n<li>Web &amp; Native<\/li>\n<li>eCommerce<\/li>\n<li>Third-party Integrations<\/li>\n<\/ul>\n<\/div>\n<\/div>\n<\/div>\n"
+            "content": "<h4>Dev<\/h4>\n<ul>\n<li>Prototypes<\/li>\n<li>SEO<\/li>\n<li>Web &amp; Native<\/li>\n<li>eCommerce<\/li>\n<li>Third-party Integrations<\/li>\n<\/ul>\n"
           }
         ]
       },
@@ -2112,8 +2112,8 @@
     "post_name": "the-north-face",
     "to_ping": "",
     "pinged": "",
-    "post_modified": "2019-11-08 18:36:22",
-    "post_modified_gmt": "2019-11-08 18:36:22",
+    "post_modified": "2019-11-09 20:10:46",
+    "post_modified_gmt": "2019-11-09 20:10:46",
     "post_content_filtered": "",
     "post_parent": 0,
     "guid": "http:\/\/dev-darling-be-different.pantheonsite.io\/?post_type=work&#038;p=16",
@@ -2470,7 +2470,7 @@
         "post-thumbnail-height": 364
       }
     },
-    "jumbotronContent": "A radically new mobile experience designed to debut North Face's Ventrix jacket and artist Maggie Rogers' new single \"Split Stones\".",
+    "jumbotronContent": "A new mobile experience designed to debut North Face's Ventrix jacket and artist Maggie Rogers' new single \"Split Stones\".",
     "casestudySubtitle": "Providing the best gear for athletes and the modern day explorers.",
     "workIndexSubtitle": "Art Direction, Motion Direction, Experience Design, Interface Design",
     "casestudyImage": {

@@ -14,9 +14,8 @@
     text-decoration: none;
     > .inner {
       box-sizing: content-box;
-      padding: 0 $padding-site-h-mobile;
+      padding: 0 $padding-site-h-mobile $padding-site-h-mobile;
       align-self: flex-end;
-      padding-bottom: 10vh;
       max-width: 400px;
       width: 100%;
     }

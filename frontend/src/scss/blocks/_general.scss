@@ -1,16 +1,21 @@
 .block.general {
-  $padding-v: 80px;
+  $padding-v: $padding-site-h-mobile;
 
   padding-top: $padding-v;
   padding-bottom: $padding-v;
 
   $padding-item: 15px;
-
-    .title {
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 1.5em;
+  .titles {
+    margin-bottom: $padding-site-h-mobile;
+  }
+  .title {
+    font-weight: 700;
+    text-transform: uppercase;
+    + .title {
+      margin-top: 1.5em;
     }
+  }
+
   .content {
     font-size: 1.8em;
     line-height: 1.5;
@@ -28,14 +33,18 @@
     .content ul {
       list-style-type: none;
       padding: 0;
+      line-height: 1;
+      li + li {
+        margin-top: .5em;
+      }
     }
 
     .item-content {
-      padding: $padding-item;
+      padding: 5% 2.5%; // emulate active site gutters
       flex: 0 0 100%;
     }
     .list-contents {
-      margin: -$padding-item;
+      margin: -5% -2.5%;
     }
     @include mq-min($break-desktop) {
       &, .list-contents {
@@ -46,8 +55,18 @@
           flex: 1;
         }
       }
+      $wide-padding: 10%;
+      .item-content {
+        padding-top: $wide-padding;
+        padding-bottom: $wide-padding;
+      }
+      .list-contents {
+        margin-top: -$wide-padding;
+        margin-bottom: -$wide-padding;
+      }
     }
-    @include mq-min($break-desktop + 450px) {
+
+    @include mq-min($break-desktop + 250px) {
       .list-contents:not([data-elts="1"]) {
         .item-content {
           flex: 0 0 50%;

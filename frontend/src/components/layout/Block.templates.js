@@ -43,6 +43,7 @@ export default {
     const renderTitle = (titleItem, idx) => <h3 key={getRepeaterKey('title', idx)} className="title">{titleItem.title}</h3>;
     const renderContentItem = (contentItem, idx) => <li key={getRepeaterKey('content', idx)} className="item-content"><div className="content" dangerouslySetInnerHTML={{ __html: contentItem.content }} /></li>;
     const { titles, contents } = data;
+    console.log('contents', contents);
     return (
       <>
         <div className="cell">
