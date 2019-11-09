@@ -44,7 +44,7 @@ async function retrieve(url) {
 }
 
 const categorizeBlocks = blocks => {
-  const fullBlockTypes = ['welcome', 'intro', 'showcase'];
+  const fullBlockTypes = ['welcome', 'intro', 'jumbotron'];
 
   const initAcc = { full: [], standard: [] };
   const catBlocks = blocks.reduce((acc, block) => {

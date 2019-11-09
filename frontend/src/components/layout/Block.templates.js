@@ -69,7 +69,7 @@ export default {
   gallery(data) {
     return <Gallery data={data} />
   },
-  showcase(data) {
+  jumbotron(data) {
     const { title, content, image, slug } = data;
     return (
       <WipeLink className="outer" to={`/projects/${slug}`}>

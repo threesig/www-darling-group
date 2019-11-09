@@ -8,7 +8,7 @@ import { prepFullBlocks } from '../../../helpers';
 const Homepage = props => {
   const buildBlockData = casestudy => {
     return {
-      acf_fc_layout: 'showcase',
+      acf_fc_layout: 'jumbotron',
       title: casestudy.post_title,
       content: casestudy.jumbotronContent,
       image: casestudy.jumbotronImage,
