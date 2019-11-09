@@ -1,7 +1,7 @@
-#footer {
+#Footer {
   @extend .color-scheme-dark;
   background-color: $color-black;
-  padding: 73px $padding-site-h-mobile-static;
+  padding: 73px 0;
   font-size: 18px;
   > .interior {
     display: flex;
@@ -10,6 +10,8 @@
     position: relative;
   }
   > .interior > .cell {
+    transition: transform $header-transition-time;
+
     flex: 0 0 100%;
     position: relative;
     &.b, &.c {
@@ -19,13 +21,9 @@
       margin-top: 10px;
     }
     &.c {
-      position: absolute;
-      right: 0;
-      top: calc(50% + 20px);
       opacity: 0.3;
     }
   }
-
   @include mq-min(500px) {
     > .interior > .cell {
       display: flex;
@@ -42,15 +40,37 @@
       &.b, &.c {
         justify-content: flex-end;
       }
+      &.c {
+        position: absolute;
+        right: 0;
+        top: calc(50% + 20px);
+      }
       .logo-housing, .Menu {
         margin: 0;
       }
 
     }
+    $cell-drift: $padding-site-h-mobile-static;
+    .cell.a {
+      transform: translateX($cell-drift);
+    }
+    .cell.b, .cell.c {
+      transform: translateX(-$cell-drift);
+    }
 
   }
   @include mq-min($break-desktop) {
     font-size: 22px;
+
+    $cell-drift: $padding-site-h-desktop;
+    .cell.a {
+      transform: translateX($cell-drift);
+    }
+    .cell.b, .cell.c {
+      transform: translateX(-$cell-drift);
+    }
+
+
   }
   .tagline {
     font-size: 1em;

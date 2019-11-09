@@ -4,7 +4,7 @@ import Menu from './Menu';
 const Footer = props => {
   const { menuData } = props;
   return (
-    <footer key="site-footer" id="footer">
+    <footer key="site-footer" id="Footer">
       <div className="interior">
         <div className="cell a">
           <div className="logo-housing">
