@@ -36,7 +36,7 @@
   }
   .hamburger {
     transition: transform $header-transition-time;
-    right: 0;
+    right: -$padding-hamburger;
     transform: translate(#{-$padding-site-h-mobile-static}, #{$padding-site-v-mobile});
     .bar {
       transition: background-color $header-transition-time, transform $header-transition-time;

@@ -1,0 +1,29 @@
+.BlockNext.default {
+  $arrow-width: 10vw;
+  box-sizing: content-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  flex: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  text-align: center;
+  height: $gap-welcome-shade*1.25;
+  width: $arrow-width;
+  margin-left: -$arrow-width/2;
+
+  &:after {
+    .color-scheme-dark & {
+      color: $color-white;
+    }
+    align-self: flex-start;
+    transition: transform $transition-time $transition-easing-function, opacity $transition-time $transition-easing-function;
+  }
+  &:hover {
+    &:after {
+      transform: translateY(-15%);
+    }
+  }
+}

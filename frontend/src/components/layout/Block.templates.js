@@ -3,6 +3,7 @@ import Image from '../ui/Image';
 import Content from '../ui/Content';
 import Gallery from '../ui/Gallery';
 import WipeLink from '../ui/WipeLink';
+import BlockNext from '../ui/BlockNext';
 
 export default {
   welcome(data) {
@@ -16,7 +17,7 @@ export default {
           {getTitle(title)}
           {getContent(content)}
         </div>
-        <a className="next">Next</a>
+        <BlockNext theme="welcome" />
       </>
     )
   },
@@ -34,7 +35,7 @@ export default {
           {content ? <Content markup={content} /> : null}
           {/* WipeLink goes here */}
         </div>
-        <a className="next">Next</a>
+        <BlockNext />
       </>
     )
   },
@@ -43,6 +44,7 @@ export default {
     const renderTitle = (titleItem, idx) => <h3 key={getRepeaterKey('title', idx)} className="title">{titleItem.title}</h3>;
     const renderContentItem = (contentItem, idx) => <li key={getRepeaterKey('content', idx)} className="item-content"><div className="content" dangerouslySetInnerHTML={{ __html: contentItem.content }} /></li>;
     const { titles, contents } = data;
+    console.log('contents', contents);
     return (
       <>
         <div className="cell">
@@ -69,19 +71,22 @@ export default {
   gallery(data) {
     return <Gallery data={data} />
   },
-  showcase(data) {
+  jumbotron(data) {
     const { title, content, image, slug } = data;
     return (
-      <WipeLink className="outer" to={`/projects/${slug}`}>
-        <div className="inner">
-          <Image data={image} />
-          <div className="content-area">
-            <h2 className="title">{title}</h2>
-            <Content markup={content} />
-            <span className="go" to={`/projects/${slug}`}>View Case Study</span>
+      <>
+        <WipeLink className="outer" to={`/projects/${slug}`}>
+          <div className="inner">
+            <Image data={image} />
+            <div className="content-area">
+              <h2 className="title">{title}</h2>
+              <Content markup={content} />
+              <span className="go" to={`/projects/${slug}`}>View Case Study</span>
+            </div>
           </div>
-        </div>
-      </WipeLink>
+        </WipeLink>
+        <BlockNext />
+      </>
     )
   },
   blockquote(data) {

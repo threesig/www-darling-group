@@ -3,15 +3,15 @@ import Block from '../Block';
 import Page from '../Page';
 import Contact from '../Contact';
 import FullBlocks from '../FullBlocks';
-import {categorizeBlocks} from '../../../helpers';
+import { categorizeBlocks } from '../../../helpers';
 
 const DefaultPage = props => {
   const buildBlockData = casestudy => {
     return {
-      acf_fc_layout: 'showcase',
+      acf_fc_layout: 'jumbotron',
       title: casestudy.post_title,
-      content: casestudy.showcaseContent,
-      image: casestudy.showcaseImage,
+      content: casestudy.jumbotronContent,
+      image: casestudy.jumbotronImage,
       slug: casestudy.post_name
     }
   }

@@ -1,10 +1,12 @@
-.block.showcase {
+.block.jumbotron {
   @extend .color-scheme-dark;
   font-size: 10px;
   height: 100vh;
   padding: 0;
   position: relative;
-
+  .block-wrap {
+    width: 100vw;
+  }
   // Outer container is a link
   .outer {
     display: block;
@@ -13,9 +15,11 @@
     display: flex;
     text-decoration: none;
     > .inner {
-      padding: 0 $padding-site-h-mobile;
+      box-sizing: content-box;
+      padding: 0 $padding-site-h-mobile $padding-site-h-mobile;
       align-self: flex-end;
-      padding-bottom: 10vh;
+      max-width: 400px;
+      width: 100%;
     }
   }
 
@@ -26,7 +30,6 @@
   .content {
     line-height: 1.5;
     margin-bottom: 1em;
-    max-width: 20em;
   }
   .go {
     text-transform: uppercase;
@@ -38,14 +41,14 @@
     &, > .inner {
       @include affix();
       position: absolute;
-      background-position: 25% center;
+      background-position: center;
     }
     z-index: -1;
   }
-  @include mq-min(545px) {
-    font-size: 1.8348624vw;
-  }
-  @include mq-min(777px) {
-    font-size: 14.2709px;
-  }
+  // @include mq-min(545px) {
+  //   font-size: 1.8348624vw;
+  // }
+  // @include mq-min(777px) {
+  //   font-size: 14.2709px;
+  // }
 }

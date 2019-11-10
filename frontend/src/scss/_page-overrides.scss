@@ -2,7 +2,7 @@
   .block.intro {
     align-items: flex-end;
     > .interior {
-      margin-bottom: 103px;
+      margin-bottom: $padding-site-h-mobile;
     }
     .cell > .content {
       margin: 0;

@@ -40,23 +40,25 @@
 }
 
 .block.general .title,
+#Footer .copyright,
 body {
   font-family: 'trade-gothic';
 }
-
+#nav-main,
+#Footer,
+.block.contact .go,
 .content h1,
 .content h2,
 .content h3,
 .content h4,
 .content h5,
 .content h6,
-#nav-main,
-#footer,
 .block.project-pagination,
 .title {
   font-family: 'trade-gothic-proheavy';
 }
 
+.BlockNext,
 .block.welcome .title,
 .page-title {
   font-family: 'core-sans-heavy';

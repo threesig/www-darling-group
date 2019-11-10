@@ -1,6 +1,8 @@
 .block.contact {
-  height: 50vh;
   background-color: $color-white;
+  .block-wrap {
+    height: 50vh;
+  }
   .content-area {
     display: table;
     margin: 0 auto;
@@ -9,9 +11,10 @@
     color: $color-gray;
     text-transform: uppercase;
     margin-bottom: 0.5em;
+    font-size: 1.5em;
   }
   .go {
+    @include fancylink();
     font-size: 6vw;
-    font-weight: 700;
   }
 }

@@ -1,0 +1,31 @@
+  $tab-height: $gap-welcome-shade/2;
+  $transition-easing-function: ease;
+  $transition-time: .25s;
+  $arrow-font-size: $tab-height;
+  $arrow-drift: $arrow-font-size/2;
+  $travel-distance: $tab-height/5;
+
+.BlockNext {
+
+  cursor: pointer;
+  &:before {
+    padding: 50px;
+  }
+  &:after {
+
+    background-color: transparent !important; // background color to :after is being globally applied by fancylink styles
+    content: '\2193';
+    font-size: $arrow-font-size;
+    margin: 0 auto;
+
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  span {
+    position: absolute;
+    left: -100000em;
+  }
+ }
+@import 'BlockNext/welcome';
+@import 'BlockNext/default';

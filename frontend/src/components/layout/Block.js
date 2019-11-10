@@ -1,17 +1,27 @@
 import React from 'react';
+import styled from 'styled-components';
 import templates from './Block.templates';
 
-export default class Block extends React.Component {
-  static defaultProps = {
-    colorScheme: 'light'
+const Block = props => {
+  const { data } = props;
+
+  const colorKey = 'colorScheme';
+  let colorScheme = null;
+  if (data.hasOwnProperty(colorKey)) {
+    colorScheme = data[colorKey];
   }
-  getClassNames = () => {
-    const { data } = this.props;
-    const colorScheme = data.colorScheme ? data.colorScheme : this.props.colorScheme;
+  else if (props.hasOwnProperty(colorKey)) {
+    colorScheme = props[colorKey];
+  }
+  else {
+    colorScheme = 'light'
+  }
+
+  const getClassNames = () => {
     const classes = ['block', data.acf_fc_layout, `color-scheme-${colorScheme}`];
 
-    const {classNames} = data;
-    if(classNames) {
+    const { classNames } = data;
+    if (classNames) {
       classes.push(classNames);
     }
 
@@ -20,20 +30,28 @@ export default class Block extends React.Component {
     }
     return classes.join(' ');
   }
-  getTemplate = data => {
+  const getTemplate = data => {
     const template = templates[data.acf_fc_layout];
     return template ? template(data) : <p>There is no block type called `{data.acf_fc_layout}`!</p>;
   };
-  getCustomContent = () => null;
-  render() {
-    const { data } = this.props;
+  const getCustomContent = () => null;
 
-    return (
-      <section className={this.getClassNames()}>
+
+  const BlockContainer = styled.section`
+    z-index: ${data.blockIdx};
+    &.active {
+      z-index: ${data.blockIdx + 100};
+    }
+  `;
+  return (
+    <BlockContainer className={getClassNames()}>
+      <div className="block-wrap">
         <div className="interior">
-          {data ? this.getTemplate(data) : this.getCustomContent()}
+          {data ? getTemplate(data) : getCustomContent()}
         </div>
-      </section>
-    );
-  }
+      </div>
+    </BlockContainer>
+  );
 }
+
+export default Block;
