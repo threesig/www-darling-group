@@ -10,8 +10,8 @@ export default class Block extends React.Component {
     const colorScheme = data.colorScheme ? data.colorScheme : this.props.colorScheme;
     const classes = ['block', data.acf_fc_layout, `color-scheme-${colorScheme}`];
 
-    const {classNames} = data;
-    if(classNames) {
+    const { classNames } = data;
+    if (classNames) {
       classes.push(classNames);
     }
 
@@ -30,8 +30,10 @@ export default class Block extends React.Component {
 
     return (
       <section className={this.getClassNames()}>
-        <div className="interior">
-          {data ? this.getTemplate(data) : this.getCustomContent()}
+        <div className="block-wrap">
+          <div className="interior">
+            {data ? this.getTemplate(data) : this.getCustomContent()}
+          </div>
         </div>
       </section>
     );
