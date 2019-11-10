@@ -1,7 +1,7 @@
 .block.image {
   $padding-block-v-mobile: 15px;
   $padding-block-v-desktop: 25px;
-  &.type-hero {
+  &.type-hero .block-wrap {
     padding: 0 !important;
   }
   &.type-portfolio {
@@ -10,6 +10,5 @@
     @include mq-min($break-desktop) {
       padding: $padding-block-v-desktop $padding-site-h-desktop;
     }
-
   }
 }
