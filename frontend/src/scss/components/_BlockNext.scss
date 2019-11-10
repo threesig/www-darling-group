@@ -8,7 +8,6 @@
 .BlockNext {
 
   cursor: pointer;
-  @include hilite();
   &:before {
     padding: 50px;
   }

@@ -1,8 +1,4 @@
 .block.general {
-  $padding-v: $padding-site-h-mobile;
-
-  padding-top: $padding-v;
-  padding-bottom: $padding-v;
 
   $padding-item: 15px;
   .titles {
@@ -26,30 +22,35 @@
       flex-wrap: wrap;
     }
 
-  .block-wrap > .interior {
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    .cell {
-      flex: 1;
-    }
-
-    .content ul {
-      list-style-type: none;
-      padding: 0;
-      line-height: 1;
-      li + li {
-        margin-top: .5em;
+  .block-wrap {
+    $padding-v: $padding-site-h-mobile;
+    padding-top: $padding-v;
+    padding-bottom: $padding-v;
+    > .interior {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      .cell {
+        flex: 1;
       }
-    }
 
-    .item-content {
-      padding: 5% 2.5%; // emulate active site gutters
-      flex: 0 0 100%;
-      box-sizing: border-box;
-    }
-    .list-contents {
-      margin: -5% -2.5%;
+      .content ul {
+        list-style-type: none;
+        padding: 0;
+        line-height: 1;
+        li + li {
+          margin-top: .5em;
+        }
+      }
+
+      .item-content {
+        padding: 5% 2.5%; // emulate active site gutters
+        flex: 0 0 100%;
+        box-sizing: border-box;
+      }
+      .list-contents {
+        margin: -5% -2.5%;
+      }
     }
   }
   @include mq-min($break-desktop) {

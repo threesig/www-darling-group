@@ -1,7 +1,7 @@
 .BlockNext.welcome {
   transition: transform $transition-time $transition-easing-function;
   will-change: transform;
-  @include hilite(red);
+  // @include hilite(red);
   box-sizing: content-box;
   display: block;
   background: url(../../../images/blob.svg) center top no-repeat;

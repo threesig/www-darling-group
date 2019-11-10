@@ -4,7 +4,9 @@
   height: 100vh;
   padding: 0;
   position: relative;
-
+  .block-wrap {
+    width: 100vw;
+  }
   // Outer container is a link
   .outer {
     display: block;

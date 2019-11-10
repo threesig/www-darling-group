@@ -1,10 +1,12 @@
 .block.intro {
-  @include hilite();
-  justify-content: center;
+  margin-top: -$gap-welcome-shade;;
+  padding-top: $gap-welcome-shade;
+  box-sizing: content-box;
   .block-wrap {
     justify-content: center;
     align-items: center;
     > .interior {
+      width: 100%;
       display: flex;
       flex-direction: column;
       .title {
