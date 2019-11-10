@@ -7,11 +7,10 @@
   background: url(../../../images/blob.svg) center top no-repeat;
   background-size: 50% 50%;
   position: absolute;
-  bottom: 0;
   right: 0;
   left: 0;
   height: $tab-height;
-  bottom: -$tab-height*2;
+  top: -$tab-height*2;
   padding-bottom: $tab-height;
 
   &:before {
@@ -29,6 +28,7 @@
   }
   &:after {
     display: table;
+    color: $color-black;
     margin-top: -$arrow-drift;
     opacity: .43;
     transition: transform $transition-time, opacity $transition-time;
