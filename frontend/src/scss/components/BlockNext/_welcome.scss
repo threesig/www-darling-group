@@ -1,0 +1,45 @@
+.BlockNext.welcome {
+  transition: transform $transition-time $transition-easing-function;
+  will-change: transform;
+  @include hilite(red);
+  box-sizing: content-box;
+  display: block;
+  background: url(../../../images/blob.svg) center top no-repeat;
+  background-size: 50% 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: $tab-height;
+  bottom: -$tab-height*2;
+  padding-bottom: $tab-height;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: $tab-height;
+    padding: 0;
+    width: 100%;
+    background-color: $color-white;
+    transform: translateY(-100%);
+    z-index: 0;
+  }
+  &:after {
+    display: table;
+    margin-top: -$arrow-drift;
+    opacity: .43;
+    transition: transform $transition-time, opacity $transition-time;
+    will-change: transform, opacity;
+  }
+
+  &:hover {
+    transform: translateY($travel-distance);
+    &:after {
+      transform: translateY(-$travel-distance*.5);
+      opacity: 1;
+    }
+  }
+}

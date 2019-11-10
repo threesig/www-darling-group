@@ -1,0 +1,19 @@
+.BlockNext.default {
+  @include hilite(blue);
+  $hw: 6vw;
+  box-sizing: content-box;
+  display: flex;
+  // padding: $arrow-font-size;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  flex: none;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  height: $hw;
+  width: $hw;
+  &:after {
+    transition: transform $transition-time $transition-easing-function, opacity $transition-time $transition-easing-function;
+  }
+}

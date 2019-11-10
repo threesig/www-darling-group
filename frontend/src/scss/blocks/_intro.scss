@@ -1,7 +1,8 @@
 .block.intro {
   justify-content: center;
+    // position: relative;
+
   > .interior {
-    position: relative;
     display: flex;
     flex-direction: column;
     .title {
