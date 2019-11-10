@@ -12,20 +12,25 @@ const FullBlocks = props => {
 
   const blockCount = getBlockCount();
   let blockIndex = blockCount > 0 ? 1 : 0;
-  let lastScrollTimestamp = 0;
   const activeClass = 'active';
+
+  const getActiveOrInactiveBlocks = direction => {
+    const ret = [...refFullBlocks.current.children].filter(block => {
+      const blockClassList = [...block.classList];
+      return direction > 0  // Scrolling Forward
+        ? !blockClassList.includes(activeClass) // find classes that are NOT active. Return the FIRST one to make it active.
+        : blockClassList.includes(activeClass); // Find classes that ARE active.  Return the LAST one to make it inactive.
+    });
+
+    console.log(ret);
+    return ret;
+  }
   const advanceBlock = (direction) => {
     // Integer.  +1 Forward or -1 Backward.
     direction = direction || 1;
 
     const { children } = refFullBlocks.current;
     if (children) {
-      const activeOrInactiveBlocks = [...children].filter(block => {
-        const blockClassList = [...block.classList];
-        return direction > 0  // Scrolling Forward
-          ? !blockClassList.includes(activeClass) // find classes that are NOT active. Return the FIRST one to make it active.
-          : blockClassList.includes(activeClass); // Find classes that ARE active.  Return the LAST one to make it inactive.
-      });
 
       switch (direction > 0) {
         case true: // Moving Forward
@@ -33,29 +38,39 @@ const FullBlocks = props => {
 
           if (!isListEnd()) {
             // Next Block is the first Inactive Block
-            const nextBlock = activeOrInactiveBlocks[0]
+            const inactiveBlocks = getActiveOrInactiveBlocks(direction);
+            const nextBlock = inactiveBlocks[0];
 
             // Activate Next Block
             nextBlock.classList.add(activeClass);
 
             // Recalculate Block Index
             blockIndex++;
+            refFullBlocks.current.setAttribute('data-block-index', blockIndex);
+          }
+          else {
+            console.log('Sorry, End of List!');
           }
           break;
         default:  // Moving Backward
           /** activeOrInactiveBlocks === Active **/
           if (!isListBeginning()) {
             // Previous Block is the last Active Block
-            const prevBlock = activeOrInactiveBlocks.pop();
+            const activeBlocks = getActiveOrInactiveBlocks(direction);
+            const prevBlock = activeBlocks.pop();
 
             // Deactivate Previous Block
             prevBlock.classList.remove(activeClass);
 
             // Recalculate Block Inded
             blockIndex--;
+            refFullBlocks.current.setAttribute('data-block-index', blockIndex);
+          }
+          else {
+            console.log('Sorry, beginning of list!');
           }
       }
-      setPageHasScroll(blockIndex === blockCount);
+      document.getElementById('page').setAttribute('data-has-scroll', blockIndex === blockCount)
     }
   }
   const handleNextClick = e => {
@@ -74,7 +89,6 @@ const FullBlocks = props => {
   let scrollLocked = false;
   let scrollTimer = false;
   const scrollTimeout = 500; // there has to be at least 1 second between event fires to determine a single scroll event
-
   const handleScroll = e => {
     const scrollY = getMainScrollY();
 
@@ -131,7 +145,6 @@ const FullBlocks = props => {
     }
     return ret;
   }
-
   const addRemoveEventListenerList = (addOrRemove, list, event, fn) => {
     for (var i = 0, len = list.length; i < len; i++) {
       switch (addOrRemove) {
@@ -146,34 +159,6 @@ const FullBlocks = props => {
       }
     }
   }
-
-
-
-
-
-
-
-
-  // const checkScroll = e => {
-
-
-  //   // Lethargy.check() must only be called once per mouse event
-  //   // If you need to use the result in more than one place
-  //   // you MUST store it as a variable and use that variable instead
-  //   // See https://github.com/d4nyll/lethargy/issues/5
-
-
-  //   // false means it's not a scroll intent, 1 or -1 means it is
-  //   if (result !== false) {
-  //     const direction = result < 0 ? 'forward' : 'backward';
-  //     console.log(`direction: ${direction}!`);
-  //   } else {
-  //     console.log('Inertal Scroll');
-  //   }
-  // };
-
-
-
 
 
 
