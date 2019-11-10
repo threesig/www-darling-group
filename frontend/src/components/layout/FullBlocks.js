@@ -177,7 +177,7 @@ const FullBlocks = props => {
   useEffect(() => {
     // Advance on all Next links
     const fullBlocks = refFullBlocks.current;
-    const nextLinks = fullBlocks.querySelectorAll('.next');
+    const nextLinks = fullBlocks.querySelectorAll('.BlockNext');
 
     // Initialize scrollability;
     setPageHasScroll(blockIndex === blockCount);
