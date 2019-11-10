@@ -21,8 +21,6 @@ const FullBlocks = props => {
         ? !blockClassList.includes(activeClass) // find classes that are NOT active. Return the FIRST one to make it active.
         : blockClassList.includes(activeClass); // Find classes that ARE active.  Return the LAST one to make it inactive.
     });
-
-    console.log(ret);
     return ret;
   }
   const advanceBlock = (direction) => {
@@ -49,7 +47,7 @@ const FullBlocks = props => {
             refFullBlocks.current.setAttribute('data-block-index', blockIndex);
           }
           else {
-            console.log('Sorry, End of List!');
+            // console.log('Sorry, End of List!');
           }
           break;
         default:  // Moving Backward
@@ -67,7 +65,7 @@ const FullBlocks = props => {
             refFullBlocks.current.setAttribute('data-block-index', blockIndex);
           }
           else {
-            console.log('Sorry, beginning of list!');
+            // console.log('Sorry, beginning of list!');
           }
       }
       document.getElementById('page').setAttribute('data-has-scroll', blockIndex === blockCount)
@@ -91,38 +89,40 @@ const FullBlocks = props => {
   const scrollTimeout = 500; // there has to be at least 1 second between event fires to determine a single scroll event
   const handleScroll = e => {
     const scrollY = getMainScrollY();
+    if (!isListEnd() || (!isListBeginning() && scrollY === 0)) {
+      // e.preventDefault();
+      // e.stopPropagation();
+      const result = lethargy.check(e);
 
-    // if (!isListEnd() || (!isListBeginning() && scrollY === 0)) {
-    e.preventDefault();
-    e.stopPropagation();
-    const result = lethargy.check(e);
-
-    const direction = result < 0
-      ? 'forward'
-      : result > 0
-        ? 'backward'
-        : false;
+      const direction = result < 0
+        ? 'forward'
+        : result > 0
+          ? 'backward'
+          : false;
 
 
-    if (direction && !scrollLocked) {
-      scrollLocked = true;
-      switch (direction) {
-        case 'forward':
-          advanceBlock(1);
-          break;
-        case 'backward':
-          advanceBlock(-1);
-          break;
-        default:
-        // Do nothing
+      if (direction && !scrollLocked) {
+        scrollLocked = true;
+        switch (direction) {
+          case 'forward':
+            advanceBlock(1);
+            break;
+          case 'backward':
+            advanceBlock(-1);
+            break;
+          default:
+          // Do nothing
+        }
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+          scrollLocked = false;
+          // console.log('- scroll unlocked!')
+        }, scrollTimeout);
       }
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        scrollLocked = false;
-        console.log('- scroll unlocked!')
-      }, scrollTimeout);
     }
-    // }
+    else {
+      // console.log('Not scrolling for some reason.');
+    }
   }
   const handleKeyDown = e => {
     let ret = true;
