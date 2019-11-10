@@ -12,9 +12,7 @@ const FullBlocks = props => {
 
   const blockCount = getBlockCount();
   let blockIndex = blockCount > 0 ? 1 : 0;
-
   let lastScrollTimestamp = 0;
-
   const activeClass = 'active';
   const advanceBlock = (direction) => {
     // Integer.  +1 Forward or -1 Backward.
@@ -60,44 +58,57 @@ const FullBlocks = props => {
       setPageHasScroll(blockIndex === blockCount);
     }
   }
-
   const handleNextClick = e => {
     e.preventDefault();
     advanceBlock(1);
   }
-
   const isListBeginning = () => {
     return blockIndex === 1;
   }
   const isListEnd = () => {
     return blockIndex === blockCount;
   }
+
+
+
+  let scrollLocked = false;
+  let scrollTimer = false;
+  const scrollTimeout = 500; // there has to be at least 1 second between event fires to determine a single scroll event
+
   const handleScroll = e => {
     const scrollY = getMainScrollY();
 
-    if (!isListEnd() || (!isListBeginning() && scrollY === 0)) {
-      e.preventDefault();
-      e.stopPropagation();
-      const result = lethargy.check(e);
+    // if (!isListEnd() || (!isListBeginning() && scrollY === 0)) {
+    e.preventDefault();
+    e.stopPropagation();
+    const result = lethargy.check(e);
 
-      const scrollTimeout = 150; // there has to be at least 1 second between event fires to determine a single scroll event
-      if (result && (e.timeStamp - lastScrollTimestamp >= scrollTimeout)) {
-        // Determine Scroll Direction
-        const direction = e.deltaY > 0 ? 'forward' : 'backward';
-        switch (direction) {
-          case 'forward':
-            advanceBlock(1);
-            break;
-          case 'backward':
-            advanceBlock(-1);
-            break;
-          default:
-          // Do nothing
-        }
+    const direction = result < 0
+      ? 'forward'
+      : result > 0
+        ? 'backward'
+        : false;
+
+
+    if (direction && !scrollLocked) {
+      scrollLocked = true;
+      switch (direction) {
+        case 'forward':
+          advanceBlock(1);
+          break;
+        case 'backward':
+          advanceBlock(-1);
+          break;
+        default:
+        // Do nothing
       }
-      lastScrollTimestamp = e.timeStamp;
-
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        scrollLocked = false;
+        console.log('- scroll unlocked!')
+      }, scrollTimeout);
     }
+    // }
   }
   const handleKeyDown = e => {
     let ret = true;
