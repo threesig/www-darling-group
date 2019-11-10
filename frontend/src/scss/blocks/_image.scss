@@ -4,7 +4,7 @@
   &.type-hero .block-wrap {
     padding: 0 !important;
   }
-  &.type-portfolio {
+  &.type-portfolio .block-wrap {
     transition: padding $header-transition-time;
     padding: $padding-block-v-mobile $padding-site-h-mobile-static;
     @include mq-min($break-desktop) {
