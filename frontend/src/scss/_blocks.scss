@@ -1,13 +1,21 @@
 .block {
+  // @include hilite(red);
   .block-wrap {
+    // @include hilite(blue);
     display: flex;
     font-size: 10px;
     padding: 0 $padding-site-h-mobile;
+    position: relative;
     width: 100vw;
-    height: 100vh;
     > .interior {
+      // @include hilite(green);
       display: flex;
       align-items: center;
+    }
+  }
+  &.welcome, &.intro, &.jumbotron {
+    .block-wrap {
+      height: 100vh;
     }
   }
   .content {
