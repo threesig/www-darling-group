@@ -1,32 +1,34 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
 import { getMainScrollY } from '../../helpers';
+import Lethargy from '../../lib/lethargy';
 
 const FullBlocks = props => {
   const refFullBlocks = useRef(null);
   const { setPageHasScroll } = useContext(FullBlocksContext);
-
+  const lethargy = new Lethargy();
   const normalizeBlocks = () => props.children.map(childBlock => childBlock.constructor === Array ? childBlock : [childBlock]);
   const getBlockCount = () => props.children ? normalizeBlocks().reduce((blockCount, blockContainer) => blockCount + blockContainer.length, 0) : 0;
 
   const blockCount = getBlockCount();
   let blockIndex = blockCount > 0 ? 1 : 0;
-
-  let lastScrollTimestamp = 0;
-
   const activeClass = 'active';
+
+  const getActiveOrInactiveBlocks = direction => {
+    const ret = [...refFullBlocks.current.children].filter(block => {
+      const blockClassList = [...block.classList];
+      return direction > 0  // Scrolling Forward
+        ? !blockClassList.includes(activeClass) // find classes that are NOT active. Return the FIRST one to make it active.
+        : blockClassList.includes(activeClass); // Find classes that ARE active.  Return the LAST one to make it inactive.
+    });
+    return ret;
+  }
   const advanceBlock = (direction) => {
     // Integer.  +1 Forward or -1 Backward.
     direction = direction || 1;
 
     const { children } = refFullBlocks.current;
     if (children) {
-      const activeOrInactiveBlocks = [...children].filter(block => {
-        const blockClassList = [...block.classList];
-        return direction > 0  // Scrolling Forward
-          ? !blockClassList.includes(activeClass) // find classes that are NOT active. Return the FIRST one to make it active.
-          : blockClassList.includes(activeClass); // Find classes that ARE active.  Return the LAST one to make it inactive.
-      });
 
       switch (direction > 0) {
         case true: // Moving Forward
@@ -34,70 +36,93 @@ const FullBlocks = props => {
 
           if (!isListEnd()) {
             // Next Block is the first Inactive Block
-            const nextBlock = activeOrInactiveBlocks[0]
+            const inactiveBlocks = getActiveOrInactiveBlocks(direction);
+            const nextBlock = inactiveBlocks[0];
 
             // Activate Next Block
             nextBlock.classList.add(activeClass);
 
             // Recalculate Block Index
             blockIndex++;
+            refFullBlocks.current.setAttribute('data-block-index', blockIndex);
+          }
+          else {
+            // console.log('Sorry, End of List!');
           }
           break;
         default:  // Moving Backward
           /** activeOrInactiveBlocks === Active **/
           if (!isListBeginning()) {
             // Previous Block is the last Active Block
-            const prevBlock = activeOrInactiveBlocks.pop();
+            const activeBlocks = getActiveOrInactiveBlocks(direction);
+            const prevBlock = activeBlocks.pop();
 
             // Deactivate Previous Block
             prevBlock.classList.remove(activeClass);
 
             // Recalculate Block Inded
             blockIndex--;
+            refFullBlocks.current.setAttribute('data-block-index', blockIndex);
+          }
+          else {
+            // console.log('Sorry, beginning of list!');
           }
       }
-      setPageHasScroll(blockIndex === blockCount);
+      document.getElementById('page').setAttribute('data-has-scroll', blockIndex === blockCount)
     }
   }
-
   const handleNextClick = e => {
     e.preventDefault();
     advanceBlock(1);
   }
-
   const isListBeginning = () => {
     return blockIndex === 1;
   }
   const isListEnd = () => {
     return blockIndex === blockCount;
   }
-  const handleMouseWheel = e => {
-    // Debouncer
 
-    // ~~~ TODO - Fix Swipe Gestures - https://codepen.io/hack_nug/pen/dRxvbN
+
+
+  let scrollLocked = false;
+  let scrollTimer = false;
+  const scrollTimeout = 500; // there has to be at least 1 second between event fires to determine a single scroll event
+  const handleScroll = e => {
     const scrollY = getMainScrollY();
-    const scrollTimeout = 150; // there has to be at least 1 second between event fires to determine a single scroll event
-    if (e.timeStamp - lastScrollTimestamp >= scrollTimeout) {
-      // Determine Scroll Direction
-      const direction = e.deltaY > 0 ? 'forward' : 'backward';
-      switch (direction) {
-        case 'forward':
-          if (!isListEnd()) {
-            e.preventDefault();
+    if (!isListEnd() || (!isListBeginning() && scrollY === 0)) {
+      // e.preventDefault();
+      // e.stopPropagation();
+      const result = lethargy.check(e);
+
+      const direction = result < 0
+        ? 'forward'
+        : result > 0
+          ? 'backward'
+          : false;
+
+
+      if (direction && !scrollLocked) {
+        scrollLocked = true;
+        switch (direction) {
+          case 'forward':
             advanceBlock(1);
-          }
-          break;
-        case 'backward':
-          if (!isListBeginning() && scrollY === 0) {
-            e.preventDefault();
+            break;
+          case 'backward':
             advanceBlock(-1);
-          }
-          break;
-        default:
-        // Do nothing
+            break;
+          default:
+          // Do nothing
+        }
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+          scrollLocked = false;
+          // console.log('- scroll unlocked!')
+        }, scrollTimeout);
       }
     }
-    lastScrollTimestamp = e.timeStamp;
+    else {
+      // console.log('Not scrolling for some reason.');
+    }
   }
   const handleKeyDown = e => {
     let ret = true;
@@ -120,7 +145,6 @@ const FullBlocks = props => {
     }
     return ret;
   }
-
   const addRemoveEventListenerList = (addOrRemove, list, event, fn) => {
     for (var i = 0, len = list.length; i < len; i++) {
       switch (addOrRemove) {
@@ -136,31 +160,43 @@ const FullBlocks = props => {
     }
   }
 
-  const handleTouchStart = e => {
-    console.log('touch start!');
-  }
-  const handleTouchEnd = e => {
-    console.log('touch end!');
-  }
+
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     // Advance on all Next links
     const fullBlocks = refFullBlocks.current;
-    const nextLinks = fullBlocks.querySelectorAll('.next');
+    const nextLinks = fullBlocks.querySelectorAll('.BlockNext');
 
     // Initialize scrollability;
     setPageHasScroll(blockIndex === blockCount);
 
-    fullBlocks.addEventListener('touchStart', handleTouchStart);
-    fullBlocks.addEventListener('touchEnd', handleTouchEnd);
 
     addRemoveEventListenerList('add', nextLinks, 'click', handleNextClick);
-    fullBlocks.addEventListener('mousewheel', handleMouseWheel);
+
+
+    fullBlocks.addEventListener('mousewheel', handleScroll);
+    fullBlocks.addEventListener('DOMMouseScroll', handleScroll);
+    fullBlocks.addEventListener('wheel', handleScroll);
+    fullBlocks.addEventListener('MozMousePixelScroll', handleScroll);
+
+
+
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       addRemoveEventListenerList('remove', nextLinks, 'click', handleNextClick);
-      fullBlocks.removeEventListener('mousewheel', handleMouseWheel);
+      fullBlocks.removeEventListener('mousewheel', handleScroll);
+      fullBlocks.removeEventListener('DOMMouseScroll', handleScroll);
+      fullBlocks.removeEventListener('wheel', handleScroll);
+      fullBlocks.removeEventListener('MozMousePixelScroll', handleScroll);
       window.removeEventListener('keydown', handleKeyDown);
 
     }
