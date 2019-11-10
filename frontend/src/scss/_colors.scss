@@ -29,11 +29,11 @@ $color-tennisBall: #d4ff45;
   color: $color-white;
 }
 
-.color-scheme-pink {
+.color-scheme-pink .block-wrap {
   @extend .color-scheme-dark;
   background-color: $color-pink;
 }
-.color-scheme-tennisBall {
+.color-scheme-tennisBall .block-wrap {
   @extend .color-scheme-light;
   background-color: $color-tennisBall;
 }
