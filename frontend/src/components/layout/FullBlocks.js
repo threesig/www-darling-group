@@ -72,33 +72,32 @@ const FullBlocks = props => {
   const isListEnd = () => {
     return blockIndex === blockCount;
   }
-  const handleMouseWheel = e => {
-    // Debouncer
-
-    // ~~~ TODO - Fix Swipe Gestures - https://codepen.io/hack_nug/pen/dRxvbN
+  const handleScroll = e => {
     const scrollY = getMainScrollY();
-    const scrollTimeout = 150; // there has to be at least 1 second between event fires to determine a single scroll event
-    if (e.timeStamp - lastScrollTimestamp >= scrollTimeout) {
-      // Determine Scroll Direction
-      const direction = e.deltaY > 0 ? 'forward' : 'backward';
-      switch (direction) {
-        case 'forward':
-          if (!isListEnd()) {
-            e.preventDefault();
+
+    if (!isListEnd() || (!isListBeginning() && scrollY === 0)) {
+      e.preventDefault();
+      e.stopPropagation();
+      const result = lethargy.check(e);
+
+      const scrollTimeout = 150; // there has to be at least 1 second between event fires to determine a single scroll event
+      if (result && (e.timeStamp - lastScrollTimestamp >= scrollTimeout)) {
+        // Determine Scroll Direction
+        const direction = e.deltaY > 0 ? 'forward' : 'backward';
+        switch (direction) {
+          case 'forward':
             advanceBlock(1);
-          }
-          break;
-        case 'backward':
-          if (!isListBeginning() && scrollY === 0) {
-            e.preventDefault();
+            break;
+          case 'backward':
             advanceBlock(-1);
-          }
-          break;
-        default:
-        // Do nothing
+            break;
+          default:
+          // Do nothing
+        }
       }
+      lastScrollTimestamp = e.timeStamp;
+
     }
-    lastScrollTimestamp = e.timeStamp;
   }
   const handleKeyDown = e => {
     let ret = true;
@@ -144,24 +143,23 @@ const FullBlocks = props => {
 
 
 
-  const checkScroll = e => {
-    e.preventDefault()
-    e.stopPropagation();
+  // const checkScroll = e => {
 
-    // Lethargy.check() must only be called once per mouse event
-    // If you need to use the result in more than one place
-    // you MUST store it as a variable and use that variable instead
-    // See https://github.com/d4nyll/lethargy/issues/5
-    var result = lethargy.check(e);
 
-    // false means it's not a scroll intent, 1 or -1 means it is
-    if (result !== false) {
-      const direction = result < 0 ? 'forward' : 'backward';
-      console.log(`direction: ${direction}!`);
-    } else {
-      console.log('Inertal Scroll');
-    }
-  };
+  //   // Lethargy.check() must only be called once per mouse event
+  //   // If you need to use the result in more than one place
+  //   // you MUST store it as a variable and use that variable instead
+  //   // See https://github.com/d4nyll/lethargy/issues/5
+
+
+  //   // false means it's not a scroll intent, 1 or -1 means it is
+  //   if (result !== false) {
+  //     const direction = result < 0 ? 'forward' : 'backward';
+  //     console.log(`direction: ${direction}!`);
+  //   } else {
+  //     console.log('Inertal Scroll');
+  //   }
+  // };
 
 
 
@@ -188,10 +186,10 @@ const FullBlocks = props => {
     addRemoveEventListenerList('add', nextLinks, 'click', handleNextClick);
 
 
-    fullBlocks.addEventListener('mousewheel', checkScroll);
-    fullBlocks.addEventListener('DOMMouseScroll', checkScroll);
-    fullBlocks.addEventListener('wheel', checkScroll);
-    fullBlocks.addEventListener('MozMousePixelScroll', checkScroll);
+    fullBlocks.addEventListener('mousewheel', handleScroll);
+    fullBlocks.addEventListener('DOMMouseScroll', handleScroll);
+    fullBlocks.addEventListener('wheel', handleScroll);
+    fullBlocks.addEventListener('MozMousePixelScroll', handleScroll);
 
 
 
@@ -199,10 +197,10 @@ const FullBlocks = props => {
 
     return () => {
       addRemoveEventListenerList('remove', nextLinks, 'click', handleNextClick);
-      fullBlocks.removeEventListener('mousewheel', checkScroll);
-      fullBlocks.removeEventListener('DOMMouseScroll', checkScroll);
-      fullBlocks.removeEventListener('wheel', checkScroll);
-      fullBlocks.removeEventListener('MozMousePixelScroll', checkScroll);
+      fullBlocks.removeEventListener('mousewheel', handleScroll);
+      fullBlocks.removeEventListener('DOMMouseScroll', handleScroll);
+      fullBlocks.removeEventListener('wheel', handleScroll);
+      fullBlocks.removeEventListener('MozMousePixelScroll', handleScroll);
       window.removeEventListener('keydown', handleKeyDown);
 
     }
