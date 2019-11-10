@@ -7,7 +7,7 @@ const WipeLink = props => {
   const delay = config.pageTransitionTime;
 
   const onDelayStart = () => {
-    console.log('delay start!');
+    // console.log('delay start!');
     const transition = document.getElementById('transition');
     const wipeAttr = 'data-wipe-side';
     const wipeStatus = transition.getAttribute(wipeAttr);
@@ -15,8 +15,7 @@ const WipeLink = props => {
     transition.setAttribute(wipeAttr, -wipeStatus);
   };
   const onDelayEnd = () => {
-    // window.scrollTo(0, 0);
-    console.log('delay end!');
+    // console.log('delay end!');
   };
 
   let timeout = null;
