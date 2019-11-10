@@ -44,7 +44,7 @@ const FullBlocks = props => {
 
             // Recalculate Block Index
             blockIndex++;
-            refFullBlocks.current.setAttribute('data-block-index', blockIndex);
+            // refFullBlocks.current.setAttribute('data-block-index', blockIndex);
           }
           else {
             // console.log('Sorry, End of List!');
@@ -62,13 +62,13 @@ const FullBlocks = props => {
 
             // Recalculate Block Inded
             blockIndex--;
-            refFullBlocks.current.setAttribute('data-block-index', blockIndex);
+            // refFullBlocks.current.setAttribute('data-block-index', blockIndex);
           }
           else {
             // console.log('Sorry, beginning of list!');
           }
       }
-      document.getElementById('page').setAttribute('data-has-scroll', blockIndex === blockCount)
+      document.getElementById('page').setAttribute('data-has-scroll', blockIndex === blockCount);
     }
   }
   const handleNextClick = e => {
