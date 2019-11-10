@@ -17,7 +17,6 @@ export default {
           {getTitle(title)}
           {getContent(content)}
         </div>
-        <BlockNext theme="welcome" />
       </>
     )
   },
@@ -27,6 +26,7 @@ export default {
     const { title, content, image } = data;
     return (
       <>
+        <BlockNext theme="welcome" />
         <div className="cell">
           {image ? <Image data={image} /> : null}
         </div>

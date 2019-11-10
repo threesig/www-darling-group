@@ -37,12 +37,7 @@ const Block = props => {
   const getCustomContent = () => null;
 
 
-  const BlockContainer = styled.section`
-    z-index: ${data.blockIdx};
-    &.active {
-      z-index: ${data.blockIdx + 100};
-    }
-  `;
+  const BlockContainer = styled.section``;
   return (
     <BlockContainer className={getClassNames()}>
       <div className="block-wrap">
