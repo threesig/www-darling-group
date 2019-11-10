@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import templates from './Block.templates';
 
 const Block = props => {
@@ -34,14 +35,22 @@ const Block = props => {
     return template ? template(data) : <p>There is no block type called `{data.acf_fc_layout}`!</p>;
   };
   const getCustomContent = () => null;
+
+
+  const BlockContainer = styled.section`
+    z-index: ${data.blockIdx};
+    &.active {
+      z-index: ${data.blockIdx + 100};
+    }
+  `;
   return (
-    <section className={getClassNames()}>
+    <BlockContainer className={getClassNames()}>
       <div className="block-wrap">
         <div className="interior">
           {data ? getTemplate(data) : getCustomContent()}
         </div>
       </div>
-    </section>
+    </BlockContainer>
   );
 }
 
