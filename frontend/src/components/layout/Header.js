@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from '../ui/Logo';
 import Hamburger from '../ui/Hamburger';
-import Menu from './Menu';
 import WipeLink from '../ui/WipeLink';
 
 const Header = props => {
@@ -10,7 +9,7 @@ const Header = props => {
   menuData = menuData || {}
 
   return (
-    <header id="header" className={colorScheme}>
+    <header id="header" data-color-scheme={colorScheme}>
       <WipeLink className="home" linktype="nav" to="/"><Logo /></WipeLink>
       <Hamburger handleMainNavToggle={handleMainNavToggle} />
     </header>

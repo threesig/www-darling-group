@@ -53,7 +53,7 @@
 
   $color-schemes: (dark: $color-white, pink: $color-white, light: $color-black, test: #f00);
   @each $color-scheme, $ui-color in $color-schemes {
-    &.#{$color-scheme} {
+    &[data-color-scheme="#{$color-scheme}"] {
       .Logo {
         fill: $ui-color;
       }
