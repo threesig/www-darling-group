@@ -11,6 +11,11 @@
     &:not(.active) {
       transform: translateY($height-full);
     }
+    &:last-child {
+      .BlockNext.default {
+        display: none;
+      }
+    }
   }
   &[data-block-count="0"] {
     display: none;
