@@ -12,16 +12,13 @@ export default {
     const getContent = content => content ? <Content markup={content} /> : null;
 
     return (
-      <>
-        <div className="content-area">
-          {getTitle(title)}
-          {getContent(content)}
-        </div>
-      </>
+      <div className="content-area">
+        {getTitle(title)}
+        {getContent(content)}
+      </div>
     )
   },
   intro(data) {
-    // TODO ~~~ Add WipeLink
     // TODO ~~~ Get background color to match image
     const { title, content, image } = data;
     return (
@@ -44,14 +41,12 @@ export default {
     const renderTitle = (titleItem, idx) => <h3 key={getRepeaterKey('title', idx)} className="title">{titleItem.title}</h3>;
     const renderContentItem = (contentItem, idx) => <li key={getRepeaterKey('content', idx)} className="item-content"><div className="content" dangerouslySetInnerHTML={{ __html: contentItem.content }} /></li>;
     const { titles, contents } = data;
-    console.log('contents', contents);
     return (
       <>
         <div className="cell">
           <div className="titles">
             {titles ? titles.map(renderTitle) : null}
           </div>
-
         </div>
         <div className="cell">
           <ul className="list-contents" data-elts={contents.length}>
@@ -101,12 +96,10 @@ export default {
   contact() {
     const contactEmail = 'hello@darlingbedifferent.com';
     return (
-      <>
-        <div className="content-area">
-          <h3 className="title">Get In Touch</h3>
-          <a className="go" href={`mailto:${contactEmail}`}>{contactEmail}</a>
-        </div>
-      </>
+      <div className="content-area">
+        <h3 className="title">Get In Touch</h3>
+        <a className="go" href={`mailto:${contactEmail}`}>{contactEmail}</a>
+      </div>
     )
   },
 }
