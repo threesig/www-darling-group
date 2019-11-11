@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import templates from './Block.templates';
 
 const Block = props => {
@@ -36,16 +35,14 @@ const Block = props => {
   };
   const getCustomContent = () => null;
 
-
-  const BlockContainer = styled.section``;
   return (
-    <BlockContainer className={getClassNames()}>
+    <section className={getClassNames()}>
       <div className="block-wrap">
         <div className="interior">
           {data ? getTemplate(data) : getCustomContent()}
         </div>
       </div>
-    </BlockContainer>
+    </section>
   );
 }
 
