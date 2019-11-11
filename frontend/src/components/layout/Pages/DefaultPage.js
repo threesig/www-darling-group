@@ -3,7 +3,7 @@ import Block from '../Block';
 import Page from '../Page';
 import Contact from '../Contact';
 import FullBlocks from '../FullBlocks';
-import { categorizeBlocks } from '../../../helpers';
+import { categorizeBlocks, prepFullBlocks } from '../../../helpers';
 
 const DefaultPage = props => {
   const buildBlockData = casestudy => {
@@ -20,13 +20,12 @@ const DefaultPage = props => {
   const getKey = idx => `${props.pageKey}-block-${idx}`;
   const { blocks } = props.query[0];
   const catBlocks = categorizeBlocks(blocks);
-  console.log(catBlocks);
   return (
     <Page location={props.location}>
       <FullBlocks>
-
+        {catBlocks.full.length ? prepFullBlocks(catBlocks.full).map(getBlock) : null}
       </FullBlocks>
-      {blocks.map(getBlock)}
+      {catBlocks.standard.length ? catBlocks.standard.map(getBlock) : null}
       <Contact />
     </Page>
   )
