@@ -1,10 +1,8 @@
 import React from 'react';
-import debounce from 'lodash.debounce';
-import { cpus } from 'os';
 import { Helmet } from 'react-helmet';
 import allMeta from './data/meta';
 
-
+const domHeader = document.getElementById('header');
 const getRootUrl = () => {
   var defaultPorts = { "http:": 80, "https:": 443 };
 
@@ -54,7 +52,12 @@ const categorizeBlocks = blocks => {
   }, initAcc)
   return catBlocks;
 }
-
+const extractColorScheme = classlist => {
+  const colorSchemeRoot = 'color-scheme-';
+  const colorSchemeContainer = [...classlist].filter(className => className.includes(colorSchemeRoot));
+  const colorScheme = colorSchemeContainer.length ? colorSchemeContainer[0].substring(colorSchemeRoot.length) : null;
+  return colorScheme;
+}
 
 const prepFullBlocks = function () {
   let allBlocks = [];
@@ -103,5 +106,5 @@ const getMetaTags = urlPath => {
 }
 
 
-export { slugify, retrieve, categorizeBlocks, prepFullBlocks, getMainScrollY, getMetaTags }
+export { slugify, retrieve, categorizeBlocks, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags }
 
