@@ -49,9 +49,9 @@ const categorizeBlocks = blocks => {
   const initAcc = { full: [], standard: [] };
   const catBlocks = blocks.reduce((acc, block) => {
     const cat = fullBlockTypes.includes(block.acf_fc_layout) ? 'full' : 'standard';
+    acc[cat].push(block);
     return acc;
   }, initAcc)
-
   return catBlocks;
 }
 
