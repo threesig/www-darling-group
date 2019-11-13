@@ -2,6 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
 import { getMainScrollY } from '../../helpers';
 import Lethargy from '../../lib/lethargy';
+import { useSwipeable, Swipeable } from 'react-swipeable'
 
 const FullBlocks = props => {
   let fullBlocks;
