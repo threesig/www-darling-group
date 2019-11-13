@@ -4,6 +4,7 @@ import { getMainScrollY } from '../../helpers';
 import Lethargy from '../../lib/lethargy';
 
 const FullBlocks = props => {
+  let fullBlocks;
   const refFullBlocks = useRef(null);
   const { setPageHasScroll } = useContext(FullBlocksContext);
   const lethargy = new Lethargy();
@@ -15,7 +16,7 @@ const FullBlocks = props => {
   const activeClass = 'active';
 
   const getActiveOrInactiveBlocks = direction => {
-    const ret = [...refFullBlocks.current.children].filter(block => {
+    const ret = [...fullBlocks.children].filter(block => {
       const blockClassList = [...block.classList];
       return direction > 0  // Scrolling Forward
         ? !blockClassList.includes(activeClass) // find classes that are NOT active. Return the FIRST one to make it active.
@@ -26,8 +27,7 @@ const FullBlocks = props => {
   const advanceBlock = (direction) => {
     // Integer.  +1 Forward or -1 Backward.
     direction = direction || 1;
-
-    const { children } = refFullBlocks.current;
+    const { children } = fullBlocks;
     if (children) {
 
       switch (direction > 0) {
@@ -126,7 +126,7 @@ const FullBlocks = props => {
   }
   const handleKeyDown = e => {
     let ret = true;
-    if (refFullBlocks.current.scrollTop === 0) {
+    if (fullBlocks.scrollTop === 0) {
       const validKeys = ['ArrowDown', 'ArrowUp'];
       if (validKeys.includes(e.code)) {
         e.preventDefault();
@@ -172,7 +172,7 @@ const FullBlocks = props => {
 
   useEffect(() => {
     // Advance on all Next links
-    const fullBlocks = refFullBlocks.current;
+    fullBlocks = document.querySelector('.FullBlocks');
     const nextLinks = fullBlocks.querySelectorAll('.BlockNext');
 
     // Initialize scrollability;
