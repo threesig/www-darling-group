@@ -203,9 +203,9 @@ const FullBlocks = props => {
   }, []);
 
   return (
-    <div id="FullBlocks" ref={refFullBlocks} data-block-count={blockCount} data-block-index={blockIndex}>
+    <Swipeable onSwiped={handleSwipe} className="FullBlocks" id="FullBlocks" ref={refFullBlocks} data-block-count={blockCount} data-block-index={blockIndex}>
       {props.children}
-    </div>
+    </Swipeable>
   );
 }
 export default FullBlocks;
