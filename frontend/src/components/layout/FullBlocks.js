@@ -76,6 +76,23 @@ const FullBlocks = props => {
     e.preventDefault();
     advanceBlock(1);
   }
+
+  const handleSwipe = e => {
+    let advanceDirVal;
+    switch (e.dir.toLowerCase()) {
+      case 'up':
+        advanceDirVal = 1;
+        break;
+      case 'down':
+        advanceDirVal = -1;
+        break;
+      default:
+      // Do Nothing
+    }
+    advanceBlock(advanceDirVal);
+  }
+
+
   const isListBeginning = () => {
     return blockIndex === 1;
   }
