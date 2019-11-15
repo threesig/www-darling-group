@@ -40,8 +40,8 @@
     "post_name": "home",
     "to_ping": "",
     "pinged": "",
-    "post_modified": "2019-11-15 23:11:03",
-    "post_modified_gmt": "2019-11-15 23:11:03",
+    "post_modified": "2019-11-15 23:34:15",
+    "post_modified_gmt": "2019-11-15 23:34:15",
     "post_content_filtered": "",
     "post_parent": 0,
     "guid": "http:\/\/dev-darling-be-different.pantheonsite.io\/?page_id=7",
@@ -103,7 +103,7 @@
           }
         },
         "linkText": "Learn More About Our Services",
-        "link": "\/services.html",
+        "link": "\/services",
         "colorScheme": "pink"
       }
     ]
