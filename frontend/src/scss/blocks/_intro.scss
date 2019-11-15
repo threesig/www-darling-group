@@ -6,6 +6,7 @@
   .block-wrap {
     justify-content: center;
     align-items: center;
+    padding-bottom: $padding-block-bottom;
     > .interior {
       width: 100%;
       display: flex;

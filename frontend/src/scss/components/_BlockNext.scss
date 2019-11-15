@@ -1,7 +1,7 @@
   $tab-height: $gap-welcome-shade/2;
   $transition-easing-function: ease;
   $transition-time: .25s;
-  $arrow-font-size: $tab-height;
+  $arrow-font-size: $tab-height*.6666666667;
   $arrow-drift: $arrow-font-size/2;
   $travel-distance: $tab-height/5;
 
