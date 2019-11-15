@@ -67,7 +67,6 @@ export default {
     return <Gallery data={data} />
   },
   jumbotron(data) {
-    console.log(data);
     const { title, content, image, imagePosition, slug } = data;
     return (
       <>
