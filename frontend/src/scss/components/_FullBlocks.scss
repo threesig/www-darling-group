@@ -1,15 +1,22 @@
 .FullBlocks {
+
   position: relative;
   height: $height-full;
   -webkit-overflow-scrolling: auto;
   .block {
-    transition: transform .4s cubic-bezier(0.0, 0.5, 0.5, 1.0);
+    transition: transform $block-translate-time cubic-bezier(0.0, 0.5, 0.5, 1.0);
     position: absolute;
     transform: translate(0);
     bottom: 0;
 
     &:not(.active) {
       transform: translateY($height-full);
+    }
+    &.active {
+      .BlockNext.default {
+        transition-delay: $block-translate-time;
+        transform: translate(0);
+      }
     }
     &:last-child {
       .BlockNext.default {

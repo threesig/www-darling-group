@@ -1,4 +1,5 @@
 .BlockNext.default {
+  transition: transform $block-translate-time/2 $block-translate-time;
   $arrow-width: 10vw;
   box-sizing: content-box;
   display: flex;
@@ -13,7 +14,7 @@
   height: $gap-welcome-shade*1.25;
   width: $arrow-width;
   margin-left: -$arrow-width/2;
-
+  transform: translateY(100%);
   &:after {
     .color-scheme-dark & {
       color: $color-white;

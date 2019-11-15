@@ -12,9 +12,8 @@
     padding: 50px;
   }
   &:after {
-
     background-color: transparent !important; // background color to :after is being globally applied by fancylink styles
-    content: '\2193';
+    content: 'M';
     font-size: $arrow-font-size;
     margin: 0 auto;
 

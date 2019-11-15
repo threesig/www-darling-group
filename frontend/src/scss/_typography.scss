@@ -39,6 +39,17 @@
   url('../fonts/core-sans/3A8543_0_0.ttf') format('ttf');
 }
 
+@font-face {
+    font-family: 'glyphter';
+    src: url('../fonts/glyphter/Glyphter.eot');
+    src: url('../fonts/glyphter/Glyphter.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/glyphter/Glyphter.woff') format('woff'),
+         url('../fonts/glyphter/Glyphter.ttf') format('truetype'),
+         url('../fonts/glyphter/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .block.general .title,
 #Footer .copyright,
 body {
@@ -58,10 +69,12 @@ body {
   font-family: 'trade-gothic-proheavy';
 }
 
-.BlockNext,
 .block.welcome .title,
 .page-title {
   font-family: 'core-sans-heavy';
+}
+.BlockNext {
+  font-family: 'glyphter';
 }
 
 
