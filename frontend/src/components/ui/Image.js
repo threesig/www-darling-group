@@ -5,7 +5,8 @@ export default class Image extends React.Component {
     const { size, data, width, height, id } = props;
     this.img = {
       alt: data.alt,
-      id: `img-${id}`
+      id: `img-${id}`,
+      bgpos: '50%'
     }
 
     this.img['src'] = size ? data.sizes[size] : data.url;
@@ -28,7 +29,7 @@ export default class Image extends React.Component {
     return classes.join(' ');
   }
   getStyle = () => {
-    return { backgroundImage: `url(${this.img.src})` };
+    return { backgroundImage: `url(${this.img.src})`, backgroundPosition: `${this.props.bgpos} 50%` };
   };
   render() {
     // option to scale up on hover

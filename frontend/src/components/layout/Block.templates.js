@@ -67,12 +67,13 @@ export default {
     return <Gallery data={data} />
   },
   jumbotron(data) {
-    const { title, content, image, slug } = data;
+    console.log(data);
+    const { title, content, image, imagePosition, slug } = data;
     return (
       <>
         <WipeLink className="outer" to={`/projects/${slug}`}>
           <div className="inner">
-            <Image data={image} />
+            <Image data={image} bgpos={imagePosition} />
             <div className="content-area">
               <h2 className="title">{title}</h2>
               <Content markup={content} />

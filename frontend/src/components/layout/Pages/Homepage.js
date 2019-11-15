@@ -12,6 +12,7 @@ const Homepage = props => {
       title: casestudy.post_title,
       content: casestudy.jumbotronContent,
       image: casestudy.jumbotronImage,
+      imagePosition: `${casestudy.jumbotronImagePosition}%`,
       slug: casestudy.post_name,
       colorScheme: 'dark',
       classNames: casestudy.post_name
