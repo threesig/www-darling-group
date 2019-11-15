@@ -1221,8 +1221,8 @@
     "post_name": "corepower-yoga",
     "to_ping": "",
     "pinged": "",
-    "post_modified": "2019-11-08 18:45:29",
-    "post_modified_gmt": "2019-11-08 18:45:29",
+    "post_modified": "2019-11-15 21:43:36",
+    "post_modified_gmt": "2019-11-15 21:43:36",
     "post_content_filtered": "",
     "post_parent": 0,
     "guid": "http:\/\/dev-darling-be-different.pantheonsite.io\/?post_type=work&#038;p=19",
@@ -1573,7 +1573,8 @@
         "post-thumbnail-height": 438
       }
     },
-    "workIndexSubtitle": "Content Strategy, Mobile App UX, Mobile App Visual Design"
+    "workIndexSubtitle": "Content Strategy, Mobile App UX, Mobile App Visual Design",
+    "jumbotronImagePosition": "38"
   },
   {
     "ID": 18,
@@ -1590,8 +1591,8 @@
     "post_name": "jopwell",
     "to_ping": "",
     "pinged": "",
-    "post_modified": "2019-11-08 18:37:18",
-    "post_modified_gmt": "2019-11-08 18:37:18",
+    "post_modified": "2019-11-15 21:42:42",
+    "post_modified_gmt": "2019-11-15 21:42:42",
     "post_content_filtered": "",
     "post_parent": 0,
     "guid": "http:\/\/dev-darling-be-different.pantheonsite.io\/?post_type=work&#038;p=18",
@@ -2095,7 +2096,8 @@
         "post-thumbnail-height": 438
       }
     },
-    "workIndexImage": false
+    "workIndexImage": false,
+    "jumbotronImagePosition": "29"
   },
   {
     "ID": 16,
@@ -2112,8 +2114,8 @@
     "post_name": "the-north-face",
     "to_ping": "",
     "pinged": "",
-    "post_modified": "2019-11-09 20:10:46",
-    "post_modified_gmt": "2019-11-09 20:10:46",
+    "post_modified": "2019-11-15 21:41:53",
+    "post_modified_gmt": "2019-11-15 21:41:53",
     "post_content_filtered": "",
     "post_parent": 0,
     "guid": "http:\/\/dev-darling-be-different.pantheonsite.io\/?post_type=work&#038;p=16",
@@ -2515,7 +2517,8 @@
         "post-thumbnail-height": 438
       }
     },
-    "workIndexImage": false
+    "workIndexImage": false,
+    "jumbotronImagePosition": "75"
   },
   {
     "ID": 57,
@@ -3367,8 +3370,8 @@
     "post_name": "stok-cold-brew",
     "to_ping": "",
     "pinged": "",
-    "post_modified": "2019-11-08 18:51:20",
-    "post_modified_gmt": "2019-11-08 18:51:20",
+    "post_modified": "2019-11-15 21:44:06",
+    "post_modified_gmt": "2019-11-15 21:44:06",
     "post_content_filtered": "",
     "post_parent": 0,
     "guid": "http:\/\/dev-darling-be-different.pantheonsite.io\/?post_type=work&#038;p=79",
@@ -3634,6 +3637,7 @@
     "jumbotronImage": false,
     "jumbotronContent": "",
     "workIndexImage": false,
-    "workIndexSubtitle": "User Experience Design, Art Direction, Visual Design"
+    "workIndexSubtitle": "User Experience Design, Art Direction, Visual Design",
+    "jumbotronImagePosition": "75"
   }
 ]
