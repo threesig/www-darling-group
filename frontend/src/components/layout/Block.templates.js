@@ -20,7 +20,7 @@ export default {
   },
   intro(data) {
     // TODO ~~~ Get background color to match image
-    const { title, content, image } = data;
+    const { title, content, image, link, linkText } = data;
     return (
       <>
         <BlockNext theme="welcome" />
@@ -30,7 +30,7 @@ export default {
         <div className="cell">
           {title ? <h1 className="title"><Content markup={title} /></h1> : null}
           {content ? <Content markup={content} /> : null}
-          {/* WipeLink goes here */}
+          {link && linkText ? <WipeLink className="go" to={link}>{linkText}</WipeLink> : null}
         </div>
         <BlockNext />
       </>
