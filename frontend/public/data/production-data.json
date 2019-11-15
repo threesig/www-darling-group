@@ -102,6 +102,7 @@
             "post-thumbnail-height": 480
           }
         },
+        "linkText": "",
         "link": "\/services.html",
         "colorScheme": "pink"
       }
@@ -143,6 +144,7 @@
         "title": "Human-centered.<br \/>\r\nStrategically led.<br \/>\r\nCreatively driven.",
         "content": "We're a passionate team of designers, developers, strategists and creative problem solvers. We help marketers, product teams and entrepeneurs create integrated digital experiences that push technical boundaries and drive results.",
         "image": false,
+        "linkText": "",
         "link": "",
         "colorScheme": "tennisBall"
       },
