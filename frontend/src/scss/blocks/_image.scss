@@ -3,6 +3,9 @@
   $padding-block-v-desktop: 25px;
   &.type-hero .block-wrap {
     padding: 0 !important;
+    > .interior, .img {
+      width: 100%;
+    }
   }
   &.type-portfolio .block-wrap {
     transition: padding $header-transition-time;

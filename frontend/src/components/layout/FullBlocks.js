@@ -219,9 +219,14 @@ const FullBlocks = props => {
 
     }
   }, []);
-
+  const getClassNames = () => {
+    return [
+      'FullBlocks',
+      `block-count-${blockCount}`
+    ].join(' ');
+  }
   return (
-    <Swipeable onSwiped={handleSwipe} className="FullBlocks" id="FullBlocks" ref={refFullBlocks} data-block-count={blockCount} data-block-index={blockIndex}>
+    <Swipeable onSwiped={handleSwipe} className={getClassNames()} id="FullBlocks" ref={refFullBlocks} data-block-count={blockCount} data-block-index={blockIndex}>
       {props.children}
     </Swipeable>
   );

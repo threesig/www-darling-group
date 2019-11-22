@@ -13,7 +13,14 @@ const Block = props => {
     colorScheme = props[colorKey];
   }
   else {
-    colorScheme = 'light'
+    switch (data.acf_fc_layout) {
+      case 'logos':
+      case 'gallery':
+        colorScheme = 'dark';
+        break;
+      default:
+        colorScheme = 'light'
+    }
   }
 
   const getClassNames = () => {
