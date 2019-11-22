@@ -2,7 +2,8 @@
   $padding-block-v: 50px;
   padding-top: $padding-block-v;
   padding-bottom: $padding-block-v;
-  > .interior {
+  .block-wrap > .interior {
+    flex-direction: column;
     max-width: 535px;
     margin: 0 auto;
     text-align: center;
