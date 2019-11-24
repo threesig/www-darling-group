@@ -4,6 +4,7 @@ import Footer from './Footer';
 import MainNavigation from './MainNavigation';
 import menus from '../../data/menus';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
+import { ColorSchemeContext } from '../contexts/ColorSchemeContext';
 import { slugify, getMetaTags } from '../../helpers';
 const Page = props => {
   const refBlocks = useRef(null);
@@ -94,19 +95,21 @@ const Page = props => {
   });
   const { pathname } = props.location;
   return (
-    <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
-      {getMetaTags(pathname)}
-      <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
-      <div id="wrap">
-        <MainNavigation menuData={menus.main} />
-        <div id="main" key={slugify(pathname)} className={slugify(pathname)} ref={refMain}>
-          <div className="blocks" ref={refBlocks}>
-            {props.children}
+    <ColorSchemeContext.Provider value={{ setHeaderColorScheme }}>
+      <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
+        {getMetaTags(pathname)}
+        <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
+        <div id="wrap">
+          <MainNavigation menuData={menus.main} />
+          <div id="main" key={slugify(pathname)} className={slugify(pathname)} ref={refMain}>
+            <div className="blocks" ref={refBlocks}>
+              {props.children}
+            </div>
+            <Footer menuData={menus} />
           </div>
-          <Footer menuData={menus} />
         </div>
       </div>
-    </div>
+    </ColorSchemeContext.Provider>
   );
 }
 export default Page;
