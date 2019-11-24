@@ -86,10 +86,7 @@ const prepFullBlocks = function () {
 const getMainScrollY = () => {
   return document.getElementById('main').scrollTop;
 }
-
-// const setHeaderColorScheme = classList => {
-//   domHeader.setAttribute('data-color-scheme', extractColorScheme(classList));
-// }
+const isFullScreen = el => el.offsetHeight >= window.innerHeight;
 
 const getMetaTags = urlPath => {
 
@@ -110,5 +107,5 @@ const getMetaTags = urlPath => {
 }
 
 
-export { slugify, retrieve, categorizeBlocks, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags }
+export { slugify, retrieve, categorizeBlocks, isFullScreen, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags }
 

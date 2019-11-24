@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
 import { ColorSchemeContext } from '../contexts/ColorSchemeContext';
 
-import { getMainScrollY, extractColorScheme } from '../../helpers';
+import { getMainScrollY, extractColorScheme, isFullScreen } from '../../helpers';
 import Lethargy from '../../lib/lethargy';
 import { useSwipeable, Swipeable } from 'react-swipeable'
 
@@ -73,7 +73,11 @@ const FullBlocks = props => {
             // console.log('Sorry, beginning of list!');
           }
       }
-      setHeaderColorScheme(extractColorScheme(getActiveBlocks().pop().classList));
+      const activeBlock = getActiveBlocks().pop();
+      if (isFullScreen(activeBlock)) {
+        console.log('is fullscreen!');
+        setHeaderColorScheme(extractColorScheme(activeBlock.classList));
+      }
       document.getElementById('page').setAttribute('data-has-scroll', blockIndex === blockCount);
     }
   }
