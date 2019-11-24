@@ -87,9 +87,9 @@ const getMainScrollY = () => {
   return document.getElementById('main').scrollTop;
 }
 
-const setHeaderColorScheme = classList => {
-  domHeader.setAttribute('data-color-scheme', extractColorScheme(classList));
-}
+// const setHeaderColorScheme = classList => {
+//   domHeader.setAttribute('data-color-scheme', extractColorScheme(classList));
+// }
 
 const getMetaTags = urlPath => {
 
@@ -110,5 +110,5 @@ const getMetaTags = urlPath => {
 }
 
 
-export { slugify, retrieve, categorizeBlocks, setHeaderColorScheme, prepFullBlocks, getMainScrollY, getMetaTags }
+export { slugify, retrieve, categorizeBlocks, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags }
 
