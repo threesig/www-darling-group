@@ -1,6 +1,8 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
-import { getMainScrollY } from '../../helpers';
+import { ColorSchemeContext } from '../contexts/ColorSchemeContext';
+
+import { getMainScrollY, extractColorScheme } from '../../helpers';
 import Lethargy from '../../lib/lethargy';
 import { useSwipeable, Swipeable } from 'react-swipeable'
 
@@ -8,6 +10,7 @@ const FullBlocks = props => {
   let fullBlocks;
   const refFullBlocks = useRef(null);
   const { setPageHasScroll } = useContext(FullBlocksContext);
+  const { setHeaderColorScheme } = useContext(ColorSchemeContext);
   const lethargy = new Lethargy();
   const normalizeBlocks = () => props.children.map(childBlock => childBlock.constructor === Array ? childBlock : [childBlock]);
   const getBlockCount = () => props.children ? normalizeBlocks().reduce((blockCount, blockContainer) => blockCount + blockContainer.length, 0) : 0;
@@ -25,6 +28,7 @@ const FullBlocks = props => {
     });
     return ret;
   }
+  const getActiveBlocks = () => getActiveOrInactiveBlocks(-1);
   const advanceBlock = (direction) => {
     // Integer.  +1 Forward or -1 Backward.
     direction = direction || 1;
@@ -69,6 +73,7 @@ const FullBlocks = props => {
             // console.log('Sorry, beginning of list!');
           }
       }
+      setHeaderColorScheme(extractColorScheme(getActiveBlocks().pop().classList));
       document.getElementById('page').setAttribute('data-has-scroll', blockIndex === blockCount);
     }
   }
