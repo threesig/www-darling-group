@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import allMeta from './data/meta';
 
-const domHeader = document.getElementById('header');
 const getRootUrl = () => {
   var defaultPorts = { "http:": 80, "https:": 443 };
 

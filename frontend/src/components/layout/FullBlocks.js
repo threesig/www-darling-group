@@ -4,7 +4,7 @@ import { ColorSchemeContext } from '../contexts/ColorSchemeContext';
 
 import { getMainScrollY, extractColorScheme, isFullScreen } from '../../helpers';
 import Lethargy from '../../lib/lethargy';
-import { useSwipeable, Swipeable } from 'react-swipeable'
+import { Swipeable } from 'react-swipeable'
 
 const FullBlocks = props => {
   let fullBlocks;
@@ -75,7 +75,6 @@ const FullBlocks = props => {
       }
       const activeBlock = getActiveBlocks().pop();
       if (isFullScreen(activeBlock)) {
-        console.log('is fullscreen!');
         setHeaderColorScheme(extractColorScheme(activeBlock.classList));
       }
       document.getElementById('page').setAttribute('data-has-scroll', blockIndex === blockCount);
@@ -143,7 +142,6 @@ const FullBlocks = props => {
         clearTimeout(scrollTimer);
         scrollTimer = setTimeout(() => {
           scrollLocked = false;
-          // console.log('- scroll unlocked!')
         }, scrollTimeout);
       }
     }
