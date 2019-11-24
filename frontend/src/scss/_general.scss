@@ -16,6 +16,8 @@ body {
   transition: margin .5s ease;
   margin-top: -$height-full;
   [data-is-menu-open="true"] & {
+    height: $height-full;
+    overflow: hidden;
     margin-top: 0;
   }
 }
