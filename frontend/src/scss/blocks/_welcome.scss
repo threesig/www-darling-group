@@ -2,8 +2,20 @@
   $content-drift: 100px;
   $content-transition-time: 400ms;
   height: 100vh;
-  font-size: 10px;
   .block-wrap {
+    font-size: 10px;
+    @include mq-min(1050px) {
+      font-size: 17px;
+      .title {
+        width: 5em;
+      }
+    }
+    @include mq-min(1400px) {
+      font-size: 25px;
+      .title {
+        width: auto;
+      }
+    }
     height: calc(100vh - #{$gap-welcome-shade});
     background-color: $color-white;
     position: relative;
@@ -23,7 +35,7 @@
   // }
   .title {
     // animation: $content-transition-time ease 0s 1 easeIn;
-    font-size: 9em;
+    font-size: 8em;
     margin-bottom: .15em;
     letter-spacing: -0.041666667em;
   }
@@ -43,18 +55,8 @@
     // \2193
   }
 
-  @include mq-min(590px) {
-    .title {
-      font-size: 7em;
-    }
-    .content {
-      font-size: 3em;
-    }
-  }
 
-  @include mq-min(750px) {
-    font-size: 1.335vw;
-  }
+
 
 
   @keyframes easeIn {

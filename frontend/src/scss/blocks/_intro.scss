@@ -3,17 +3,16 @@
   padding-top: $gap-welcome-shade;
   box-sizing: content-box;
   width: 100%;
-  .go {
-    display: inline-block;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-top: 1.5em;
-  }
+
   .block-wrap {
     justify-content: center;
     align-items: center;
     padding-bottom: $padding-block-bottom;
+    font-size: 10px;
+    @include mq-min(1400px) {
+      font-size: 11.53846154px;
+    }
+
     > .interior {
       width: 100%;
       display: flex;
@@ -25,16 +24,26 @@
         }
       }
       .content {
-        line-height: 1.647058824;
-        max-width: 23em;
-        margin: 0 auto;
+        font-size: 2.1em;
+        line-height: 1.5;
+        @include mq-min(1400px) {
+          line-height: 1.75;
+        }
+
+      }
+      .go {
+        display: inline-block;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-top: 1.5em;
       }
       .next {
         position: absolute;
         bottom: 0;
         opacity: $test-opacity;
       }
-      @include mq-min($break-large) {
+      @include mq-min(769px) {
         flex-direction: row;
         .cell {
           flex: 0 0 50%;
