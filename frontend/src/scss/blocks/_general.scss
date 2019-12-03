@@ -26,12 +26,17 @@
     $padding-v: $padding-site-h-mobile;
     padding-top: $padding-v;
     padding-bottom: $padding-v;
+    justify-content: center;
     > .interior {
       width: 100%;
+      max-width: $width-inner;
       flex-direction: column;
       align-items: flex-start;
       .cell {
         flex: 1;
+        + .cell {
+          flex: 2;
+        }
       }
 
       .content ul {
