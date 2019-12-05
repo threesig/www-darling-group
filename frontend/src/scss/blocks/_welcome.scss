@@ -10,7 +10,7 @@
         width: 5em;
       }
     }
-    @include mq-min(1400px) {
+    @include mq-min(1630px) {
       font-size: 25px;
       .title {
         width: auto;
