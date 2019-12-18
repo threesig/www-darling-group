@@ -2,12 +2,13 @@
   background-color: $color-white;
   width: 100vw;
   .block-wrap {
-    height: 50vh;
+    padding: 10vw;
+    > .interior {
+      display: table;
+      margin: 0 auto;
+    }
   }
-  .content-area {
-    display: table;
-    margin: 0 auto;
-  }
+
   .title {
     color: $color-gray;
     text-transform: uppercase;
