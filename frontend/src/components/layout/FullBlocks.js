@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
 import { ColorSchemeContext } from '../contexts/ColorSchemeContext';
 
-import { getMainScrollY, extractColorScheme, isFullScreen } from '../../helpers';
+import { getMainScrollY, extractColorScheme, isFullScreen, swipeDetect } from '../../helpers';
 import Lethargy from '../../lib/lethargy';
 import { Swipeable } from 'react-swipeable'
 
@@ -85,9 +85,9 @@ const FullBlocks = props => {
     advanceBlock(1);
   }
 
-  const handleSwipe = e => {
+  const handleSwipe = swipeDir => {
     let advanceDirVal;
-    switch (e.dir.toLowerCase()) {
+    switch (swipeDir) {
       case 'up':
         advanceDirVal = 1;
         break;
@@ -197,7 +197,7 @@ const FullBlocks = props => {
 
   useEffect(() => {
     // Advance on all Next links
-    fullBlocks = document.querySelector('.FullBlocks');
+    fullBlocks = document.getElementById('FullBlocks');
     const nextLinks = fullBlocks.querySelectorAll('.BlockNext');
 
     // Initialize scrollability;
@@ -212,7 +212,8 @@ const FullBlocks = props => {
     fullBlocks.addEventListener('wheel', handleScroll);
     fullBlocks.addEventListener('MozMousePixelScroll', handleScroll);
 
-
+    swipeDetect(fullBlocks, handleSwipe);
+    
 
     window.addEventListener('keydown', handleKeyDown);
 
@@ -233,9 +234,9 @@ const FullBlocks = props => {
     ].join(' ');
   }
   return (
-    <Swipeable onSwiped={handleSwipe} className={getClassNames()} id="FullBlocks" ref={refFullBlocks} data-block-count={blockCount} data-block-index={blockIndex}>
+    <div className={getClassNames()} id="FullBlocks" ref={refFullBlocks} data-block-count={blockCount} data-block-index={blockIndex}>
       {props.children}
-    </Swipeable>
+    </div>
   );
 }
 export default FullBlocks;

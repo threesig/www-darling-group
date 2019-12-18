@@ -105,6 +105,31 @@ const getMetaTags = urlPath => {
   )
 }
 
+function swipeDetect(el, callback){
+  let touchstartY = 0;
+  let touchendY = 0;
+  
+  el.addEventListener('touchstart', e => touchstartY = e.changedTouches[0].screenY, false);
+  
+  el.addEventListener('touchend', e => {
+    touchendY = e.changedTouches[0].screenY;
+    handleGesture();
+  }, false); 
+  
+  const handleGesture = () => {
+    let dir = null;
+    switch (true) {
+      case touchendY <= touchstartY:
+        dir = 'up';
+        break;
+      case touchendY >= touchstartY:
+        dir = 'down';
+      default:
+        // do nothing
+    }
+    callback(dir);
+  }
 
-export { slugify, retrieve, categorizeBlocks, isFullScreen, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags }
+}
 
+export { slugify, retrieve, categorizeBlocks, isFullScreen, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags, swipeDetect }
