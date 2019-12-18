@@ -186,15 +186,6 @@ const FullBlocks = props => {
   }
 
 
-
-
-
-
-
-
-
-
-
   useEffect(() => {
     // Advance on all Next links
     fullBlocks = document.getElementById('FullBlocks');
