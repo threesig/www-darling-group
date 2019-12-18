@@ -15,7 +15,7 @@
 @mixin fancylink() {
   text-decoration: none;
   position: relative;
-  &:after {
+  &:not(.active)::after {
     transition: transform .2s ease;
     content: '';
     margin-top: 0.429411765em;

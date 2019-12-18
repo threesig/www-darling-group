@@ -24,6 +24,11 @@
       opacity: 0.3;
     }
   }
+  .Menu {
+    .menu-item .active {
+      pointer-events: none;
+    }
+  }
   @include mq-min(500px) {
     > .interior > .cell {
       display: flex;
