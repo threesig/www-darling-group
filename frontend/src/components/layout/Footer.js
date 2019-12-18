@@ -9,7 +9,7 @@ const Footer = props => {
         <div className="cell a">
           <div className="logo-housing">
             <div className="cell logo"><Logo /></div>
-            <div className="cell text"><h3 className="tagline">Darling, be different.</h3></div>
+            <div className="cell text"><h3 className="tagline">design with heart</h3></div>
           </div>
         </div>
         <div className="cell b">

@@ -19,7 +19,7 @@
   }
 
 
-  .Logo, .hamburger {
+  .Wordmark, .hamburger {
     position: absolute;
     top: 0;
   }
@@ -29,10 +29,13 @@
   // .home.active {
   //   pointer-events: none;
   // }
-  .Logo {
-    transition: transform $header-transition-time, fill $header-transition-time;
+  .Wordmark {
+    transition: transform $header-transition-time;
     left: 0;
     transform: translate(#{$padding-site-h-mobile-static}, #{$padding-site-v-mobile});
+    rect {
+      transition: fill $header-transition-time;
+    }
   }
   .hamburger {
     transition: transform $header-transition-time;
@@ -43,7 +46,7 @@
     }
   }
   @include mq-min($break-desktop) {
-    .Logo {
+    .Wordmark {
       transform: translate(#{$padding-site-h-desktop}, #{$padding-site-v-desktop});
     }
     .hamburger {
@@ -54,7 +57,7 @@
   $color-schemes: (dark: $color-white, pink: $color-white, light: $color-black, test: #f00);
   @each $color-scheme, $ui-color in $color-schemes {
     &[data-color-scheme="#{$color-scheme}"] {
-      .Logo {
+      .Wordmark rect {
         fill: $ui-color;
       }
       .hamburger .bar {
@@ -64,7 +67,7 @@
   }
 
   &.dark, &.pink {
-    .Logo, .hamburger .bar {
+    .Wordmark, .hamburger .bar {
 
       // filter: drop-shadow( 0 0 1px rgba(0, 0, 0, .5));
     }
