@@ -5,7 +5,6 @@ import {
   Route,
   withRouter
 } from "react-router-dom";
-import './App.style.scss';
 import config from '../config/config';
 
 
