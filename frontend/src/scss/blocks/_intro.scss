@@ -3,6 +3,10 @@
   padding-top: $gap-welcome-shade;
   box-sizing: content-box;
   width: 100%;
+  &:not(.active) {
+    transform: translateY(calc(100% - #{$gap-welcome-shade}));
+  }
+
 
   .block-wrap {
     justify-content: center;
