@@ -4,21 +4,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-.page,
-#nav-main,
-.block.intro,
-#main,
-#default {
-  height: $height-full;
-}
 #wrap {
   transition: margin .5s ease;
-  margin-top: -$height-full;
   [data-is-menu-open="true"] & {
-    height: $height-full;
     overflow: hidden;
-    margin-top: 0;
+    margin-top: 0 !important;
   }
 }
 

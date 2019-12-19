@@ -96,12 +96,12 @@ const Page = props => {
   const { pathname } = props.location;
   return (
     <ColorSchemeContext.Provider value={{ setHeaderColorScheme }}>
-      <div id="page" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
+      <div id="page" className="full-height" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
         {getMetaTags(pathname)}
         <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
-        <div id="wrap">
+        <div id="wrap" className="full-height full-height-margin-up">
           <MainNavigation menuData={menus.main} />
-          <div id="main" key={slugify(pathname)} className={slugify(pathname)} ref={refMain}>
+          <div id="main" key={slugify(pathname)} className={`${slugify(pathname)} full-height`} ref={refMain}>
             <div className="blocks" ref={refBlocks}>
               {props.children}
             </div>
