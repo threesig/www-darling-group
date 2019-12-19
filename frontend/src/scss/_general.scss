@@ -32,7 +32,3 @@ body {
     overflow: hidden;
   }
 }
-
-.block.welcome {
-  height: calc(#{$height-full} - #{$gap-welcome-shade});
-}

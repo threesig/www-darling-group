@@ -1,7 +1,6 @@
 .block.welcome {
   $content-drift: 100px;
   $content-transition-time: 400ms;
-  height: 100vh;
   .block-wrap {
     font-size: 10px;
     @include mq-min(1050px) {
@@ -16,7 +15,7 @@
         width: auto;
       }
     }
-    height: calc(100vh - #{$gap-welcome-shade});
+    height: calc(100% - #{$gap-welcome-shade});
     background-color: $color-white;
     position: relative;
     width: 100vw;
