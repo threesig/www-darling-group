@@ -24,7 +24,23 @@
       opacity: 0.3;
     }
   }
+
+  .logo-housing {
+    $housing-gutter: 20px;
+    display: table;
+    align-items: center;
+    margin: 0 auto;
+    > .cell {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .text {
+      padding: 0 0 0 $housing-gutter;
+    }
+  }
+
   @include mq-min(500px) {
+  
     > .interior > .cell {
       display: flex;
       + .cell {
@@ -79,6 +95,7 @@
     position: relative;
     font-size: 0.777777778em;
     top: 50%;
+    text-transform: uppercase;
     transform: translateY(-50%);
   }
   .copyright {
@@ -97,23 +114,6 @@
     }
     a {
       @include fancylink();
-    }
-  }
-  .logo-housing {
-    $housing-gutter: 20px;
-    display: table;
-    align-items: center;
-    margin: 0 auto;
-    > .cell {
-      display: table-cell;
-      vertical-align: middle;
-    }
-    .logo {
-      padding-right: $housing-gutter;
-    }
-    .text {
-      padding-left: $housing-gutter;
-      border-left: 1px solid $color-white;
     }
   }
 }
