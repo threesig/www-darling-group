@@ -221,6 +221,7 @@ const FullBlocks = props => {
   const getClassNames = () => {
     return [
       'FullBlocks',
+      'full-height',
       `block-count-${blockCount}`
     ].join(' ');
   }
