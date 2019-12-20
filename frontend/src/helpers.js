@@ -108,7 +108,7 @@ const getMetaTags = urlPath => {
 function swipeDetect(el, callback){
   let touchstartY = 0;
   let touchendY = 0;
-  
+  const swipeSensitivity = 50;
   el.addEventListener('touchstart', e => touchstartY = e.changedTouches[0].screenY, false);
   
   el.addEventListener('touchend', e => {
@@ -119,10 +119,10 @@ function swipeDetect(el, callback){
   const handleGesture = () => {
     let dir = null;
     switch (true) {
-      case touchendY <= touchstartY:
+      case touchendY <= touchstartY + swipeSensitivity:
         dir = 'up';
         break;
-      case touchendY >= touchstartY:
+      case touchendY >= touchstartY + swipeSensitivity:
         dir = 'down';
       default:
         // do nothing
