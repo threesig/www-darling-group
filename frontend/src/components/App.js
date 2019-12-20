@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   withRouter
 } from "react-router-dom";
+import {setFullheight} from '../helpers';
 import config from '../config/config';
 
 
@@ -55,6 +56,23 @@ const App = props => {
 
     return nextSlug;
   }
+
+
+
+
+  useEffect(() => {
+    window.addEventListener('resize', setFullheight);
+    setFullheight();
+    
+    return () => {
+      
+    }
+  });
+
+
+
+
+
 
   return (
     <TransitionContext.Provider value={{ wipeSide, setWipeSide }}>

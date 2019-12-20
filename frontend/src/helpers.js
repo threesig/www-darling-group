@@ -132,4 +132,25 @@ function swipeDetect(el, callback){
 
 }
 
-export { slugify, retrieve, categorizeBlocks, isFullScreen, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags, swipeDetect }
+const setFullheight = () => {
+  // const els = document.querySelectorAll('.full-height');
+  // const winHeight = screen.availHeight;
+  // els.forEach(el => {
+  //   el.setAttribute('style', `height: ${winHeight}px`);
+  // });
+  document.body.style.height = `${window.innerHeight}px`;
+}
+
+function getViewportSize(){
+	var test = document.createElement( "div" );
+
+	test.style.cssText = "position: fixed;top: 0;left: 0;bottom: 0;right: 0;";
+	document.documentElement.insertBefore( test, document.documentElement.firstChild );
+	
+	var dims = { width: test.offsetWidth, height: test.offsetHeight };
+	document.documentElement.removeChild( test );
+	
+	return dims;
+}
+
+export { slugify, retrieve, categorizeBlocks, isFullScreen, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags, swipeDetect, setFullheight }
