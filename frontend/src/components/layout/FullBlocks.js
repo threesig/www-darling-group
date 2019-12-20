@@ -4,7 +4,7 @@ import { ColorSchemeContext } from '../contexts/ColorSchemeContext';
 
 import { getMainScrollY, extractColorScheme, isFullScreen, swipeDetect } from '../../helpers';
 import Lethargy from '../../lib/lethargy';
-import { Swipeable } from 'react-swipeable'
+import {isMobile} from 'react-device-detect';
 
 const FullBlocks = props => {
   let fullBlocks;
@@ -226,7 +226,7 @@ const FullBlocks = props => {
     ].join(' ');
   }
   return (
-    <div className={getClassNames()} id="FullBlocks" ref={refFullBlocks} data-block-count={blockCount} data-block-index={blockIndex}>
+    <div className={getClassNames()} id="FullBlocks" ref={refFullBlocks} data-is-mobile={isMobile} data-block-count={blockCount} data-block-index={blockIndex}>
       {props.children}
     </div>
   );

@@ -6,6 +6,7 @@ import menus from '../../data/menus';
 import { FullBlocksContext } from '../contexts/FullBlocksContext';
 import { ColorSchemeContext } from '../contexts/ColorSchemeContext';
 import { slugify, getMetaTags } from '../../helpers';
+import {isMobile} from 'react-device-detect';
 const Page = props => {
   const refBlocks = useRef(null);
   const refMain = useRef(null);
@@ -62,7 +63,13 @@ const Page = props => {
   }
 
 
+  const getPageClassNames = () => {
+    const classes = ['full-height'];
 
+    const mobileClass = isMobile ? 'is-mobile': 'not-mobile';
+    classes.push(mobileClass);
+    return classes.join(' ');
+  }
 
   const handleMainNavToggle = e => {
     e.preventDefault();
@@ -96,7 +103,7 @@ const Page = props => {
   const { pathname } = props.location;
   return (
     <ColorSchemeContext.Provider value={{ setHeaderColorScheme }}>
-      <div id="page" className="full-height" data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
+      <div id="page" className={getPageClassNames()} data-is-menu-open={isMenuOpen} data-has-scroll={pageHasScroll}>
         {getMetaTags(pathname)}
         <Header menuData={menus.main} colorScheme={headerColorScheme} handleMainNavToggle={handleMainNavToggle} />
         <div id="wrap" className="full-height full-height-margin-up">
