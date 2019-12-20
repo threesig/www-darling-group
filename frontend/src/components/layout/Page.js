@@ -33,10 +33,10 @@ const Page = props => {
   const getHeaderColorScheme = () => {
 
     // All blocks whose positions are less than scrollY
-    const blocksAboveScroll = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY + 64);
+    const blocksAboveScroll = Object.keys(blockPositions).filter(posVal => parseInt(posVal) <= scrollY + 64 && posVal > 0);
 
     // The current block is the last block in the list.  pop method returns the color scheme;
-    return blockPositions[blocksAboveScroll.pop()]
+    return blockPositions[blocksAboveScroll.pop()];
   }
 
 
