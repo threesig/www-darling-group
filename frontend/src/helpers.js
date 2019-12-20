@@ -138,7 +138,10 @@ const setFullheight = () => {
   // els.forEach(el => {
   //   el.setAttribute('style', `height: ${winHeight}px`);
   // });
-  document.body.style.height = `${window.innerHeight}px`;
+
+
+
+  // document.body.style.height = `${window.innerHeight}px`;
 }
 
 function getViewportSize(){
