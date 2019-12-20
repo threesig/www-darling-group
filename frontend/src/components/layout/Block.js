@@ -18,6 +18,7 @@ const Block = props => {
   else {
     switch (data.acf_fc_layout) {
       case 'logos':
+      case 'image': 
       case 'gallery':
         colorScheme = 'dark';
         break;
