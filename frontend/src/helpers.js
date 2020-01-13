@@ -35,8 +35,11 @@ const slugify = str => {
 
 
 async function retrieve(url) {
-  let response = await fetch(url);
-  let data = await response.json()
+
+  const fullUrl = `${url}?cb=${getCacheBuster()}`;
+  console.log(fullUrl);
+  const response = await fetch(fullUrl);
+  const data = await response.json();
   return data;
 }
 
@@ -156,4 +159,5 @@ function getViewportSize(){
 	return dims;
 }
 
-export { slugify, retrieve, categorizeBlocks, isFullScreen, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags, swipeDetect, setFullheight }
+const getCacheBuster = () => Math.round(new Date().getTime() / 1000);
+export { slugify, retrieve, categorizeBlocks, isFullScreen, extractColorScheme, prepFullBlocks, getMainScrollY, getMetaTags, swipeDetect, setFullheight}
