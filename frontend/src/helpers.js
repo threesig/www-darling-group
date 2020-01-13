@@ -35,9 +35,7 @@ const slugify = str => {
 
 
 async function retrieve(url) {
-
   const fullUrl = `${url}?cb=${getCacheBuster()}`;
-  console.log(fullUrl);
   const response = await fetch(fullUrl);
   const data = await response.json();
   return data;
